@@ -17,7 +17,6 @@ public class FLOSSServer extends JFrame {
       ServerSocket server = new ServerSocket(4999);
       Socket socket = server.accept();
       System.out.println("Connected");
+
    }
 }
-
-//https://www.google.com/search?q=java+creating+a+server&rlz=1C1CHBF_enUS812US812&oq=java+creating+a+server&aqs=chrome..69i57j0l5.2761j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=_74hxXb3BOu6H_QaX9IfgAw9
