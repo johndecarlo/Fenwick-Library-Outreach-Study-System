@@ -1,4 +1,4 @@
-import java.util.list;
+import java.util.List;
 
 //Basic methods needed for accessing and changing information per student in the remote database
 public interface RemoteDBManager {
