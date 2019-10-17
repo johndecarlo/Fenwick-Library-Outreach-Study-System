@@ -6,55 +6,73 @@
    Description: This is the executable driver for our software
 */
 
+import java.util.*;
 import java.io.*;
-import java.net.*;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FLOSSDriver {
 
-   public static StudySystemMap fenwickLibrary;
-   public static JPanel buttons;
-   public static JPanel sidePanel;
+   public static StudySystemMap fenwickLibrary;    //JPanel that holds the study maps
+   public static JPanel buttons;                   //JPanel that holds the JButtons
+   public static JPanel sidePanel;                 //JPanel that is the side information panel
    
+   public static JPanel tableInformationPanel;     //Information about a table that someone's mouse is over
+   public static JPanel searchPanel;               //Implemented when searching for someone
+   public static JPanel profileInformationPanel;   //Profile information displayed 
    
-   public static JPanel tableInformationPanel;
-   public static JPanel searchPanel;
-   public static JPanel profileInformationPanel;
+   public static JButton floor1;       //When pressed will display first floor information
+   public static JButton floor2;       //When pressed will display second floor information     
+   public static JButton floor3;       //When pressed will display third floor information
+   public static JButton search;       //When pressed will display search table information
+   public static JButton profile;      //When pressed will display the profile information
    
-   public static JButton floor1;
-   public static JButton floor2;
-   public static JButton floor3;
-   public static JButton search;
-   public static JButton profile;
+   //Floor Information text labels
+   public static JLabel tableStudentName;
+   public static JLabel tableClass;
+   public static JLabel messageLabel;
+   public static JTextField message;
+   
+   //Search tool text labels
+   public static JLabel searchTitle;
+   public static JTextField searchBar;
+   
+   //Profile JPanel text labels
+   public static JLabel profileName;      //Profile display name
+   public static JLabel profileYear;      //Profile display year
+   public static JLabel profileMajor;     //Profile display major
+   public static JLabel profileMinor;     //Profile display minor
+   public static JLabel profileGnumber;   //Profile display g-number
    
    public static void main(String[]args) throws IOException {
       JFrame display = new JFrame("FLOSS");     //Create our JFrame
-      display.setSize(1000, 850);			      //Size of display window
-      display.setLocation(300, 0);				   //Location of display window on the screen
+      display.setSize(1200, 830);			      //Size of display window
+      display.setLocation(150, 25);				   //Location of display window on the screen
       display.setResizable(false);              //Cannot change size of the screen
       display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Exit when close out 
       
       JPanel container = new JPanel();          //Establish the JPanel that will hold all our JPanel's
       container.setLayout(null);                //Set the layout to null so we can set the bounds
    
-      fenwickLibrary = new StudySystemMap();    //Initialize the interactive Fenwick library map
-      fenwickLibrary.setBounds(0, 0, 700, 700);  //Set the bounds for the interactive map
+      fenwickLibrary = new StudySystemMap();       //Initialize the interactive Fenwick library map
+      fenwickLibrary.setBounds(150, 0, 800, 800);    //Set the bounds for the interactive map
       buttons = new JPanel();                      //Initialize the buttons listing all the options
-      buttons.setBounds(0, 700, 700, 120);         //Set the bounds for the interactive map
+      buttons.setBounds(0, 0, 150, 800);         //Set the bounds for the interactive map
       displayButtons();                            //Add all the buttons and options
       sidePanel = new JPanel();                    //Initialize the side panel that shows all our options
-      sidePanel.setBounds(700, 0, 140, 120);       //Set the bounds for the interactive map
-      initializeSizePanels();
-      loadSidePanel(1);
+      sidePanel.setBounds(900, 0, 250, 800);       //Set the bounds for the interactive map
+      initializeSidePanels();                      //Initialize the side panel
    
-      container.add(fenwickLibrary);
-      container.add(buttons);
-      container.add(sidePanel);
+      container.add(fenwickLibrary);   //Add JPanel map to the main display screen 
+      container.add(buttons);          //Add JPanel buttons to the main display screen 
+      container.add(sidePanel);        //Add JPanel sidePanel to the main display screen 
       
-      display.setContentPane(container);
-      display.setVisible(true);
+      display.setContentPane(container);  //Set the contents of the JFrame display to the container holding all the display info
+      display.setVisible(true);           //Set the JFrame visible
    }
    
    public static void displayButtons()
@@ -67,16 +85,17 @@ public class FLOSSDriver {
       ImageIcon profileIcon = new ImageIcon("images/profile_icon.png");  //Initialize the image to add to the JButton
       search = new JButton(searchIcon);    //Add button to the JFrame
       profile = new JButton(profileIcon);  //Add button to the JFrame
-      floor1.setBounds(0, 0, 140, 120);       //Set the bounds to the floor 1 button
-      floor2.setBounds(140, 0, 140, 120);     //Set the bounds to the floor 2 button
-      floor3.setBounds(280, 0, 140, 120);     //Set the bounds to the floor 3 button
-      search.setBounds(420, 0, 140, 120);     //Set the bounds to the search button
-      profile.setBounds(560, 0, 140, 120);    //Set the bounds to the profile button
+      floor1.setBounds(0, 0, 150, 160);       //Set the bounds to the floor 1 button
+      floor2.setBounds(0, 160, 150, 160);     //Set the bounds to the floor 2 button
+      floor3.setBounds(0, 320, 150, 160);     //Set the bounds to the floor 3 button
+      search.setBounds(0, 480, 150, 160);     //Set the bounds to the search button
+      profile.setBounds(0, 640, 150, 160);    //Set the bounds to the profile button
       floor1.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+               fenwickLibrary.test();
                enableButtons();
-               floor1.setEnabled(false);
+               //floor1.setEnabled(false);
                loadSidePanel(1);
                fenwickLibrary.setFloorNumber(1);
                fenwickLibrary.repaint();
@@ -140,23 +159,77 @@ public class FLOSSDriver {
       profile.setEnabled(true);
    }
    
-   public static void initializeSizePanels() {
-      initializeInfoPanel();
+   public static void initializeSidePanels() {
+      initializeTablePanel();
       initializeSearchPanel();
       initializeProfilePanel();
+      loadSidePanel(1);                            //Load the side panel for information display
    }
    
-   public static void initializeInfoPanel() {
+   public static void initializeTablePanel() {
       tableInformationPanel = new JPanel();
+      tableInformationPanel.setBounds(950, 0, 250, 800);
+      tableInformationPanel.setLayout(null);
+      tableStudentName = new JLabel("Name: John Paul Jones");
+      tableStudentName.setBounds(25, 0, 300, 100);
+      tableInformationPanel.add(tableStudentName);
+      tableClass = new JLabel("Class:");
+      tableClass.setBounds(25, 50, 300, 100);
+      tableInformationPanel.add(tableClass);
+      messageLabel = new JLabel("Other information");
+      messageLabel.setBounds(25, 100, 100, 100);
+      tableInformationPanel.add(messageLabel);
+      message = new JTextField(20);
+      message.setBounds(25, 175, 200, 25);
+      tableInformationPanel.add(message);
    }
    
    public static void initializeSearchPanel() {
       searchPanel = new JPanel();
+      searchPanel.setBounds(950, 0, 250, 800);
+      searchPanel.setLayout(null);
+      searchTitle = new JLabel("Search for Student");
+      searchTitle.setBounds(25, 100, 300, 100);
+      searchPanel.add(searchTitle);     
    }
    
    public static void initializeProfilePanel() {
       profileInformationPanel = new JPanel();
+      profileInformationPanel.setBounds(950, 0, 250, 800);
+      profileInformationPanel.setLayout(null);
+      profileName = new JLabel("John Paul Jones");
+      profileName.setBounds(25, 0, 300, 100);
+      profileInformationPanel.add(profileName);
+      profileYear = new JLabel("Freshman");
+      profileYear.setBounds(25, 50, 300, 100);
+      profileInformationPanel.add(profileYear);
+      profileMajor = new JLabel("Mathematics & Statistics");
+      profileMajor.setBounds(25, 100, 300, 120);
+      profileInformationPanel.add(profileMajor);
+      profileMinor = new JLabel("Interpretive Dance");
+      profileMinor.setBounds(25, 150, 300, 120);
+      profileInformationPanel.add(profileMinor);
+      profileGnumber = new JLabel("G########");
+      profileGnumber.setBounds(25, 200, 300, 120);
+      profileInformationPanel.add(profileGnumber);
    }
    
-   
+   public static class listen implements KeyListener 
+   { 
+      public void keyTyped(KeyEvent e)
+      {
+         
+      }
+      
+      public void keyPressed(KeyEvent e)
+      {
+         
+      }
+      
+      public void keyReleased(KeyEvent e)
+      {
+      
+      }
+   }
+
 }
