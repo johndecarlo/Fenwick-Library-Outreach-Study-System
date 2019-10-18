@@ -1,0 +1,774 @@
+Accounting=ACCT=203=Survey of Accounting
+Accounting=ACCT=303=Accounting for Decision Making
+Accounting=ACCT=311=Managerial and Cost Accounting
+Accounting=ACCT=330=Financial Accounting I
+Accounting=ACCT=331=Financial Accounting II
+Accounting=ACCT=332=Financial Accounting III
+Accounting=ACCT=351=Taxation and Managerial Decision Making
+Accounting=ACCT=361=Accounting Analytics
+Accounting=ACCT=370=International Accounting
+Accounting=ACCT=433=Advanced Financial Accounting
+Accounting=ACCT=461=Assurance and Audit Services
+Accounting=ACCT=472=Government and Not-for-Profit Accounting
+Accounting=ACCT=531=Foundations of Financial Reporting I
+Accounting=ACCT=532=Foundations of Financial Reporting II
+Accounting=ACCT=551=Foundations of Taxation of Business Entities
+Accounting=ACCT=561=Foundations of Assurance Services
+Accounting=ACCT=630=Advanced Financial Accounting
+Accounting=ACCT=633=Advanced Issues in Financial Reporting
+Accounting=ACCT=636=Fraud Examination
+Accounting=ACCT=651=Advanced Issues in Taxation
+Accounting=ACCT=671=Managing Data Quality and Integrity
+Accounting=ACCT=672=Government and Nonprofit Accounting
+Accounting=ACCT=695=Graduate Field Experience
+Accounting=ACCT=701=Business Validation
+Accounting=ACCT=737=Fraud and the Law
+Accounting=ACCT=742=Governance and Ethics
+Accounting=ACCT=771=Audit and Analytics
+Accounting=ACCT=772=Federal Accounting and Reporting
+African & African American Studies=AFAM=200=Introduction to African American Studies
+African & African American Studies=AFAM=390=Special Topics in African American Studies
+Anthropology=ANTH=114=Introduction to Cultural Anthropology
+Anthropology=ANTH=120=Unearthing the Past: Prehistory, Culture and Evolution
+Anthropology=ANTH=135=Introduction to Biological Anthropology
+Anthropology=ANTH=322=Pirates, Conquest, and Death: Archaeology and Globalism since 1500
+Anthropology=ANTH=332=Cross-Cultural Perspectives on Globalization
+Anthropology=ANTH=350=Human Growth and Development
+Anthropology=ANTH=377=Mortuary Archaeology
+Anthropology=ANTH=381=Medical Anthropology
+Anthropology=ANTH=395=Work, Technology, and Society: An IT Perspective
+Anthropology=ANTH=490=Theories, Methods, and Issues II
+Arabic=ARAB=110=Elementary Arabic
+Arabic=ARAB=201=Intermediate Arabic I
+Arabic=ARAB=202=Intermediate Arabic II
+Arabic=ARAB=300=Advanced Arabic
+Arabic=ARAB=331=Reading and Conversation II
+Arabic=ARAB=360=Topics in Arabic Cultural Production 
+Arabic=ARAB=420=Survey of Arabic Literature
+Art History=ARTH=101=Introduction to the Visual Arts
+Art History=ARTH=102=Symbols and Stories
+Art History=ARTH=103=Introduction to Architecture
+Art History=ARTH=104=Design in the 20th Century
+Art History=ARTH=200=History of Western Art I
+Art History=ARTH=201=History of Western Art II
+Art History=ARTH=206=Survey of African Art
+Art History=ARTH=319=Art and Archaeology of the Ancient Near East
+Art History=ARTH=324=From Alexander the Great to Cleopatra: The Hellenistic World
+Art History=ARTH=334=Western Medieval Art
+Art History=ARTH=343=The Art of Venice
+Art History=ARTH=362=Twntieth-Century European Art
+Art History=ARTH=372=Studies in 18th and 19th-Century Art of the United States
+Art History=ARTH=374=Art Now
+Art History=ARTH=394=The Museum
+Art History=ARTH=440=Advanced Studies in Renaissance and Baroque Art
+Art History=ARTH=460=Advanced Studies in 20th-Century European Art
+Art History=ARTH=495=Objects and Archives in Art History
+Assistive Technology=EDAT=410=Introduction to Assistive Technology
+Assistive Technology=EDAT=421=Augmentative Communication
+Astronomy=ASTR=103=Astronomy
+Astronomy=ASTR=111=Introductory Astronomy: The Solar System
+Astronomy=ASTR=112=Introductory Astronomy Lab: The Solar System
+Astronomy=ASTR=113=Introductory Astronomy: Stars, Halaxies, and the Universe
+Astronomy=ASTR=114=Introductory Astronomy Lab: Stars, Halaxies, and the Universe
+Astronomy=ASTR=115=Finding New Worlds
+Astronomy=ASTR=124=Introduction to Observational Astronomy
+Astronomy=ASTR=210=Introduction to Astrophysics
+Astronomy=ASTR=301=Astrobiology
+Astronomy=ASTR=420=Exoplanets
+Astronomy=ASTR=480=The Interstellar Medium
+Athletic Training Education Program=ATEP=120=First Aid and Emergency Care
+Athletic Training Education Program=ATEP=201=Medical and Scientific Terminology
+Athletic Training Education Program=ATEP=300=Functional Anatomy
+Athletic Training Education Program=ATEP=361=Upper Body Therapeutic Interventions
+Athletic Training Education Program=ATEP=365=Athletic Training Clinical Techniques
+Athletic Training Education Program=ATEP=370=Upper Body Physical Assessment
+Athletic Training Education Program=ATEP=375=Athletic Training Clinical Techniques
+Athletic Training Education Program=ATEP=400=Pathopharmacology
+Bioengineering=BENG=101=Introduction to Bioengineering
+Bioengineering=BENG=214=Physiology for Engineers
+Bioengineering=BENG=230=Continuum Biomechanics and Transport I
+Bioengineering=BENG=240=Biomaterials
+Bioengineering=BENG=241=Biomechanics and Biomaterials Laboratory
+Bioengineering=BENG=320=Bioengineering Signals and Systems
+Bioengineering=BENG=322=Health Data Challenges
+Bioengineering=BENG=327=Celluar, Neurophysiological, and Pharacological Neuroscience
+Bioengineering=BENG=330=Computational Methods in Bioengineering
+Bioengineering=BENG=331=Computational Methods in Bioengineering Lab
+Bioengineering=BENG=341=Introduction to Biomaterials
+Bioengineering=BENG=360=Biomedical Imaging
+Bioengineering=BENG=370=Bioinstrumentation and Devices I
+Bioengineering=BENG=371=Bioinstrumentation and Devices Lab
+Bioengineering=BENG=420=Biomedical Data Analytics
+Bioinformatics=BINF=426=Neural Engineering
+Bioengineering=BENG=434=Computational Modelling of Neurons and Networks
+Bioengineering=BENG=435=Multi-scale Modeling and Simulation in Biomedicine
+Bioengineering=BENG=437=Medical Image Processing
+Bioengineering=BENG=441=Nanomedicine and Drug Delivery
+Bioengineering=BENG=475=Intellectual Property, Regulatory Concepts and Product Development
+Biology=BIOL=103=Introductory Biology I
+Biology=BIOL=106=General Biology II Lab
+Biology=BIOL=107=Intro Biology II Lecture
+Biology=BIOL=124=Human Anatomy and Physiology
+Biology=BIOL=125=Human Anatomy and Physiology
+Biology=BIOL=177=Ecological Applications
+Biology=BIOL=213=Cell Structure and Function
+Biology=BIOL=214=Biostatistics for Biology Majors
+Biology=BIOL=246=Introductory Microbiology
+Biology=BIOL=300=BioDiversity
+Biology=BIOL=301=Biology and Society
+Biology=BIOL=302=Alternative Careers in Biology
+Biology=BIOL=305=Biology for Microorganisms
+Biology=BIOL=306=Biology for Microorganisms Lab
+Biology=BIOL=308=Foundations of Ecology and Evolution
+Biology=BIOL=311=General Genetics
+Biology=BIOL=312=Biostatistics for Bioinformatics
+Biology=BIOL=318=Conservation Biology
+Biology=BIOL=322=Developmental Biology
+Biology=BIOL=323=Lab for Developmental Biology
+Biology=BIOL=331=Invertebrate Zoology
+Biology=BIOL=345=Plant Ecology
+Biology=BIOL=377=Applied Ecology
+Biology=BIOL=382=Introduction to Virology
+Biology=BIOL=404=Medical Microbiology
+Biology=BIOL=405=Microbial Genetics
+Biology=BIOL=408=Mushrooms, Molds, and Society
+Biology=BIOL=412=Phage Genomics
+Biology=BIOL=413=Histotechniques
+Biology=BIOL=417=Selected Topics in Molecular and Cellular Biology
+Biology=BIOL=420=Vaccines
+Biology=BIOL=426=Mechanisms of Aging
+Biology=BIOL=431=Advanced Human Anatomy and Physiology II
+Biology=BIOL=435=Selected Topics in Biology
+Biology=BIOL=437=Orinthology
+Biology=BIOL=442=Urban Ecosystems and processes
+Biology=BIOL=443=Tropical Ecology
+Biology=BIOL=449=Marine Ecology
+Biology=BIOL=452=Immunology
+Biology=BIOL=453=Immunology Lab
+Biology=BIOL=454=Marine Mammal Biology and Conservation
+Biology=BIOL=460=Infectious Diseases Wildlife
+Biology=BIOL=483=General Biochemistry
+Biology=BIOL=492=Senior Seminar
+Business=BUS=100=Business and Society
+Business=BUS=103=Develop Professional Skills I: Foundational Elements
+Business=BUS=200=Global Enviornment of Business
+Business=BUS=210=Business Analytics I
+Business=BUS=303=Develop Professional Skills II: Advanced Elements
+Business=BUS=310=Business Analytics II
+Business=BUS=315=Introduction to the Government Contracting Industry
+Business=BUS=491=Special Topics in Business
+Business Legal Studies=BULE=303=Legal Enviornment of Business
+Business Legal Studies=BULE=402=Commercial Law
+Chemistry=CHEM=102=Chemistry of Changing Times
+Chemistry=CHEM=104=Chemistry for Changing Times
+Chemistry=CHEM=211=General Chemistry I
+Chemistry=CHEM=212=General Chemistry II
+Chemistry=CHEM=213=General Chemistry I Lab
+Chemistry=CHEM=214=General Chemistry II Lab
+Chemistry=CHEM=271=General Chemistry for Engineers Lecture
+Chemistry=CHEM=272=General Chemistry for Engineers Lab
+Chemistry=CHEM=310=Survey of Organic Chemistry
+Chemistry=CHEM=313=Organic Chemistry I
+Chemistry=CHEM=314=Organic Chemistry II
+Chemistry=CHEM=315=Organic Chemistry I Lab
+Chemistry=CHEM=318=Organic Chemistry II Lab
+Chemistry=CHEM=321=Quantitative Chemical Analysis
+Chemistry=CHEM=332=Physical Chemistry II
+Chemistry=CHEM=336=Physical Chemistry Lab I
+Chemistry=CHEM=337=Physical Chemistry Lab II
+Chemistry=CHEM=423=Instrumental Methods of Chemical Analysis Laboratory
+Chemistry=CHEM=424=Principles of Chemical Separation
+Chemistry=CHEM=445=Inorganic Preparations and Techniques
+Chemistry=CHEM=463=General Biochemistry I
+Chemistry=CHEM=464=General Biochemistry II
+Chemistry=CHEM=465=Biochemistry Lab
+Chemistry=CHEM=468=Bioorganic Chemistry
+Chemistry=CHEM=490=Undergraduate Seminar
+Chinese=CHIN=101=Elementary Chinese I
+Chinese=CHIN=102=Elementary Chinese II
+Chinese=CHIN=201=Intermediate Chinese I
+Chinese=CHIN=202=Intermediate Chinese I
+Chinese=CHIN=300=Reading Skills Development
+Chinese=CHIN=301=Advanced Grammar and Syntax
+Chinese=CHIN=310=Survey and Chinese Literature
+Chinese=CHIN=311=Modern Chinese Literature in Translation
+Chinese=CHIN=325=Major Chinese Writers
+Chinese=CHIN=355=Readings in Chinese Poetry and Poetics
+Chinese=CHIN=365=Readings in Chinese Fiction after Mao
+Chinese=CHIN=470=Special Topics in Chinese Studies
+Chinese=CHIN=481=Fourth Year Chinese II
+Civil and Infrastructure Engineering=CEIE=101=Introduction to Civil Engineering
+Civil and Infrastructure Engineering=CEIE=203=Geomatics and Engineering Graphics
+Civil and Infrastructure Engineering=CEIE=210=Statics
+Civil and Infrastructure Engineering=CEIE=240=Hydraulics
+Civil and Infrastructure Engineering=CEIE=301=Engineering and Economic Models in Civil Engineering
+Civil and Infrastructure Engineering=CEIE=310=Mechanics of Materials
+Civil and Infrastructure Engineering=CEIE=311=Structural Analysis
+Civil and Infrastructure Engineering=CEIE=331=Soil Mechanics
+Civil and Infrastructure Engineering=CEIE=340=Water Resource Engineering
+Civil and Infrastructure Engineering=CEIE=355=Enviornmental Engineering and Science
+Civil and Infrastructure Engineering=CEIE=360=Introduction to Transportation Engineering
+Civil and Infrastructure Engineering=CEIE=370=Construction Systems
+Civil and Infrastructure Engineering=CEIE=403=Experimental Methods in Civil Engineering
+Civil and Infrastructure Engineering=CEIE=409=Professional Practice and Management in Engineering
+Civil and Infrastructure Engineering=CEIE=412=Structural Steel Design
+Civil and Infrastructure Engineering=CEIE=414=Structural Modeling for Engineers
+Civil and Infrastructure Engineering=CEIE=432=Foundation Design
+Civil and Infrastructure Engineering=CEIE=435=Engineering Geology
+Civil and Infrastructure Engineering=CEIE=440=Water Supply and Distribution
+Civil and Infrastructure Engineering=CEIE=453=Water and Wastewater Treatment Processes
+Civil and Infrastructure Engineering=CEIE=457=Remote Sensing in Civil Engineering
+Civil and Infrastructure Engineering=CEIE=462=Urband Transportation Planning
+Civil and Infrastructure Engineering=CEIE=476=Construction Cost Estimating
+Civil and Infrastructure Engineering=CEIE=478=Construction Planning and Scheduling
+Civil and Infrastructure Engineering=CEIE=490=Senior Design Project
+Classics=CLAS=240=Greek and Latin Elements in English
+Classics=CLAS=250=Classical Mythology
+Classics=CLAS=260=The Legacy of Greece and Rome
+Classics=CLAS=330=Roman Law and Society
+Classics=CLAS=360=Greek and Roman Comedy
+Classics=CLAS=380=Greek and Roman Novels
+Climate Dynamics=CLIM=102=Introduction to Global Climate Change Science
+Climate Dynamics=CLIM=314=Severe and Extreme Weather
+Climate Dynamics=CLIM=411=Atmospheric 
+Climate Dynamics=CLIM=440=Climate Dynamics
+Climate Dynamics=CLIM=456=Introduction to Atmospheric Radiation
+College of Science=COS=120=Introduction to Research
+College of Science=COS=400=Problem Solving and Leadership in STEAM
+College of Visual & Performing Arts=CVPA=489=Field Experience in the Arts
+College of Visual & Performing Arts=CVPA=499=Research/Performance/Topics in the Arts
+Communication=COMM=100=A\Public Speaking
+Communication=COMM=101=Fundamentals of Communication
+Communication=COMM=140=Forensics Seminar I
+Communication=COMM=141=Forensics Seminar II
+Communication=COMM=142=Debate Seminar I
+Communication=COMM=143=Debate Seminar II
+Communication=COMM=145=Newspaper Workship I
+Communication=COMM=148=Radio Workshop I
+Communication=COMM=200=Communication Theory
+Communication=COMM=201=Small Group Communication
+Communication=COMM=203=Introduction to Journalism
+Communication=COMM=204=Introduction to Public Relations
+Communication=COMM=208=Introduction to Media Productions
+Communication=COMM=210=Voice and Articulation
+Communication=COMM=261=Theories of Argumentation
+Communication=COMM=300=Rhetorical Theory and Criticism
+Communication=COMM=301=Relational Communication Theory
+Communication=COMM=302=Media Theory
+Communication=COMM=303=Writing across the Media
+Communication=COMM=304=Foundations of Health Communication
+Communication=COMM=305=Foundations of Intercultural Communication
+Communication=COMM=320=Business and Professional Communication
+Communication=COMM=327=Political Communication
+Communication=COMM=331=Public Relations Campaigns
+Communication=COMM=335=Organziational Communication
+Communication=COMM=340=Forensics Seminar III
+Communication=COMM=341=Forensics Seminar IV
+Communication=COMM=342=Debate Seminar III
+Communication=COMM=343=Debate Seminar IV
+Communication=COMM=345=Newspaper Workship II
+Communication=COMM=347=Cable TV Programming and Marketing
+Communication=COMM=348=Radio Workshop II
+Communication=COMM=350=Mass Communication and Public Policy 
+Communication=COMM=351=News Writing and Reporting
+Communication=COMM=354=Radio Production and Podcasting
+Communication=COMM=356=Video: Performance and Writing
+Communication=COMM=358=Multi-Camera Studio Production
+Communication=COMM=361=Online Journalism
+Communication=COMM=362=Argument and Public Policy
+Communication=COMM=369=Multimedia Storytelling
+Communication=COMM=371=Sports Writing and Reporting
+Communication=COMM=380=Media Criticism
+Communication=COMM=384=Public Relations and Social Media
+Communication=COMM=386=Special Topics in Political Communication
+Communication=COMM=399=Special Topics in Communication
+Communication=COMM=400=Research Methods in Communication
+Communication=COMM=401=Interpersonal Communication in the Workplace
+Communication=COMM=430=Persuasion
+Communication=COMM=433=Enviornmental Communication
+Communication=COMM=440=Ceremonial Speech Writing and Performance
+Communication=COMM=451=Facilitating Communication Education
+Communication=COMM=452=Media Production Practicum
+Communication=COMM=454=Free Speech and Ethics
+Computational and Data Sciences=CDS=101=Introduction Computational and Data Sciences
+Computational and Data Sciences=CDS=102=Introduction Computational and Data Sciences Lab
+Computational and Data Sciences=CDS=130=Computing for Scientists
+Computational and Data Sciences=CDS=151=Data Ethics in an Information Society
+Computational and Data Sciences=CDS=205=Introduction to Agent-based Modeling and Simulation
+Computational and Data Sciences=CDS=230=Modeling and Simulation I
+Computational and Data Sciences=CDS=251=Introduction to Scientific Programming
+Computational and Data Sciences=CDS=292=Introduction to Social Networking Analysis
+Computational and Data Sciences=CDS=301=Scientific Information and Data Visualization
+Computational and Data Sciences=CDS=302=Scientific Data and Databases
+Computational and Data Sciences=CDS=303=Scientific Data Mining
+Computational and Data Sciences=CDS=403=Machine Learning Applications in Science
+Computational and Data Sciences=CDS=410=Numerical Analysis II
+Computational and Data Sciences=CDS=461=Molecular Dynamics and Monte Carlo Simulations
+Computational and Data Sciences=CDS=486=Topics in Computational and Data Sciences
+Computer Game Design=GAME=101=Introduction to Game Design
+Computer Game Design=GAME=140=Applied Coding for Game Designers
+Computer Game Design=GAME=210=Basic Game Design
+Computer Game Design=GAME=230=History of Computer Game Design
+Computer Game Design=GAME=231=Computer Animation for Games
+Computer Game Design=GAME=232=Online and Mobile Gaming
+Computer Game Design=GAME=250=Music for Film and Video
+Computer Game Design=GAME=300=Portfolio Preparation
+Computer Game Design=GAME=310=Game Design Studio
+Computer Game Design=GAME=320=Digital Painting for Games
+Computer Game Design=GAME=330=Computer Game Platform Analysis
+Computer Game Design=GAME=331=Computer Gaming Platform Analysis Lab
+Computer Game Design=GAME=332=RS: Story Design for Computer Games
+Computer Game Design=GAME=367=Writing and Editing Music and Sound
+Computer Game Design=GAME=398=Advanced Game Design Animation
+Computer Game Design=GAME=400=Game Design Practicum
+Computer Game Design=GAME=410=Advanced Game Design Studio
+Computer Game Design=GAME=431=Advanced Game Animation I
+Computer Science=CS=100=Principles of Computing
+Computer Science=CS=110=Essentials of Computer Science
+Computer Science=CS=112=Introduction to Computer Programming
+Computer Science=CS=211=Object-Oriented Programming
+Computer Science=CS=222=Computer Programming for Engineers
+Computer Science=CS=262=Introduction to Low-Level Programming
+Computer Science=CS=306=Synthesis of Ethics and Law for the Computing Professional
+Computer Science=CS=310=Data Structures
+Computer Science=CS=321=Software Engineering
+Computer Science=CS=325=Introduction to Game Design
+Computer Science=CS=330=Formal Methods and Models
+Computer Science=CS=351=Visual Computing
+Computer Science=CS=367=Computer Systems and Programming
+Computer Science=CS=426=Game Programming II
+Computer Science=CS=440=Language Processors and Programming Enviornments
+Computer Science=CS=450=Database Concepts
+Computer Science=CS=455=Computer Communications and Networking
+Computer Science=CS=463=Comparative Programming Languages
+Computer Science=CS=465=Computer Systems Architecture
+Computer Science=CS=468=Secure Programming and Systems
+Computer Science=CS=471=Operating Systems
+Computer Science=CS=475=Concurrent and Distributed Systems
+Computer Science=CS=480=Introduction to Artificial Intelligence 
+Computer Science=CS=483=Analysis of Algorithms
+Computer Science=CS=484=Data Mining
+Computer Science=CS=490=Design Exhibition
+Computer Science=CS=499=Special Topics in Computer Science
+Conflict Analysis & Resolution=CONF=101=Conflict and Our World
+Conflict Analysis & Resolution=CONF=210=Theories of Conflict Analysis and Resolution
+Conflict Analysis & Resolution=CONF=300=Conflict Resolution Techniques and Practice
+Conflict Analysis & Resolution=CONF=301=Research and Inquiry in Conflict Resolution
+Conflict Analysis & Resolution=CONF=310=Special Topics in Practice
+Conflict Analysis & Resolution=CONF=314=Advising Seminar for Conflict Majors
+Conflict Analysis & Resolution=CONF=320=Interpersonal Conflict Analysis and Resolution
+Conflict Analysis & Resolution=CONF=330=Community, Groupm and Organziational Conflict Analysis and Resolution
+Conflict Analysis & Resolution=CONF=340=Global Conflict Analysis and Resolution
+Conflict Analysis & Resolution=CONF=341=Simulation in Global Conflict Resolution
+Conflict Analysis & Resolution=CONF=345=Social Dynamics of Terrorism
+Conflict Analysis & Resolution=CONF=398=Special Topics in Advanced Techniques and Practices
+Conflict Analysis & Resolution=CONF=399=Special Topics in Conflict Analysis and Resolution
+Conflict Analysis & Resolution=CONF=425=Mediating Conflict
+Conflict Analysis & Resolution=CONF=435=Building Peace in Divided Societies
+Criminology=CRIM=100=Introduction to Criminal Justice
+Criminology=CRIM=210=Introduction to Criminology
+Criminology=CRIM=220=Introduction to Law and Society
+Criminology=CRIM=230=Instruction to Homeland Security
+Criminology=CRIM=302=Delinquency
+Criminology=CRIM=304=Computer Crime, Forensics, and Auditing
+Criminology=CRIM=305=A
+Criminology=CRIM=306=A
+Criminology=CRIM=307=A
+Criminology=CRIM=308=A
+Criminology=CRIM=310=A
+Criminology=CRIM=312=A
+Criminology=CRIM=315=A
+Criminology=CRIM=320=A
+Criminology=CRIM=325=A
+Criminology=CRIM=350=A
+Criminology=CRIM=400=A
+Criminology=CRIM=401=A
+Criminology=CRIM=402=A
+Criminology=CRIM=404=A
+Criminology=CRIM=405=A
+Criminology=CRIM=408=A
+Criminology=CRIM=409=A
+Criminology=CRIM=410=A
+Criminology=CRIM=411=A
+Criminology=CRIM=422=A
+Criminology=CRIM=423=A
+Criminology=CRIM=424=A
+Criminology=CRIM=425=A
+Criminology=CRIM=430=A
+Criminology=CRIM=460=A
+Criminology=CRIM=462=A
+Criminology=CRIM=475=A
+Criminology=CRIM=479=A
+Cultural Studies=CULT=320=Globalization and Culture
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+Curriculum and Instruction=EDCI=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+CyberSecurity Engineering=CYSE=000=A
+Dance=DANC=000=A
+Dance=DANC=000=A
+Dance=DANC=000=A
+Dance=DANC=000=A
+Dance=DANC=000=A
+Dance=DANC=000=A
+Data Analytics Engineering=DAEN=000=A
+Data Analytics Engineering=DAEN=000=A
+Data Analytics Engineering=DAEN=000=A
+Data Analytics Engineering=DAEN=000=A
+Data Analytics Engineering=DAEN=000=A
+Data Analytics Engineering=DAEN=000=A
+Design=DSGN=000=A
+Design=DSGN=000=A
+Design=DSGN=000=A
+Design=DSGN=000=A
+Design=DSGN=000=A
+Design=DSGN=000=A
+Early Childhood Education=ECED=000=A
+Early Childhood Education=ECED=000=A
+Early Childhood Education=ECED=000=A
+Early Childhood Education=ECED=000=A
+Early Childhood Education=ECED=000=A
+Early Childhood Education=ECED=000=A
+Economics=ECON=000=A
+Economics=ECON=000=A
+Economics=ECON=000=A
+Economics=ECON=000=A
+Economics=ECON=000=A
+Economics=ECON=000=A
+Educational Instructional Technology=EDIT=000=A
+Educational Instructional Technology=EDIT=000=A
+Educational Instructional Technology=EDIT=000=A
+Educational Instructional Technology=EDIT=000=A
+Educational Instructional Technology=EDIT=000=A
+Educational Instructional Technology=EDIT=000=A
+Education=EDUC=000=A
+Education=EDUC=000=A
+Education=EDUC=000=A
+Education=EDUC=000=A
+Education=EDUC=000=A
+Education=EDUC=000=A
+Education=EDUC=000=A
+Education Leadership=EDLE=000=A
+Education Leadership=EDLE=000=A
+Education Leadership=EDLE=000=A
+Education Leadership=EDLE=000=A
+Education Leadership=EDLE=000=A
+Education Leadership=EDLE=000=A
+Education Policy=EDPO=000=A
+Education Policy=EDPO=000=A
+Education Policy=EDPO=000=A
+Education Policy=EDPO=000=A
+Education Research=EDRS=000=A
+Education Psychology=EDPS=000=A
+Education Psychology=EDPS=000=A
+Education Psychology=EDPS=000=A
+Education Psychology=EDPS=000=A
+Education Psychology=EDPS=000=A
+Education Psychology=EDPS=000=A
+Electrical and Computer Engineering=ECE=000=A
+Electrical and Computer Engineering=ECE=000=A
+Electrical and Computer Engineering=ECE=000=A
+Electrical and Computer Engineering=ECE=000=A
+Electrical and Computer Engineering=ECE=000=A
+Elementary Education=ELED=000=A
+Engineering=ENGR=000=A
+English=ENGH=000=A
+Enviornmental Science and Policy=ENVPP=000=A
+Exercise Fitness/Health Promotion=EFHP=000=A
+Film and Video Studies=FAVS=000=A
+Finance=FNAN=000=A
+Foreign Language=FRLN=000=A
+Forensic Science=FRSC=000=A
+French=FREN=000=A
+Geography and Geoinformation Science=GGS=000=A
+Geology=GEOL=000=A
+German=GERM=000=A
+Global Affairs=GLOA=000=A
+Global and Community Health=GCH=000=A
+Government=GOVT=000=A
+Health=HEAL=000=A
+Health Administration and Policy=HAP=000=A
+Health and Human Services=HHS=000=A
+Hebrew=HEBR=000=A
+Higher Education=HE=000=A
+History=HIST=000=A
+Honors Program=HNRS=000=A
+Honors Program (Science/Math)=HNRT=000=A
+Human Development & Family Science=HDFS=000=A
+Information Security Assurance=ISA=000=A
+Information Systems=INFS=000=A
+Information Technology=IT=000=A
+Integrative Studies=INTS=000=A
+Interdisciplinary Studies=MAIS=000=A
+International Commerce/Policy=ITRN=000=A
+Italian=ITAL=000=A
+Japanese=JAPA=000=A
+Kinesiology=KINE=000=A
+Korean=KORE=000=A
+Latin=LATN=000=A
+Linguistics=LING=000=A
+MBA-Interdisciplinary=MBA=000=A
+Management=MGMT=000=A
+Management Information Systems=MIS=000=A
+Marketing=MKTG=000=A
+Mathematics=MATH=000=A
+Mechanical Engineering=ME=000=A
+Medical Labratory Science=MLAB=000=A
+Middle East/Islamic Studies=MEIS=000=A
+Military Science=MLSC=000=A
+Minor in Business=MBUS=000=A
+Music=MUSI=000=A
+Neuroscience=NEUR=000=A
+Nursing=NURS=000=A
+Nutrition and Food Studies=NUTR=000=A
+Operations Management=OM=000=A
+Operations Research=OR=000=A
+Organziation Development and Knowledge Management=ODKM=000=A
+Parks Recreation & Knowledge Management=PRLS=000=A
+Persian=PERS=000=A
+Persian=PERS=000=A
+Persian=PERS=000=A
+Persian=PERS=000=A
+Persian=PERS=000=A
+Persian=PERS=000=A
+Philosophy=PHIL=000=A
+Philosophy=PHIL=000=A
+Philosophy=PHIL=000=A
+Philosophy=PHIL=000=A
+Philosophy=PHIL=000=A
+Philosophy=PHIL=000=A
+Philosophy=PHIL=000=A
+Physical Education=PHED=000=A
+Physical Education=PHED=000=A
+Physical Education=PHED=000=A
+Physical Education=PHED=000=A
+Physical Education=PHED=000=A
+Physical Education=PHED=000=A
+Physical Education=PHED=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Physics=PHYS=000=A
+Policy and Government=POGO=000=A
+Policy and Government=POGO=000=A
+Policy and Government=POGO=000=A
+Policy and Government=POGO=000=A
+Policy and Government=POGO=000=A
+Policy and Government=POGO=000=A
+Policy and Government=POGO=000=A
+Portuguese=PORT=000=A
+Portuguese=PORT=000=A
+Portuguese=PORT=000=A
+Portuguese=PORT=000=A
+Portuguese=PORT=000=A
+Portuguese=PORT=000=A
+Provost=PROV=000=A
+Psychology=PSYC=000=A
+Psychology=PSYC=000=A
+Psychology=PSYC=000=A
+Psychology=PSYC=000=A
+Psychology=PSYC=000=A
+Psychology=PSYC=000=A
+Psychology=PSYC=000=A
+Public Administration=PUAD=000=A
+Public Administration=PUAD=000=A
+Public Administration=PUAD=000=A
+Public Administration=PUAD=000=A
+Public Administration=PUAD=000=A
+Public Administration=PUAD=000=A
+Public Policy=PUBP=000=A
+Public Policy=PUBP=000=A
+Public Policy=PUBP=000=A
+Public Policy=PUBP=000=A
+Public Policy=PUBP=000=A
+Public Policy=PUBP=000=A
+Reading=EDRD=000=A
+Reading=EDRD=000=A
+Reading=EDRD=000=A
+Reading=EDRD=000=A
+Reading=EDRD=000=A
+Reading=EDRD=000=A
+Real Estate Development=REAL=000=A
+Real Estate Development=REAL=000=A
+Real Estate Development=REAL=000=A
+Real Estate Development=REAL=000=A
+Real Estate Development=REAL=000=A
+Real Estate Development=REAL=000=A
+Real Estate Development=REAL=000=A
+Recreation=RECR=000=A
+Recreation=RECR=000=A
+Recreation=RECR=000=A
+Recreation=RECR=000=A
+Recreation=RECR=000=A
+Recreation=RECR=000=A
+Rehabilitation Science=RHBS=000=A
+Rehabilitation Science=RHBS=000=A
+Rehabilitation Science=RHBS=000=A
+Rehabilitation Science=RHBS=000=A
+Rehabilitation Science=RHBS=000=A
+Rehabilitation Science=RHBS=000=A
+Religious Studies=RELI=000=A
+Religious Studies=RELI=000=A
+Religious Studies=RELI=000=A
+Religious Studies=RELI=000=A
+Religious Studies=RELI=000=A
+Religious Studies=RELI=000=A
+Religious Studies=RELI=000=A
+Russian=RUSS=000=A
+Russian=RUSS=000=A
+Russian=RUSS=000=A
+Russian=RUSS=000=A
+Russian=RUSS=000=A
+Russian=RUSS=000=A
+School Psychology=SPSY=000=A
+School Psychology=SPSY=000=A
+School Psychology=SPSY=000=A
+School Psychology=SPSY=000=A
+School Psychology=SPSY=000=A
+School Psychology=SPSY=000=A
+Social Work=SOCW=000=A
+Social Work=SOCW=000=A
+Social Work=SOCW=000=A
+Social Work=SOCW=000=A
+Social Work=SOCW=000=A
+Social Work=SOCW=000=A
+Sociology=SOCI=000=A
+Sociology=SOCI=000=A
+Sociology=SOCI=000=A
+Sociology=SOCI=000=A
+Sociology=SOCI=000=A
+Sociology=SOCI=000=A
+Software Engineering=SWE=000=A
+Software Engineering=SWE=000=A
+Software Engineering=SWE=000=A
+Software Engineering=SWE=000=A
+Software Engineering=SWE=000=A
+Software Engineering=SWE=000=A
+Software Engineering=SWE=000=A
+Spanish=SPAN=000=A
+Spanish=SPAN=000=A
+Spanish=SPAN=000=A
+Spanish=SPAN=000=A
+Spanish=SPAN=000=A
+Spanish=SPAN=000=A
+Special Education=EDSE=000=A
+Special Education=EDSE=000=A
+Special Education=EDSE=000=A
+Special Education=EDSE=000=A
+Special Education=EDSE=000=A
+Special Education=EDSE=000=A
+Special Education=EDSE=000=A
+Sports Management=SPMT=000=A
+Sports Management=SPMT=000=A
+Sports Management=SPMT=000=A
+Sports Management=SPMT=000=A
+Sports Management=SPMT=000=A
+Sports Management=SPMT=000=A
+Sports Management=SPMT=000=A
+Sports and Recreation Studies=SRST=000=A
+Sports and Recreation Studies=SRST=000=A
+Sports and Recreation Studies=SRST=000=A
+Sports and Recreation Studies=SRST=000=A
+Sports and Recreation Studies=SRST=000=A
+Sports and Recreation Studies=SRST=000=A
+Statistics=STAT=000=A
+Statistics=STAT=000=A
+Statistics=STAT=000=A
+Statistics=STAT=000=A
+Statistics=STAT=000=A
+Statistics=STAT=000=A
+Statistics=STAT=000=A
+Systems Engineering=SYST=000=A
+Systems Engineering=SYST=000=A
+Systems Engineering=SYST=000=A
+Systems Engineering=SYST=000=A
+Systems Engineering=SYST=000=A
+Systems Engineering=SYST=000=A
+Systems Engineering=SYST=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Systems Enginerring & Operations Research=SEOR=000=A
+Telecommunications=TCOM=000=A
+Telecommunications=TCOM=000=A
+Telecommunications=TCOM=000=A
+Telecommunications=TCOM=000=A
+Telecommunications=TCOM=000=A
+Telecommunications=TCOM=000=A
+Telecommunications=TCOM=000=A
+Theater=THR=000=A
+Theater=THR=000=A
+Theater=THR=000=A
+Theater=THR=000=A
+Theater=THR=000=A
+Theater=THR=000=A
+Theater=THR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Tourism and Evenets Management=TOUR=000=A
+Turkish=TURK=201=Intermediate Turkish I
+University Studies=UNIV=000=A
+University Studies=UNIV=000=A
+University Studies=UNIV=000=A
+University Studies=UNIV=000=A
+University Studies=UNIV=000=A
+University Studies=UNIV=000=A
+Women & Gender Studies=WMST=100=Global Representation of Women
+Women & Gender Studies=WMST=200=Introduction to Women and Gender Studies
+Women & Gender Studies=WMST=208=Introduction to Lesbian, Gay, Bisexual, Transgender, and Queer Studies
+Women & Gender Studies=WMST=300=Current Issues in Women and Gender Studies
+Women & Gender Studies=WMST=307=Women and Work
+Women & Gender Studies=WMST=309=Black Social Movements: Gendering of Violence and Activism
+Women & Gender Studies=WMST=314=Stories of Gender and Human Rights
+Women & Gender Studies=WMST=315=Women During the Enslavement Era
+Women & Gender Studies=WMST=316=Gendered Pan-Africanism
+Women & Gender Studies=WMST=317=Women's Activism: From Jim Crow to Black Power
+Women & Gender Studies=WMST=318=Gender, Social Justice, and Activism
+Women & Gender Studies=WMST=319=Gender, Health,and Culture in the United States
+Women & Gender Studies=WMST=330=Theoretical Perspectives in Women and Gender Studies
+Women & Gender Studies=WMST=375=Gender, Race, Sexuality, and TV
+Women & Gender Studies=WMST=402=Queer Theory
+Women & Gender Studies=WMST=408=Gender, Sexuality, and Human Rights
+Women & Gender Studies=WMST=409=Gender, Sexuality, and International Migration
+Women & Gender Studies=WMST=416=Policing Black Bodies
+Women & Gender Studies=WMST=506=Gender Violence in Social Institutions
+Women & Gender Studies=WMST=508=Gender, Sexuality, and Human Rights
+Women & Gender Studies=WMST=509=Gender, Sexuality, and International Migration
+Women & Gender Studies=WMST=516=Policing Black Bodies
+Women & Gender Studies=WMST=602=Queer Theory
+Women & Gender Studies=WMST=640=Transnational and Global Feminism

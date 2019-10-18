@@ -20,6 +20,7 @@ public class FLOSSDriver {
    public static StudySystemMap fenwickLibrary;    //JPanel that holds the study maps
    public static JPanel buttons;                   //JPanel that holds the JButtons
    public static JPanel sidePanel;                 //JPanel that is the side information panel
+   public static ArrayList<Class> classList;       //List of most of the classes offered at GMU
    
    public static JPanel tableInformationPanel;     //Information about a table that someone's mouse is over
    public static JPanel searchPanel;               //Implemented when searching for someone
@@ -66,6 +67,7 @@ public class FLOSSDriver {
       sidePanel = new JPanel();                    //Initialize the side panel that shows all our options
       sidePanel.setBounds(900, 0, 250, 800);       //Set the bounds for the interactive map
       initializeSidePanels();                      //Initialize the side panel
+      initializeClasses();
    
       container.add(fenwickLibrary);   //Add JPanel map to the main display screen 
       container.add(buttons);          //Add JPanel buttons to the main display screen 
@@ -212,6 +214,20 @@ public class FLOSSDriver {
       profileGnumber = new JLabel("G########");
       profileGnumber.setBounds(25, 200, 300, 120);
       profileInformationPanel.add(profileGnumber);
+   }
+   
+   public static void initializeClasses() throws IOException {
+      classList = new ArrayList<Class>();
+      File file = new File("classes.txt");
+      BufferedReader reader = new BufferedReader(new FileReader(file));
+      String line = "";
+      while ((line = reader.readLine()) != null) {
+         String[] masonClass = line.split("=");
+         if(!line.substring(0,2).equals("//")) {
+            classList.add(new Class(masonClass[0], masonClass[1], Integer.parseInt(masonClass[2]), masonClass[3]));
+         }
+      }
+      reader.close();
    }
    
    public static class listen implements KeyListener 
