@@ -25,6 +25,24 @@ import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 public class AWSManager implements RemoteDBManager {
+	private AmazonDynamoDB dynamoDB;
+	
+	public AWSManager( ) {
+		ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
+        try {
+            credentialsProvider.getCredentials();
+        } catch (Exception e) {
+            throw new AmazonClientException(
+                    "Cannot load the credentials from the credential profiles file. " +
+                    "Please make sure that your credentials file is at the correct " +
+                    "location, and is in valid format.",
+                    e);
+        }
+        dynamoDB = AmazonDynamoDBClientBuilder.standard()
+            .withCredentials(credentialsProvider)
+            .withRegion("us-west-2")
+            .build();
+	}
 
 	@Override
 	public boolean exists(int id) {
