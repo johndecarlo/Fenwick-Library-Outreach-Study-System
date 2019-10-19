@@ -95,9 +95,8 @@ public class FLOSSDriver {
       floor1.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               fenwickLibrary.test();
                enableButtons();
-               //floor1.setEnabled(false);
+               floor1.setEnabled(false);
                loadSidePanel(1);
                fenwickLibrary.setFloorNumber(1);
                fenwickLibrary.repaint();

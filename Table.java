@@ -29,7 +29,7 @@ public class Table {
       this.col = col;
       this.rowSize = rowSize;
       this.colSize = colSize;
-      this.occupied = true;
+      this.occupied = false;
       this.shape = shape;
    }
    
@@ -77,8 +77,11 @@ public class Table {
       return this.occupied;
    }
    
-   public void setOccupied(boolean occupied) {
-      this.occupied = occupied;
+   public void setOccupied() {
+      if(this.occupied == true)
+         this.occupied = false;
+      else
+         this.occupied = true;
    }
    
    public String getShape() {
