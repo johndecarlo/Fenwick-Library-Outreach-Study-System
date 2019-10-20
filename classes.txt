@@ -14,7 +14,7 @@ Accounting=ACCT=531=Foundations of Financial Reporting I
 Accounting=ACCT=532=Foundations of Financial Reporting II
 Accounting=ACCT=551=Foundations of Taxation of Business Entities
 Accounting=ACCT=561=Foundations of Assurance Services
-Accounting=ACCT=630=Advanced Financial Accounting
+Accounting=ACCT=630=courseTitledvanced Financial Accounting
 Accounting=ACCT=633=Advanced Issues in Financial Reporting
 Accounting=ACCT=636=Fraud Examination
 Accounting=ACCT=651=Advanced Issues in Taxation
@@ -41,7 +41,7 @@ Anthropology=ANTH=490=Theories, Methods, and Issues II
 Arabic=ARAB=110=Elementary Arabic
 Arabic=ARAB=201=Intermediate Arabic I
 Arabic=ARAB=202=Intermediate Arabic II
-Arabic=ARAB=300=Advanced Arabic
+Arabic=ARAB=300=courseTitledvanced Arabic
 Arabic=ARAB=331=Reading and Conversation II
 Arabic=ARAB=360=Topics in Arabic Cultural Production 
 Arabic=ARAB=420=Survey of Arabic Literature
@@ -60,8 +60,8 @@ Art History=ARTH=362=Twntieth-Century European Art
 Art History=ARTH=372=Studies in 18th and 19th-Century Art of the United States
 Art History=ARTH=374=Art Now
 Art History=ARTH=394=The Museum
-Art History=ARTH=440=Advanced Studies in Renaissance and Baroque Art
-Art History=ARTH=460=Advanced Studies in 20th-Century European Art
+Art History=ARTH=440=courseTitledvanced Studies in Renaissance and Baroque Art
+Art History=ARTH=460=courseTitledvanced Studies in 20th-Century European Art
 Art History=ARTH=495=Objects and Archives in Art History
 Assistive Technology=EDAT=410=Introduction to Assistive Technology
 Assistive Technology=EDAT=421=Augmentative Communication
@@ -237,7 +237,7 @@ College of Science=COS=120=Introduction to Research
 College of Science=COS=400=Problem Solving and Leadership in STEAM
 College of Visual & Performing Arts=CVPA=489=Field Experience in the Arts
 College of Visual & Performing Arts=CVPA=499=Research/Performance/Topics in the Arts
-Communication=COMM=100=A\Public Speaking
+Communication=COMM=100=courseTitle\Public Speaking
 Communication=COMM=101=Fundamentals of Communication
 Communication=COMM=140=Forensics Seminar I
 Communication=COMM=141=Forensics Seminar II
@@ -306,7 +306,7 @@ Computational and Data Sciences=CDS=410=Numerical Analysis II
 Computational and Data Sciences=CDS=461=Molecular Dynamics and Monte Carlo Simulations
 Computational and Data Sciences=CDS=486=Topics in Computational and Data Sciences
 Computer Game Design=GAME=101=Introduction to Game Design
-Computer Game Design=GAME=140=Applied Coding for Game Designers
+Computer Game Design=GAME=140=courseTitlepplied Coding for Game Designers
 Computer Game Design=GAME=210=Basic Game Design
 Computer Game Design=GAME=230=History of Computer Game Design
 Computer Game Design=GAME=231=Computer Animation for Games
@@ -321,7 +321,7 @@ Computer Game Design=GAME=332=RS: Story Design for Computer Games
 Computer Game Design=GAME=367=Writing and Editing Music and Sound
 Computer Game Design=GAME=398=Advanced Game Design Animation
 Computer Game Design=GAME=400=Game Design Practicum
-Computer Game Design=GAME=410=Advanced Game Design Studio
+Computer Game Design=GAME=410=courseTitledvanced Game Design Studio
 Computer Game Design=GAME=431=Advanced Game Animation I
 Computer Science=CS=100=Principles of Computing
 Computer Science=CS=110=Essentials of Computer Science
@@ -371,43 +371,43 @@ Criminology=CRIM=220=Introduction to Law and Society
 Criminology=CRIM=230=Instruction to Homeland Security
 Criminology=CRIM=302=Delinquency
 Criminology=CRIM=304=Computer Crime, Forensics, and Auditing
-Criminology=CRIM=305=A
-Criminology=CRIM=306=A
-Criminology=CRIM=307=A
-Criminology=CRIM=308=A
-Criminology=CRIM=310=A
-Criminology=CRIM=312=A
-Criminology=CRIM=315=A
-Criminology=CRIM=320=A
-Criminology=CRIM=325=A
-Criminology=CRIM=350=A
-Criminology=CRIM=400=A
-Criminology=CRIM=401=A
-Criminology=CRIM=402=A
-Criminology=CRIM=404=A
-Criminology=CRIM=405=A
-Criminology=CRIM=408=A
-Criminology=CRIM=409=A
-Criminology=CRIM=410=A
-Criminology=CRIM=411=A
-Criminology=CRIM=422=A
-Criminology=CRIM=423=A
-Criminology=CRIM=424=A
-Criminology=CRIM=425=A
-Criminology=CRIM=430=A
-Criminology=CRIM=460=A
+Criminology=CRIM=305=courseTitle
+Criminology=CRIM=306=courseTitle
+Criminology=CRIM=307=courseTitle
+Criminology=CRIM=308=courseTitle
+Criminology=CRIM=310=courseTitle
+Criminology=CRIM=312=courseTitle
+Criminology=CRIM=315=courseTitle
+Criminology=CRIM=320=courseTitle
+Criminology=CRIM=325=courseTitle
+Criminology=CRIM=350=courseTitle
+Criminology=CRIM=400=courseTitle
+Criminology=CRIM=401=courseTitle
+Criminology=CRIM=402=courseTitle
+Criminology=CRIM=404=courseTitle
+Criminology=CRIM=405=courseTitle
+Criminology=CRIM=408=courseTitle
+Criminology=CRIM=409=courseTitle
+Criminology=CRIM=410=courseTitle
+Criminology=CRIM=411=courseTitle
+Criminology=CRIM=422=courseTitle
+Criminology=CRIM=423=courseTitle
+Criminology=CRIM=424=courseTitle
+Criminology=CRIM=425=courseTitle
+Criminology=CRIM=430=courseTitle
+Criminology=CRIM=460=courseTitle
 Criminology=CRIM=462=A
 Criminology=CRIM=475=A
 Criminology=CRIM=479=A
 Cultural Studies=CULT=320=Globalization and Culture
 CyberSecurity Engineering=CYSE=101=A
 CyberSecurity Engineering=CYSE=211=A
-CyberSecurity Engineering=CYSE=220=A
-CyberSecurity Engineering=CYSE=230=A
+CyberSecurity Engineering=CYSE=220=courseTitle
+CyberSecurity Engineering=CYSE=230=courseTitle
 CyberSecurity Engineering=CYSE=411=A
 CyberSecurity Engineering=CYSE=421=A
-CyberSecurity Engineering=CYSE=430=A
-CyberSecurity Engineering=CYSE=470=A
+CyberSecurity Engineering=CYSE=430=courseTitle
+CyberSecurity Engineering=CYSE=470=courseTitle
 CyberSecurity Engineering=CYSE=475=A
 CyberSecurity Engineering=CYSE=476=A
 CyberSecurity Engineering=CYSE=491=A
@@ -418,23 +418,23 @@ Dance=DANC=118=A
 Dance=DANC=125=A
 Dance=DANC=121=A
 Dance=DANC=145=A
-Dance=DANC=210=A
+Dance=DANC=210=courseTitle
 Dance=DANC=225=A
 Dance=DANC=231=A
 Dance=DANC=251=A
-Dance=DANC=270=A
+Dance=DANC=270=courseTitle
 Dance=DANC=325=A
 Dance=DANC=345=A
-Dance=DANC=360=A
+Dance=DANC=360=courseTitle
 Dance=DANC=362=A
-Dance=DANC=370=A
+Dance=DANC=370=courseTitle
 Dance=DANC=371=A
 Dance=DANC=372=A
 Dance=DANC=391=A
-Dance=DANC=410=A
+Dance=DANC=410=courseTitle
 Dance=DANC=425=A
 Dance=DANC=445=A
-Dance=DANC=490=A
+Dance=DANC=490=courseTitle
 Design=DSGN=101=Introduction to Design Thinking
 Design=DSGN=103=Design in the Mordern World
 Early Childhood Education=ECED=201=A
@@ -456,12 +456,12 @@ Economics=ECON=105=A
 Economics=ECON=306=A
 Economics=ECON=307=A
 Economics=ECON=309=A
-Economics=ECON=310=A
+Economics=ECON=310=courseTitle
 Economics=ECON=311=A
 Economics=ECON=335=A
-Economics=ECON=340=A
+Economics=ECON=340=courseTitle
 Economics=ECON=345=A
-Economics=ECON=360=A
+Economics=ECON=360=courseTitle
 Economics=ECON=361=A
 Economics=ECON=365=A
 Economics=ECON=385=A
@@ -471,34 +471,34 @@ Economics=ECON=412=A
 Economics=ECON=415=A
 Economics=ECON=421=A
 Economics=ECON=435=A
-Economics=ECON=460=A
+Economics=ECON=460=courseTitle
 Economics=ECON=471=A
 Economics=ECON=481=A
 Economics=ECON=486=A
 Economics=ECON=495=A
 Economics=ECON=496=A
 Educational Instructional Technology=EDIT=401=A
-Education=EDUC=200=A
+Education=EDUC=200=courseTitle
 Education=EDUC=203=A
-Education=EDUC=300=A
+Education=EDUC=300=courseTitle
 Education=EDUC=301=A
 Education=EDUC=302=A
 Education Policy=EDPO=303=Politics of American Education
-Education Psychology=EDPS=350=Achievement Motivation
+Education Psychology=EDPS=350=courseTitlechievement Motivation
 Electrical and Computer Engineering=ECE=101=A
 Electrical and Computer Engineering=ECE=201=A
-Electrical and Computer Engineering=ECE=220=A
+Electrical and Computer Engineering=ECE=220=courseTitle
 Electrical and Computer Engineering=ECE=285=A
 Electrical and Computer Engineering=ECE=286=A
 Electrical and Computer Engineering=ECE=301=A
 Electrical and Computer Engineering=ECE=305=A
-Electrical and Computer Engineering=ECE=330=A
+Electrical and Computer Engineering=ECE=330=courseTitle
 Electrical and Computer Engineering=ECE=331=A
 Electrical and Computer Engineering=ECE=332=A
 Electrical and Computer Engineering=ECE=333=A
 Electrical and Computer Engineering=ECE=334=A
-Electrical and Computer Engineering=ECE=350=A
-Electrical and Computer Engineering=ECE=410=A
+Electrical and Computer Engineering=ECE=350=courseTitle
+Electrical and Computer Engineering=ECE=410=courseTitle
 Electrical and Computer Engineering=ECE=415=A
 Electrical and Computer Engineering=ECE=421=A
 Electrical and Computer Engineering=ECE=424=A
@@ -507,7 +507,7 @@ Electrical and Computer Engineering=ECE=434=A
 Electrical and Computer Engineering=ECE=445=A
 Electrical and Computer Engineering=ECE=447=A
 Electrical and Computer Engineering=ECE=448=A
-Electrical and Computer Engineering=ECE=460=A
+Electrical and Computer Engineering=ECE=460=courseTitle
 Electrical and Computer Engineering=ECE=461=A
 Electrical and Computer Engineering=ECE=463=A
 Electrical and Computer Engineering=ECE=465=A
@@ -522,7 +522,7 @@ Elementary Education=ELED=357=Integrating Technology PreK-6
 Elementary Education=ELED=358=Childerens Literature for Teaching
 Engineering=ENGR=107=Introduction to Engineering
 Engineering=ENGR=499=Special Topics for Engineering
-English=ENGH=100=A
+English=ENGH=100=courseTitle
 English=ENGH=101=A
 English=ENGH=201=A
 English=ENGH=202=A
@@ -535,10 +535,10 @@ English=ENGH=307=A
 English=ENGH=308=A
 English=ENGH=315=A
 English=ENGH=318=A
-English=ENGH=320=A
+English=ENGH=320=courseTitle
 English=ENGH=322=A
 English=ENGH=336=A
-English=ENGH=340=A
+English=ENGH=340=courseTitle
 English=ENGH=344=A
 English=ENGH=348=A
 English=ENGH=355=A
@@ -549,7 +549,7 @@ English=ENGH=372=A
 English=ENGH=373=A
 English=ENGH=375=A
 English=ENGH=377=A
-English=ENGH=380=A
+English=ENGH=380=courseTitle
 English=ENGH=386=A
 English=ENGH=388=A
 English=ENGH=392=A
@@ -557,7 +557,7 @@ English=ENGH=396=A
 English=ENGH=397=A
 English=ENGH=398=A
 English=ENGH=399=A
-English=ENGH=400=A
+English=ENGH=400=courseTitle
 English=ENGH=401=A
 English=ENGH=412=A
 English=ENGH=431=A
@@ -574,12 +574,12 @@ English=ENGH=495=A
 English=ENGH=497=A
 Enviornmental Science and Policy=ENVPP=108=A
 Enviornmental Science and Policy=ENVPP=109=A
-Enviornmental Science and Policy=ENVPP=110=A
+Enviornmental Science and Policy=ENVPP=110=courseTitle
 Enviornmental Science and Policy=ENVPP=111=A
 Enviornmental Science and Policy=ENVPP=112=A
 Enviornmental Science and Policy=ENVPP=113=A
 Enviornmental Science and Policy=ENVPP=201=A
-Enviornmental Science and Policy=ENVPP=210=A
+Enviornmental Science and Policy=ENVPP=210=courseTitle
 Enviornmental Science and Policy=ENVPP=301=A
 Enviornmental Science and Policy=ENVPP=302=A
 Enviornmental Science and Policy=ENVPP=305=A
@@ -598,24 +598,24 @@ Enviornmental Science and Policy=ENVPP=413=A
 Enviornmental Science and Policy=ENVPP=419=A
 Enviornmental Science and Policy=ENVPP=423=A
 Enviornmental Science and Policy=ENVPP=429=A
-Enviornmental Science and Policy=ENVPP=430=A
+Enviornmental Science and Policy=ENVPP=430=courseTitle
 Enviornmental Science and Policy=ENVPP=432=A
 Enviornmental Science and Policy=ENVPP=436=A
 Enviornmental Science and Policy=ENVPP=437=A
 Enviornmental Science and Policy=ENVPP=442=A
 Enviornmental Science and Policy=ENVPP=445=A
 Enviornmental Science and Policy=ENVPP=449=A
-Enviornmental Science and Policy=ENVPP=460=A
+Enviornmental Science and Policy=ENVPP=460=courseTitle
 Enviornmental Science and Policy=ENVPP=475=A
-Enviornmental Science and Policy=ENVPP=480=A
-Enviornmental Science and Policy=ENVPP=490=A
+Enviornmental Science and Policy=ENVPP=480=courseTitle
+Enviornmental Science and Policy=ENVPP=490=courseTitle
 Enviornmental Science and Policy=ENVPP=491=A
 Film and Video Studies=FAVS=225=A
-Film and Video Studies=FAVS=250=A
+Film and Video Studies=FAVS=250=courseTitle
 Film and Video Studies=FAVS=255=A
-Film and Video Studies=FAVS=260=A
-Film and Video Studies=FAVS=280=A
-Film and Video Studies=FAVS=300=A
+Film and Video Studies=FAVS=260=courseTitle
+Film and Video Studies=FAVS=280=courseTitle
+Film and Video Studies=FAVS=300=courseTitle
 Film and Video Studies=FAVS=311=A
 Film and Video Studies=FAVS=312=A
 Film and Video Studies=FAVS=331=A
@@ -624,223 +624,724 @@ Film and Video Studies=FAVS=352=A
 Film and Video Studies=FAVS=365=A
 Film and Video Studies=FAVS=375=A
 Film and Video Studies=FAVS=377=A
-Film and Video Studies=FAVS=380=A
+Film and Video Studies=FAVS=380=courseTitle
 Film and Video Studies=FAVS=399=A
-Film and Video Studies=FAVS=400=A
+Film and Video Studies=FAVS=400=courseTitle
 Film and Video Studies=FAVS=431=A
-Film and Video Studies=FAVS=450=A
-Film and Video Studies=FAVS=460=A
+Film and Video Studies=FAVS=450=courseTitle
+Film and Video Studies=FAVS=460=courseTitle
 Film and Video Studies=FAVS=496=A
 Film and Video Studies=FAVS=497=A
 Film and Video Studies=FAVS=498=A
 Film and Video Studies=FAVS=499=A
-Finance=FNAN=000=A
-Finance=FNAN=000=A
-Finance=FNAN=000=A
-Finance=FNAN=000=A
-Finance=FNAN=000=A
-Finance=FNAN=000=A
-Finance=FNAN=000=A
-Foreign Language=FRLN=000=A
-Foreign Language=FRLN=000=A
-Foreign Language=FRLN=000=A
-Foreign Language=FRLN=000=A
-Foreign Language=FRLN=000=A
-Foreign Language=FRLN=000=A
-Forensic Science=FRSC=000=A
-Forensic Science=FRSC=000=A
-Forensic Science=FRSC=000=A
-Forensic Science=FRSC=000=A
-Forensic Science=FRSC=000=A
-Forensic Science=FRSC=000=A
-Forensic Science=FRSC=000=A
-French=FREN=000=A
-French=FREN=000=A
-French=FREN=000=A
-French=FREN=000=A
-French=FREN=000=A
-Geography and Geoinformation Science=GGS=000=A
-Geography and Geoinformation Science=GGS=000=A
-Geography and Geoinformation Science=GGS=000=A
-Geography and Geoinformation Science=GGS=000=A
-Geography and Geoinformation Science=GGS=000=A
-Geography and Geoinformation Science=GGS=000=A
-Geology=GEOL=000=A
-Geology=GEOL=000=A
-Geology=GEOL=000=A
-Geology=GEOL=000=A
-Geology=GEOL=000=A
-Geology=GEOL=000=A
-German=GERM=000=A
-German=GERM=000=A
-German=GERM=000=A
-German=GERM=000=A
-German=GERM=000=A
-German=GERM=000=A
-Global Affairs=GLOA=000=A
-Global Affairs=GLOA=000=A
-Global Affairs=GLOA=000=A
-Global Affairs=GLOA=000=A
-Global Affairs=GLOA=000=A
-Global and Community Health=GCH=000=A
-Global and Community Health=GCH=000=A
-Global and Community Health=GCH=000=A
-Global and Community Health=GCH=000=A
-Global and Community Health=GCH=000=A
-Government=GOVT=000=A
-Government=GOVT=000=A
-Government=GOVT=000=A
-Government=GOVT=000=A
-Government=GOVT=000=A
-Health=HEAL=000=A
-Health=HEAL=000=A
-Health=HEAL=000=A
-Health=HEAL=000=A
-Health=HEAL=000=A
-Health=HEAL=000=A
-Health Administration and Policy=HAP=000=A
-Health and Human Services=HHS=000=A
-Hebrew=HEBR=000=A
-Hebrew=HEBR=000=A
-Hebrew=HEBR=000=A
-Hebrew=HEBR=000=A
-Hebrew=HEBR=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-History=HIST=000=A
-Honors Program=HNRS=000=A
-Honors Program (Science/Math)=HNRT=000=A
-Human Development & Family Science=HDFS=000=A
-Information Security Assurance=ISA=000=A
-Information Systems=INFS=000=A
-Information Technology=IT=000=A
-Integrative Studies=INTS=000=A
-Interdisciplinary Studies=MAIS=000=A
-International Commerce/Policy=ITRN=000=A
-Italian=ITAL=000=A
-Japanese=JAPA=000=A
-Kinesiology=KINE=000=A
-Korean=KORE=000=A
-Latin=LATN=000=A
-Linguistics=LING=000=A
-MBA-Interdisciplinary=MBA=000=A
-Management=MGMT=000=A
-Management Information Systems=MIS=000=A
-Marketing=MKTG=000=A
-Mathematics=MATH=000=A
-Mechanical Engineering=ME=000=A
-Medical Labratory Science=MLAB=000=A
-Middle East/Islamic Studies=MEIS=000=A
-Military Science=MLSC=000=A
-Minor in Business=MBUS=000=A
-Music=MUSI=000=A
-Neuroscience=NEUR=000=A
-Nursing=NURS=000=A
-Nutrition and Food Studies=NUTR=000=A
-Operations Management=OM=000=A
-Operations Research=OR=000=A
-Organziation Development and Knowledge Management=ODKM=000=A
-Parks Recreation & Knowledge Management=PRLS=000=A
+Finance=FNAN=300=courseTitle
+Finance=FNAN=303=courseTitle
+Finance=FNAN=311=courseTitle
+Finance=FNAN=321=courseTitle
+Finance=FNAN=341=courseTitle
+Finance=FNAN=351=courseTitle
+Finance=FNAN=401=courseTitle
+Finance=FNAN=411=courseTitle
+Finance=FNAN=412=courseTitle
+Finance=FNAN=421=courseTitle
+Finance=FNAN=430=courseTitle
+Finance=FNAN=436=courseTitle
+Finance=FNAN=440=courseTitle
+Finance=FNAN=477=courseTitle
+Finance=FNAN=491=courseTitle
+Finance=FNAN=492=courseTitle
+Finance=FNAN=498=courseTitle
+Foreign Language=FRLN=309=courseTitle
+Foreign Language=FRLN=331=courseTitle
+Foreign Language=FRLN=385=courseTitle
+Forensic Science=FRSC=200=courseTitle
+Forensic Science=FRSC=201=courseTitle
+Forensic Science=FRSC=302=courseTitle
+Forensic Science=FRSC=303=courseTitle
+Forensic Science=FRSC=304=courseTitle
+Forensic Science=FRSC=401=courseTitle
+Forensic Science=FRSC=405=courseTitle
+Forensic Science=FRSC=406=courseTitle
+Forensic Science=FRSC=415=courseTitle
+Forensic Science=FRSC=460=courseTitle
+Forensic Science=FRSC=499=courseTitle
+French=FREN=110=courseTitle
+French=FREN=115=courseTitle
+French=FREN=201=courseTitle
+French=FREN=202=courseTitle
+French=FREN=329=courseTitle
+French=FREN=340=courseTitle
+French=FREN=357=courseTitle
+French=FREN=390=courseTitle
+French=FREN=450=courseTitle
+French=FREN=465=courseTitle
+Geography and Geoinformation Science=GGS=101=courseTitle
+Geography and Geoinformation Science=GGS=102=courseTitle
+Geography and Geoinformation Science=GGS=103=courseTitle
+Geography and Geoinformation Science=GGS=110=courseTitle
+Geography and Geoinformation Science=GGS=122=courseTitle
+Geography and Geoinformation Science=GGS=210=courseTitle
+Geography and Geoinformation Science=GGS=300=courseTitle
+Geography and Geoinformation Science=GGS=310=courseTitle
+Geography and Geoinformation Science=GGS=303=courseTitle
+Geography and Geoinformation Science=GGS=304=courseTitle
+Geography and Geoinformation Science=GGS=306=courseTitle
+Geography and Geoinformation Science=GGS=307=courseTitle
+Geography and Geoinformation Science=GGS=310=courseTitle
+Geography and Geoinformation Science=GGS=311=courseTitle
+Geography and Geoinformation Science=GGS=314=courseTitle
+Geography and Geoinformation Science=GGS=316=courseTitle
+Geography and Geoinformation Science=GGS=317=courseTitle
+Geography and Geoinformation Science=GGS=333=courseTitle
+Geography and Geoinformation Science=GGS=379=courseTitle
+Geography and Geoinformation Science=GGS=399=courseTitle
+Geography and Geoinformation Science=GGS=411=courseTitle
+Geography and Geoinformation Science=GGS=415=courseTitle
+Geography and Geoinformation Science=GGS=416=courseTitle
+Geography and Geoinformation Science=GGS=456=courseTitle
+Geography and Geoinformation Science=GGS=470=courseTitle
+Geology=GEOL=101=courseTitle
+Geology=GEOL=102=courseTitle
+Geology=GEOL=134=courseTitle
+Geology=GEOL=305=courseTitle
+Geology=GEOL=306=courseTitle
+Geology=GEOL=308=courseTitle
+Geology=GEOL=312=courseTitle
+Geology=GEOL=313=courseTitle
+Geology=GEOL=315=courseTitle
+Geology=GEOL=320=courseTitle
+Geology=GEOL=363=courseTitle
+Geology=GEOL=392=courseTitle
+Geology=GEOL=401=courseTitle
+Geology=GEOL=403=courseTitle
+Geology=GEOL=411=courseTitle
+Geology=GEOL=420=courseTitle
+German=GERM=110=courseTitle
+German=GERM=201=courseTitle
+German=GERM=202=courseTitle
+German=GERM=318=courseTitle
+German=GERM=325=courseTitle
+German=GERM=442=courseTitle
+Global Affairs=GLOA=101=courseTitle
+Global Affairs=GLOA=305=courseTitle
+Global Affairs=GLOA=400=courseTitle
+Global Affairs=GLOA=450=courseTitle
+Global Affairs=GLOA=492=courseTitle
+Global and Community Health=GCH=205=courseTitle
+Global and Community Health=GCH=300=courseTitle
+Global and Community Health=GCH=305=courseTitle
+Global and Community Health=GCH=310=courseTitle
+Global and Community Health=GCH=325=courseTitle
+Global and Community Health=GCH=332=courseTitle
+Global and Community Health=GCH=335=courseTitle
+Global and Community Health=GCH=350=courseTitle
+Global and Community Health=GCH=360=courseTitle
+Global and Community Health=GCH=376=courseTitle
+Global and Community Health=GCH=380=courseTitle
+Global and Community Health=GCH=406=courseTitle
+Global and Community Health=GCH=411=courseTitle
+Global and Community Health=GCH=412=courseTitle
+Global and Community Health=GCH=445=courseTitle
+Global and Community Health=GCH=450=courseTitle
+Global and Community Health=GCH=465=courseTitle
+Global and Community Health=GCH=497=courseTitle
+Global and Community Health=GCH=498=courseTitle
+Government=GOVT=101=courseTitle
+Government=GOVT=103=courseTitle
+Government=GOVT=132=courseTitle
+Government=GOVT=133=courseTitle
+Government=GOVT=300=courseTitle
+Government=GOVT=301=courseTitle
+Government=GOVT=304=courseTitle
+Government=GOVT=307=courseTitle
+Government=GOVT=308=courseTitle
+Government=GOVT=312=courseTitle
+Government=GOVT=319=courseTitle
+Government=GOVT=322=courseTitle
+Government=GOVT=329=courseTitle
+Government=GOVT=332=courseTitle
+Government=GOVT=333=courseTitle
+Government=GOVT=338=courseTitle
+Government=GOVT=341=courseTitle
+Government=GOVT=342=courseTitle
+Government=GOVT=344=courseTitle
+Government=GOVT=345=courseTitle
+Government=GOVT=346=courseTitle
+Government=GOVT=347=courseTitle
+Government=GOVT=351=courseTitle
+Government=GOVT=355=courseTitle
+Government=GOVT=356=courseTitle
+Government=GOVT=358=courseTitle
+Government=GOVT=362=courseTitle
+Government=GOVT=364=courseTitle
+Government=GOVT=368=courseTitle
+Government=GOVT=400=courseTitle
+Government=GOVT=407=courseTitle
+Government=GOVT=409=courseTitle
+Government=GOVT=412=courseTitle
+Government=GOVT=420=courseTitle
+Government=GOVT=422=courseTitle
+Government=GOVT=423=courseTitle
+Government=GOVT=430=courseTitle
+Government=GOVT=433=courseTitle
+Government=GOVT=434=courseTitle
+Government=GOVT=443=courseTitle
+Government=GOVT=444=courseTitle
+Government=GOVT=445=courseTitle
+Government=GOVT=446=courseTitle
+Government=GOVT=447=courseTitle
+Government=GOVT=452=courseTitle
+Government=GOVT=464=courseTitle
+Government=GOVT=467=courseTitle
+Government=GOVT=469=courseTitle
+Government=GOVT=480=courseTitle
+Government=GOVT=490=courseTitle
+Government=GOVT=496=courseTitle
+Health=HEAL=110=courseTitle
+Health=HEAL=200=courseTitle
+Health=HEAL=220=courseTitle
+Health=HEAL=230=courseTitle
+Health=HEAL=250=courseTitle
+Health=HEAL=310=courseTitle
+Health=HEAL=325=courseTitle
+Health=HEAL=327=courseTitle
+Health=HEAL=331=courseTitle
+Health=HEAL=351=courseTitle
+Health=HEAL=372=courseTitle
+Health Administration and Policy=HAP=201=courseTitle
+Health Administration and Policy=HAP=202=courseTitle
+Health Administration and Policy=HAP=301=courseTitle
+Health Administration and Policy=HAP=308=courseTitle
+Health Administration and Policy=HAP=309=courseTitle
+Health Administration and Policy=HAP=310=courseTitle
+Health Administration and Policy=HAP=312=courseTitle
+Health Administration and Policy=HAP=360=courseTitle
+Health Administration and Policy=HAP=392=courseTitle
+Health Administration and Policy=HAP=395=courseTitle
+Health Administration and Policy=HAP=395=courseTitle
+Health Administration and Policy=HAP=396=courseTitle
+Health Administration and Policy=HAP=403=courseTitle
+Health Administration and Policy=HAP=410=courseTitle
+Health Administration and Policy=HAP=416=courseTitle
+Health Administration and Policy=HAP=417=courseTitle
+Health Administration and Policy=HAP=425=courseTitle
+Health Administration and Policy=HAP=430=courseTitle
+Health Administration and Policy=HAP=436=courseTitle
+Health Administration and Policy=HAP=442=courseTitle
+Health Administration and Policy=HAP=445=courseTitle
+Health Administration and Policy=HAP=459=courseTitle
+Health Administration and Policy=HAP=461=courseTitle
+Health Administration and Policy=HAP=462=courseTitle
+Health Administration and Policy=HAP=464=courseTitle
+Health Administration and Policy=HAP=465=courseTitle
+Health Administration and Policy=HAP=467=courseTitle
+Health Administration and Policy=HAP=489=courseTitle
+Health Administration and Policy=HAP=498=courseTitle
+Health and Human Services=HHS=432=Healthy Aging
+Health and Human Services=HHS=492=RS: Internship Clinical Research
+Hebrew=HEBR=102=Elementary Hebrew II
+History=HIST=100=courseTitle
+History=HIST=121=courseTitle
+History=HIST=122=courseTitle
+History=HIST=125=courseTitle
+History=HIST=252=courseTitle
+History=HIST=261=courseTitle
+History=HIST=272=courseTitle
+History=HIST=282=courseTitle
+History=HIST=300=courseTitle
+History=HIST=302=courseTitle
+History=HIST=306=courseTitle
+History=HIST=329=courseTitle
+History=HIST=339=courseTitle
+History=HIST=340=courseTitle
+History=HIST=358=courseTitle
+History=HIST=377=courseTitle
+History=HIST=378=courseTitle
+History=HIST=385=courseTitle
+History=HIST=387=courseTitle
+History=HIST=388=courseTitle
+History=HIST=389=courseTitle
+History=HIST=390=courseTitle
+History=HIST=394=courseTitle
+History=HIST=395=courseTitle
+History=HIST=396=courseTitle
+History=HIST=397=courseTitle
+History=HIST=399=courseTitle
+History=HIST=403=courseTitle
+History=HIST=499=courseTitle
+Honors Program=HNRS=122=courseTitle
+Honors Program=HNRS=130=courseTitle
+Honors Program=HNRS=131=courseTitle
+Honors Program=HNRS=240=courseTitle
+Honors Program=HNRS=260=courseTitle
+Honors Program=HNRS=261=courseTitle
+Honors Program=HNRS=360=courseTitle
+Honors Program=HNRS=361=courseTitle
+Honors Program (Science/Math)=HNRT=125=Applied Quantitative Reasoning
+Human Development & Family Science=HDFS=200=courseTitle
+Human Development & Family Science=HDFS=250=courseTitle
+Human Development & Family Science=HDFS=300=courseTitle
+Human Development & Family Science=HDFS=301=courseTitle
+Human Development & Family Science=HDFS=400=courseTitle
+Human Development & Family Science=HDFS=498=courseTitle
+Human Development & Family Science=HDFS=499=courseTitle
+Information Technology=IT=102=courseTitle
+Information Technology=IT=104=courseTitle
+Information Technology=IT=106=courseTitle
+Information Technology=IT=109=courseTitle
+Information Technology=IT=206=courseTitle
+Information Technology=IT=207=courseTitle
+Information Technology=IT=209=courseTitle
+Information Technology=IT=213=courseTitle
+Information Technology=IT=214=courseTitle
+Information Technology=IT=216=courseTitle
+Information Technology=IT=223=courseTitle
+Information Technology=IT=293=courseTitle
+Information Technology=IT=300=courseTitle
+Information Technology=IT=304=courseTitle
+Information Technology=IT=306=courseTitle
+Information Technology=IT=309=courseTitle
+Information Technology=IT=314=courseTitle
+Information Technology=IT=315=courseTitle
+Information Technology=IT=322=courseTitle
+Information Technology=IT=324=courseTitle
+Information Technology=IT=331=courseTitle
+Information Technology=IT=332=courseTitle
+Information Technology=IT=335=courseTitle
+Information Technology=IT=341=courseTitle
+Information Technology=IT=342=courseTitle
+Information Technology=IT=343=courseTitle
+Information Technology=IT=352=courseTitle
+Information Technology=IT=353=courseTitle
+Information Technology=IT=357=courseTitle
+Information Technology=IT=366=courseTitle
+Information Technology=IT=369=courseTitle
+Information Technology=IT=390=courseTitle
+Information Technology=IT=409=courseTitle
+Information Technology=IT=410=courseTitle
+Information Technology=IT=414=courseTitle
+Information Technology=IT=415=courseTitle
+Information Technology=IT=429=courseTitle
+Information Technology=IT=431=courseTitle
+Information Technology=IT=441=courseTitle
+Information Technology=IT=445=courseTitle
+Information Technology=IT=462=courseTitle
+Information Technology=IT=466=courseTitle
+Information Technology=IT=488=courseTitle
+Information Technology=IT=492=courseTitle
+Information Technology=IT=493=courseTitle
+Information Technology=IT=495=courseTitle
+Integrative Studies=INTS=102=courseTitle
+Integrative Studies=INTS=195=courseTitle
+Integrative Studies=INTS=202=courseTitle
+Integrative Studies=INTS=203=courseTitle
+Integrative Studies=INTS=204=courseTitle
+Integrative Studies=INTS=210=courseTitle
+Integrative Studies=INTS=211=courseTitle
+Integrative Studies=INTS=245=courseTitle
+Integrative Studies=INTS=249=courseTitle
+Integrative Studies=INTS=275=courseTitle
+Integrative Studies=INTS=291=courseTitle
+Integrative Studies=INTS=292=courseTitle
+Integrative Studies=INTS=294=courseTitle
+Integrative Studies=INTS=300=courseTitle
+Integrative Studies=INTS=301=courseTitle
+Integrative Studies=INTS=303=courseTitle
+Integrative Studies=INTS=304=courseTitle
+Integrative Studies=INTS=310=courseTitle
+Integrative Studies=INTS=312=courseTitle
+Integrative Studies=INTS=314=courseTitle
+Integrative Studies=INTS=316=courseTitle
+Integrative Studies=INTS=319=courseTitle
+Integrative Studies=INTS=320=courseTitle
+Integrative Studies=INTS=322=courseTitle
+Integrative Studies=INTS=331=courseTitle
+Integrative Studies=INTS=334=courseTitle
+Integrative Studies=INTS=337=courseTitle
+Integrative Studies=INTS=346=courseTitle
+Integrative Studies=INTS=348=courseTitle
+Integrative Studies=INTS=355=courseTitle
+Integrative Studies=INTS=356=courseTitle
+Integrative Studies=INTS=362=courseTitle
+Integrative Studies=INTS=371=courseTitle
+Integrative Studies=INTS=375=courseTitle
+Integrative Studies=INTS=391=courseTitle
+Integrative Studies=INTS=395=courseTitle
+Integrative Studies=INTS=399=courseTitle
+Integrative Studies=INTS=404=courseTitle
+Integrative Studies=INTS=405=courseTitle
+Integrative Studies=INTS=410=courseTitle
+Integrative Studies=INTS=417=courseTitle
+Integrative Studies=INTS=431=courseTitle
+Integrative Studies=INTS=434=courseTitle
+Integrative Studies=INTS=435=courseTitle
+Integrative Studies=INTS=436=courseTitle
+Integrative Studies=INTS=438=courseTitle
+Integrative Studies=INTS=450=courseTitle
+Integrative Studies=INTS=451=courseTitle
+Integrative Studies=INTS=475=courseTitle
+Integrative Studies=INTS=490=courseTitle
+Integrative Studies=INTS=495=courseTitle
+Integrative Studies=INTS=498=courseTitle
+Italian=ITAL=110=courseTitle
+Italian=ITAL=201=courseTitle
+Italian=ITAL=202=courseTitle
+Italian=ITAL=325=courseTitle
+Italian=ITAL=340=courseTitle
+Japanese=JAPA=110=courseTitle
+Japanese=JAPA=201=courseTitle
+Japanese=JAPA=202=courseTitle
+Japanese=JAPA=240=courseTitle
+Japanese=JAPA=320=courseTitle
+Japanese=JAPA=331=courseTitle
+Japanese=JAPA=340=courseTitle
+Japanese=JAPA=350=courseTitle
+Japanese=JAPA=441=courseTitle
+Kinesiology=KINE=100=courseTitle
+Kinesiology=KINE=200=courseTitle
+Kinesiology=KINE=310=courseTitle
+Kinesiology=KINE=320=courseTitle
+Kinesiology=KINE=330=courseTitle
+Kinesiology=KINE=341=courseTitle
+Kinesiology=KINE=350=courseTitle
+Kinesiology=KINE=360=courseTitle
+Kinesiology=KINE=370=courseTitle
+Kinesiology=KINE=380=courseTitle
+Kinesiology=KINE=400=courseTitle
+Kinesiology=KINE=410=courseTitle
+Kinesiology=KINE=420=courseTitle
+Kinesiology=KINE=441=courseTitle
+Kinesiology=KINE=450=courseTitle
+Kinesiology=KINE=490=courseTitle
+Korean=KORE=101=courseTitle
+Korean=KORE=102=courseTitle
+Korean=KORE=110=courseTitle
+Korean=KORE=201=courseTitle
+Korean=KORE=202=courseTitle
+Korean=KORE=305=courseTitle
+Korean=KORE=311=courseTitle
+Korean=KORE=320=courseTitle
+Korean=KORE=321=courseTitle
+Korean=KORE=330=courseTitle
+Korean=KORE=331=courseTitle
+Korean=KORE=340=courseTitle
+Korean=KORE=370=courseTitle
+Korean=KORE=440=courseTitle
+Latin=LATN=102=Elementary Latin II
+Latin=LATN=202=Intermediate Latin II
+Latin=LATN=352=Roman Poetry
+Linguistics=LING=306=courseTitle
+Linguistics=LING=307=courseTitle
+Linguistics=LING=485=courseTitle
+Linguistics=LING=486=courseTitle
+Management=MGMT=303=courseTitle
+Management=MGMT=313=courseTitle
+Management=MGMT=321=courseTitle
+Management=MGMT=413=courseTitle
+Management=MGMT=421=courseTitle
+Management=MGMT=431=courseTitle
+Management=MGMT=441=courseTitle
+Management=MGMT=451=courseTitle
+Management=MGMT=452=courseTitle
+Management=MGMT=453=courseTitle
+Management=MGMT=454=courseTitle
+Management=MGMT=461=courseTitle
+Management=MGMT=462=courseTitle
+Management=MGMT=463=courseTitle
+Management=MGMT=464=courseTitle
+Management=MGMT=471=courseTitle
+Management=MGMT=492=courseTitle
+Management Information Systems=MIS=302=courseTitle
+Management Information Systems=MIS=303=courseTitle
+Management Information Systems=MIS=310=courseTitle
+Management Information Systems=MIS=320=courseTitle
+Management Information Systems=MIS=330=courseTitle
+Management Information Systems=MIS=410=courseTitle
+Management Information Systems=MIS=412=courseTitle
+Management Information Systems=MIS=415=courseTitle
+Management Information Systems=MIS=420=courseTitle
+Management Information Systems=MIS=430=courseTitle
+Management Information Systems=MIS=431=courseTitle
+Management Information Systems=MIS=432=courseTitle
+Management Information Systems=MIS=433=courseTitle
+Management Information Systems=MIS=491=courseTitle
+Management Information Systems=MIS=492=courseTitle
+Marketing=MKTG=303=courseTitle
+Marketing=MKTG=307=courseTitle
+Marketing=MKTG=312=courseTitle
+Marketing=MKTG=313=courseTitle
+Marketing=MKTG=315=courseTitle
+Marketing=MKTG=333=courseTitle
+Marketing=MKTG=351=courseTitle
+Marketing=MKTG=352=courseTitle
+Marketing=MKTG=353=courseTitle
+Marketing=MKTG=407=courseTitle
+Marketing=MKTG=455=courseTitle
+Marketing=MKTG=471=courseTitle
+Marketing=MKTG=491=courseTitle
+Marketing=MKTG=492=courseTitle
+Mathematics=MATH=008=courseTitle
+Mathematics=MATH=105=courseTitle
+Mathematics=MATH=106=courseTitle
+Mathematics=MATH=108=courseTitle
+Mathematics=MATH=110=courseTitle
+Mathematics=MATH=111=courseTitle
+Mathematics=MATH=113=courseTitle
+Mathematics=MATH=114=courseTitle
+Mathematics=MATH=116=courseTitle
+Mathematics=MATH=123=courseTitle
+Mathematics=MATH=124=courseTitle
+Mathematics=MATH=125=courseTitle
+Mathematics=MATH=203=courseTitle
+Mathematics=MATH=213=courseTitle
+Mathematics=MATH=214=courseTitle
+Mathematics=MATH=271=courseTitle
+Mathematics=MATH=272=courseTitle
+Mathematics=MATH=290=courseTitle
+Mathematics=MATH=301=courseTitle
+Mathematics=MATH=312=courseTitle
+Mathematics=MATH=314=courseTitle
+Mathematics=MATH=315=courseTitle
+Mathematics=MATH=316=courseTitle
+Mathematics=MATH=321=courseTitle
+Mathematics=MATH=322=courseTitle
+Mathematics=MATH=325=courseTitle
+Mathematics=MATH=351=courseTitle
+Mathematics=MATH=400=courseTitle
+Mathematics=MATH=414=courseTitle
+Mathematics=MATH=431=courseTitle
+Mathematics=MATH=441=courseTitle
+Mathematics=MATH=442=courseTitle
+Mathematics=MATH=446=courseTitle
+Mathematics=MATH=447=courseTitle
+Mathematics=MATH=453=courseTitle
+Mathematics=MATH=494=courseTitle
+Mechanical Engineering=ME=151=courseTitle
+Mechanical Engineering=ME=211=courseTitle
+Mechanical Engineering=ME=212=courseTitle
+Mechanical Engineering=ME=221=courseTitle
+Mechanical Engineering=ME=231=courseTitle
+Mechanical Engineering=ME=313=courseTitle
+Mechanical Engineering=ME=321=courseTitle
+Mechanical Engineering=ME=322=courseTitle
+Mechanical Engineering=ME=323=courseTitle
+Mechanical Engineering=ME=331=courseTitle
+Mechanical Engineering=ME=341=courseTitle
+Mechanical Engineering=ME=342=courseTitle
+Mechanical Engineering=ME=351=courseTitle
+Mechanical Engineering=ME=352=courseTitle
+Mechanical Engineering=ME=414=courseTitle
+Mechanical Engineering=ME=432=courseTitle
+Mechanical Engineering=ME=444=courseTitle
+Mechanical Engineering=ME=446=courseTitle
+Mechanical Engineering=ME=499=courseTitle
+Medical Labratory Science=MLAB=300=Science Writing
+Military Science=MLSC=102=courseTitle
+Military Science=MLSC=202=courseTitle
+Military Science=MLSC=302=courseTitle
+Military Science=MLSC=402=courseTitle
+Military Science=MLSC=499=courseTitle
+Minor in Business=MBUS=300=courseTitle
+Minor in Business=MBUS=301=courseTitle
+Minor in Business=MBUS=302=courseTitle
+Minor in Business=MBUS=303=courseTitle
+Minor in Business=MBUS=304=courseTitle
+Minor in Business=MBUS=305=courseTitle
+Minor in Business=MBUS=306=courseTitle
+Minor in Business=MBUS=308=courseTitle
+Neuroscience=NEUR=101=courseTitle
+Neuroscience=NEUR=327=courseTitle
+Neuroscience=NEUR=335=courseTitle
+Neuroscience=NEUR=405=courseTitle
+Neuroscience=NEUR=406=courseTitle
+Neuroscience=NEUR=411=courseTitle
+Neuroscience=NEUR=461=courseTitle
+Nursing=NURS=319=courseTitle
+Nursing=NURS=336=courseTitle
+Nursing=NURS=343=courseTitle
+Nursing=NURS=344=courseTitle
+Nursing=NURS=348=courseTitle
+Nursing=NURS=349=courseTitle
+Nursing=NURS=350=courseTitle
+Nursing=NURS=351=courseTitle
+Nursing=NURS=358=courseTitle
+Nursing=NURS=359=courseTitle
+Nursing=NURS=388=courseTitle
+Nursing=NURS=425=courseTitle
+Nursing=NURS=436=courseTitle
+Nursing=NURS=440=courseTitle
+Nursing=NURS=451=courseTitle
+Nursing=NURS=455=courseTitle
+Nursing=NURS=457=courseTitle
+Nursing=NURS=465=courseTitle
+Nursing=NURS=466=courseTitle
+Nursing=NURS=467=courseTitle
+Nursing=NURS=468=courseTitle
+Nursing=NURS=469=courseTitle
+Nursing=NURS=488=courseTitle
+Nursing=NURS=491=courseTitle
+Nutrition and Food Studies=NUTR=295=courseTitle
+Nutrition and Food Studies=NUTR=318=courseTitle
+Nutrition and Food Studies=NUTR=383=courseTitle
+Nutrition and Food Studies=NUTR=421=courseTitle
+Nutrition and Food Studies=NUTR=422=courseTitle
+Nutrition and Food Studies=NUTR=430=courseTitle
+Nutrition and Food Studies=NUTR=451=courseTitle
+Operations Management=OM=303=courseTitle
+Operations Management=OM=435=courseTitle
+Operations Management=OM=456=courseTitle
+Operations Management=OM=491=courseTitle
+Operations Management=OM=492=courseTitle
+Operations Management=OM=493=courseTitle
+Operations Research=OR=335=courseTitle
+Operations Research=OR=441=courseTitle
+Operations Research=OR=442=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=210=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=241=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=300=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=310=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=316=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=317=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=323=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=327=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=362=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=402=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=410=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=417=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=418=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=460=courseTitle
+Parks, Recreation, and Leisure Studies=PRLS=490=courseTitle
 Persian=PERS=201=Intermediate Persian I
-Persian=PERS=330=Advanced Persian I
-Philosophy=PHIL=000=A
-Philosophy=PHIL=000=A
-Philosophy=PHIL=000=A
-Philosophy=PHIL=000=A
-Philosophy=PHIL=000=A
-Philosophy=PHIL=000=A
-Philosophy=PHIL=000=A
-Physical Education=PHED=000=A
-Physical Education=PHED=000=A
-Physical Education=PHED=000=A
-Physical Education=PHED=000=A
-Physical Education=PHED=000=A
-Physical Education=PHED=000=A
-Physical Education=PHED=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Physics=PHYS=000=A
-Policy and Government=POGO=000=A
-Policy and Government=POGO=000=A
-Policy and Government=POGO=000=A
-Policy and Government=POGO=000=A
-Policy and Government=POGO=000=A
-Policy and Government=POGO=000=A
-Policy and Government=POGO=000=A
-Portuguese=PORT=000=A
-Portuguese=PORT=000=A
-Portuguese=PORT=000=A
-Portuguese=PORT=000=A
-Portuguese=PORT=000=A
-Portuguese=PORT=000=A
-Provost=PROV=000=A
-Psychology=PSYC=000=A
-Psychology=PSYC=000=A
-Psychology=PSYC=000=A
-Psychology=PSYC=000=A
-Psychology=PSYC=000=A
-Psychology=PSYC=000=A
-Psychology=PSYC=000=A
-Public Administration=PUAD=000=A
-Public Administration=PUAD=000=A
-Public Administration=PUAD=000=A
-Public Administration=PUAD=000=A
-Public Administration=PUAD=000=A
-Public Administration=PUAD=000=A
-Public Policy=PUBP=000=A
-Public Policy=PUBP=000=A
-Public Policy=PUBP=000=A
-Public Policy=PUBP=000=A
-Public Policy=PUBP=000=A
-Public Policy=PUBP=000=A
-Reading=EDRD=000=A
-Reading=EDRD=000=A
-Reading=EDRD=000=A
-Reading=EDRD=000=A
-Reading=EDRD=000=A
-Reading=EDRD=000=A
-Real Estate Development=REAL=000=A
-Real Estate Development=REAL=000=A
-Real Estate Development=REAL=000=A
-Real Estate Development=REAL=000=A
-Real Estate Development=REAL=000=A
-Real Estate Development=REAL=000=A
-Real Estate Development=REAL=000=A
-Recreation=RECR=000=A
-Recreation=RECR=000=A
-Recreation=RECR=000=A
-Recreation=RECR=000=A
-Recreation=RECR=000=A
-Recreation=RECR=000=A
-Rehabilitation Science=RHBS=000=A
-Rehabilitation Science=RHBS=000=A
-Rehabilitation Science=RHBS=000=A
-Rehabilitation Science=RHBS=000=A
-Rehabilitation Science=RHBS=000=A
-Rehabilitation Science=RHBS=000=A
-Religious Studies=RELI=000=A
-Religious Studies=RELI=000=A
-Religious Studies=RELI=000=A
-Religious Studies=RELI=000=A
-Religious Studies=RELI=000=A
-Religious Studies=RELI=000=A
-Religious Studies=RELI=000=A
+Persian=PERS=330=courseTitledvanced Persian I
+Philosophy=PHIL=100=courseTitle
+Philosophy=PHIL=112=courseTitle
+Philosophy=PHIL=151=courseTitle
+Philosophy=PHIL=156=courseTitle
+Philosophy=PHIL=173=courseTitle
+Philosophy=PHIL=243=courseTitle
+Philosophy=PHIL=253=courseTitle
+Philosophy=PHIL=303=courseTitle
+Philosophy=PHIL=309=courseTitle
+Philosophy=PHIL=311=courseTitle
+Philosophy=PHIL=335=courseTitle
+Philosophy=PHIL=336=courseTitle
+Philosophy=PHIL=357=courseTitle
+Philosophy=PHIL=358=courseTitle
+Philosophy=PHIL=374=courseTitle
+Philosophy=PHIL=376=courseTitle
+Philosophy=PHIL=393=courseTitle
+Philosophy=PHIL=411=courseTitle
+Philosophy=PHIL=421=courseTitle
+Philosophy=PHIL=422=courseTitle
+Philosophy=PHIL=460=courseTitle
+Physical Education=PHED=218=courseTitle
+Physical Education=PHED=273=courseTitle
+Physical Education=PHED=274=courseTitle
+Physical Education=PHED=306=courseTitle
+Physical Education=PHED=308=courseTitle
+Physical Education=PHED=320=courseTitle
+Physical Education=PHED=340=courseTitle
+Physical Education=PHED=403=courseTitle
+Physical Education=PHED=415=courseTitle
+Physics=PHYS=104=courseTitle
+Physics=PHYS=106=The Quantum World
+Physics=PHYS=160=University Physics I
+Physics=PHYS=161=University Physics I Lab
+Physics=PHYS=243=College Physics I
+Physics=PHYS=244=College Physics I Lab
+Physics=PHYS=245=College Physics II
+Physics=PHYS=246=College Physics II Lab
+Physics=PHYS=251=courseTitle
+Physics=PHYS=260=University Physics II
+Physics=PHYS=261=University Physics II Lab
+Physics=PHYS=262=University Physics III
+Physics=PHYS=263=University Physics III Lab
+Physics=PHYS=266=courseTitle
+Physics=PHYS=306=courseTitle
+Physics=PHYS=307=courseTitle
+Physics=PHYS=308=courseTitle
+Physics=PHYS=312=courseTitle
+Physics=PHYS=325=courseTitle
+Physics=PHYS=331=courseTitle
+Physics=PHYS=390=courseTitle
+Physics=PHYS=402=A
+Physics=PHYS=412=A
+Physics=PHYS=428=A
+Physics=PHYS=475=A
+Portuguese=PORT=110=Elementary Portuguese
+Portuguese=PORT=202=Intermediate Portuguese II
+Provost=PROV=301=Great Ideas in Science
+Psychology=PSYC=100=courseTitle
+Psychology=PSYC=211=A
+Psychology=PSYC=231=A
+Psychology=PSYC=300=courseTitle
+Psychology=PSYC=301=A
+Psychology=PSYC=304=A
+Psychology=PSYC=309=A
+Psychology=PSYC=312=A
+Psychology=PSYC=313=A
+Psychology=PSYC=314=A
+Psychology=PSYC=317=A
+Psychology=PSYC=320=courseTitle
+Psychology=PSYC=321=A
+Psychology=PSYC=322=A
+Psychology=PSYC=324=A
+Psychology=PSYC=325=A
+Psychology=PSYC=326=A
+Psychology=PSYC=327=A
+Psychology=PSYC=328=A
+Psychology=PSYC=333=A
+Psychology=PSYC=335=A
+Psychology=PSYC=340=courseTitle
+Psychology=PSYC=362=A
+Psychology=PSYC=372=A
+Psychology=PSYC=373=A
+Psychology=PSYC=375=A
+Psychology=PSYC=376=A
+Psychology=PSYC=379=A
+Psychology=PSYC=380=courseTitle
+Psychology=PSYC=381=A
+Psychology=PSYC=382=A
+Psychology=PSYC=399=A
+Psychology=PSYC=405=A
+Psychology=PSYC=408=A
+Psychology=PSYC=414=A
+Psychology=PSYC=415=A
+Psychology=PSYC=417=A
+Psychology=PSYC=418=A
+Psychology=PSYC=423=A
+Psychology=PSYC=430=courseTitle
+Psychology=PSYC=435=A
+Psychology=PSYC=440=courseTitle
+Psychology=PSYC=461=A
+Psychology=PSYC=490=courseTitle
+Psychology=PSYC=492=A
+Reading=EDRD=300=courseTitle
+Reading=EDRD=301=A
+Reading=EDRD=419=A
+Rehabilitation Science=RHBS=201=A
+Rehabilitation Science=RHBS=271=A
+Rehabilitation Science=RHBS=340=courseTitle
+Rehabilitation Science=RHBS=345=A
+Rehabilitation Science=RHBS=390=courseTitle
+Rehabilitation Science=RHBS=416=A
+Rehabilitation Science=RHBS=450=courseTitle
+Rehabilitation Science=RHBS=455=A
+Religious Studies=RELI=100=courseTitle
+Religious Studies=RELI=211=A
+Religious Studies=RELI=212=A
+Religious Studies=RELI=235=A
+Religious Studies=RELI=272=Islam
+Religious Studies=RELI=313=Hinduism
+Religious Studies=RELI=320=courseTitle
+Religious Studies=RELI=333=A
+Religious Studies=RELI=337=A
+Religious Studies=RELI=352=A
+Religious Studies=RELI=362=A
+Religious Studies=RELI=364=A
+Religious Studies=RELI=365=A
+Religious Studies=RELI=384=A
+Religious Studies=RELI=420=courseTitle
 Russian=RUSS=110=Elementary Russian
 Russian=RUSS=201=Intermediate Russian I
 Russian=RUSS=202=Intermediate Russian II
@@ -848,24 +1349,46 @@ Russian=RUSS=311=AAAAA
 Russian=RUSS=327=Survey of Russian Literature
 Russian=RUSS=353=Russian Civilization
 Russian=RUSS=381=Advanced Russian II
-School Psychology=SPSY=000=A
-School Psychology=SPSY=000=A
-School Psychology=SPSY=000=A
-School Psychology=SPSY=000=A
-School Psychology=SPSY=000=A
-School Psychology=SPSY=000=A
-Social Work=SOCW=000=A
-Social Work=SOCW=000=A
-Social Work=SOCW=000=A
-Social Work=SOCW=000=A
-Social Work=SOCW=000=A
-Social Work=SOCW=000=A
-Sociology=SOCI=000=A
-Sociology=SOCI=000=A
-Sociology=SOCI=000=A
-Sociology=SOCI=000=A
-Sociology=SOCI=000=A
-Sociology=SOCI=000=A
+Social Work=SOCW=200=courseTitle
+Social Work=SOCW=311=A
+Social Work=SOCW=312=A
+Social Work=SOCW=358=A
+Social Work=SOCW=362=A
+Social Work=SOCW=375=A
+Social Work=SOCW=380=courseTitle
+Social Work=SOCW=410=courseTitle
+Social Work=SOCW=415=A
+Social Work=SOCW=445=A
+Social Work=SOCW=472=A
+Social Work=SOCW=475=A
+Social Work=SOCW=483=A
+Social Work=SOCW=496=A
+Sociology=SOCI=101=Introductory Sociology
+Sociology=SOCI=120=courseTitle
+Sociology=SOCI=208=A
+Sociology=SOCI=215=A
+Sociology=SOCI=303=A
+Sociology=SOCI=307=A
+Sociology=SOCI=308=A
+Sociology=SOCI=309=A
+Sociology=SOCI=310=courseTitle
+Sociology=SOCI=311=A
+Sociology=SOCI=313=A
+Sociology=SOCI=314=A
+Sociology=SOCI=315=A
+Sociology=SOCI=320=courseTitle
+Sociology=SOCI=326=A
+Sociology=SOCI=332=A
+Sociology=SOCI=352=A
+Sociology=SOCI=355=A
+Sociology=SOCI=360=courseTitle
+Sociology=SOCI=382=A
+Sociology=SOCI=395=A
+Sociology=SOCI=412=A
+Sociology=SOCI=416=A
+Sociology=SOCI=480=courseTitle
+Sociology=SOCI=481=A
+Sociology=SOCI=485=A
 Software Engineering=SWE=205=A
 Software Engineering=SWE=301=Internship Preparation
 Software Engineering=SWE=401=Internship Reflection
@@ -873,7 +1396,7 @@ Software Engineering=SWE=432=Web App Development
 Software Engineering=SWE=437=Software Testing/Maintenance
 Spanish=SPAN=101=A
 Spanish=SPAN=102=A
-Spanish=SPAN=110=A
+Spanish=SPAN=110=courseTitle
 Spanish=SPAN=115=A
 Spanish=SPAN=201=A
 Spanish=SPAN=202=A
@@ -885,10 +1408,10 @@ Spanish=SPAN=315=A
 Spanish=SPAN=325=A
 Spanish=SPAN=326=A
 Spanish=SPAN=335=A
-Spanish=SPAN=370=A
+Spanish=SPAN=370=courseTitle
 Spanish=SPAN=385=A
-Spanish=SPAN=390=A
-Spanish=SPAN=400=A
+Spanish=SPAN=390=courseTitle
+Spanish=SPAN=400=courseTitle
 Spanish=SPAN=466=A
 Spanish=SPAN=481=A
 Spanish=SPAN=482=A
@@ -908,82 +1431,149 @@ Special Education=EDSE=402=A
 Special Education=EDSE=403=A
 Special Education=EDSE=418=A
 Special Education=EDSE=419=A
-Special Education=EDSE=420=A
+Special Education=EDSE=420=courseTitle
 Special Education=EDSE=428=A
 Special Education=EDSE=434=A
-Special Education=EDSE=440=A
+Special Education=EDSE=440=courseTitle
 Special Education=EDSE=447=A
 Special Education=EDSE=469=A
-Sports Management=SPMT=000=A
-Sports Management=SPMT=000=A
-Sports Management=SPMT=000=A
-Sports Management=SPMT=000=A
-Sports Management=SPMT=000=A
-Sports Management=SPMT=000=A
-Sports Management=SPMT=000=A
-Sports and Recreation Studies=SRST=000=A
-Sports and Recreation Studies=SRST=000=A
-Sports and Recreation Studies=SRST=000=A
-Sports and Recreation Studies=SRST=000=A
-Sports and Recreation Studies=SRST=000=A
-Sports and Recreation Studies=SRST=000=A
-Statistics=STAT=000=A
-Statistics=STAT=000=A
-Statistics=STAT=000=A
-Statistics=STAT=000=A
-Statistics=STAT=000=A
-Statistics=STAT=000=A
-Statistics=STAT=000=A
-Systems Engineering=SYST=000=A
-Systems Engineering=SYST=000=A
-Systems Engineering=SYST=000=A
-Systems Engineering=SYST=000=A
-Systems Engineering=SYST=000=A
-Systems Engineering=SYST=000=A
-Systems Engineering=SYST=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Systems Enginerring & Operations Research=SEOR=000=A
-Telecommunications=TCOM=000=A
-Telecommunications=TCOM=000=A
-Telecommunications=TCOM=000=A
-Telecommunications=TCOM=000=A
-Telecommunications=TCOM=000=A
-Telecommunications=TCOM=000=A
-Telecommunications=TCOM=000=A
-Theater=THR=000=A
-Theater=THR=000=A
-Theater=THR=000=A
-Theater=THR=000=A
-Theater=THR=000=A
-Theater=THR=000=A
-Theater=THR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
-Tourism and Evenets Management=TOUR=000=A
+Sports Management=SPMT=201=A
+Sports Management=SPMT=210=courseTitle
+Sports Management=SPMT=241=A
+Sports Management=SPMT=302=A
+Sports Management=SPMT=304=A
+Sports Management=SPMT=318=A
+Sports Management=SPMT=320=courseTitle
+Sports Management=SPMT=322=A
+Sports Management=SPMT=341=A
+Sports Management=SPMT=405=A
+Sports Management=SPMT=412=A
+Sports Management=SPMT=420=courseTitle
+Sports Management=SPMT=425=A
+Sports Management=SPMT=430=courseTitle
+Sports Management=SPMT=440=courseTitle
+Sports Management=SPMT=455=A
+Sports Management=SPMT=462=A
+Sports Management=SPMT=470=courseTitle
+Sports Management=SPMT=475=A
+Sports Management=SPMT=480=courseTitle
+Sports Management=SPMT=490=courseTitle
+Sports and Recreation Studies=SRST=200=History of Sport/Leisure in America
+Sports and Recreation Studies=SRST=450=Research Methods
+Statistics=STAT=250=courseTitle
+Statistics=STAT=260=courseTitle
+Statistics=STAT=344=A
+Statistics=STAT=346=A
+Statistics=STAT=350=courseTitle
+Statistics=STAT=354=A
+Statistics=STAT=360=courseTitle
+Statistics=STAT=362=A
+Statistics=STAT=456=A
+Statistics=STAT=460=courseTitle
+Statistics=STAT=462=A
+Statistics=STAT=463=A
+Statistics=STAT=472=A
+Statistics=STAT=490=courseTitle
+Statistics=STAT=499=A
+Systems Engineering=SYST=101=A
+Systems Engineering=SYST=220=courseTitle
+Systems Engineering=SYST=221=A
+Systems Engineering=SYST=230=courseTitle
+Systems Engineering=SYST=330=courseTitle
+Systems Engineering=SYST=335=A
+Systems Engineering=SYST=371=A
+Systems Engineering=SYST=395=A
+Systems Engineering=SYST=461=A
+Systems Engineering=SYST=462=A
+Systems Engineering=SYST=463=A
+Systems Engineering=SYST=468=A
+Systems Engineering=SYST=469=A
+Systems Engineering=SYST=488=A
+Systems Engineering=SYST=495=A
+Theater=THR=101=A
+Theater=THR=151=A
+Theater=THR=191=A
+Theater=THR=197=A
+Theater=THR=198=A
+Theater=THR=199=A
+Theater=THR=200=courseTitle
+Theater=THR=201=A
+Theater=THR=210=courseTitle
+Theater=THR=230=courseTitle
+Theater=THR=301=A
+Theater=THR=305=A
+Theater=THR=306=A
+Theater=THR=310=courseTitle
+Theater=THR=313=A
+Theater=THR=315=A
+Theater=THR=329=A
+Theater=THR=331=A
+Theater=THR=333=A
+Theater=THR=334=A
+Theater=THR=337=A
+Theater=THR=342=A
+Theater=THR=350=courseTitle
+Theater=THR=351=A
+Theater=THR=352=A
+Theater=THR=381=A
+Theater=THR=412=A
+Theater=THR=420=courseTitle
+Theater=THR=421=A
+Theater=THR=424=A
+Theater=THR=427=A
+Theater=THR=428=A
+Theater=THR=440=courseTitle
+Theater=THR=448=A
+Theater=THR=490=courseTitle
+Tourism and Evenets Management=TOUR=110=courseTitle
+Tourism and Evenets Management=TOUR=190=courseTitle
+Tourism and Evenets Management=TOUR=200=courseTitle
+Tourism and Evenets Management=TOUR=214=A
+Tourism and Evenets Management=TOUR=220=courseTitle
+Tourism and Evenets Management=TOUR=221=A
+Tourism and Evenets Management=TOUR=230=courseTitle
+Tourism and Evenets Management=TOUR=241=A
+Tourism and Evenets Management=TOUR=311=A
+Tourism and Evenets Management=TOUR=313=A
+Tourism and Evenets Management=TOUR=320=courseTitle
+Tourism and Evenets Management=TOUR=340=courseTitle
+Tourism and Evenets Management=TOUR=342=A
+Tourism and Evenets Management=TOUR=352=A
+Tourism and Evenets Management=TOUR=362=A
+Tourism and Evenets Management=TOUR=412=A
+Tourism and Evenets Management=TOUR=414=A
+Tourism and Evenets Management=TOUR=420=courseTitle
+Tourism and Evenets Management=TOUR=450=courseTitle
+Tourism and Evenets Management=TOUR=460=courseTitle
+Tourism and Evenets Management=TOUR=470=courseTitle
+Tourism and Evenets Management=TOUR=480=courseTitle
 Turkish=TURK=201=Intermediate Turkish I
-University Studies=UNIV=000=A
-University Studies=UNIV=000=A
-University Studies=UNIV=000=A
-University Studies=UNIV=000=A
-University Studies=UNIV=000=A
-University Studies=UNIV=000=A
+University Studies=UNIV=100=courseTitle
+University Studies=UNIV=101=A
+University Studies=UNIV=106=A
+University Studies=UNIV=110=courseTitle
+University Studies=UNIV=170=courseTitle
+University Studies=UNIV=206=A
+University Studies=UNIV=220=courseTitle
+University Studies=UNIV=300=courseTitle
+University Studies=UNIV=305=A
+University Studies=UNIV=306=A
+University Studies=UNIV=308=A
+University Studies=UNIV=310=courseTitle
+University Studies=UNIV=320=courseTitle
+University Studies=UNIV=330=courseTitle
+University Studies=UNIV=331=A
+University Studies=UNIV=332=A
+University Studies=UNIV=333=A
+University Studies=UNIV=370=courseTitle
+University Studies=UNIV=391=A
+University Studies=UNIV=406=A
+University Studies=UNIV=420=courseTitle
+University Studies=UNIV=421=A
+University Studies=UNIV=422=A
+University Studies=UNIV=491=A
+University Studies=UNIV=495=A
+University Studies=UNIV=496=A
 Women & Gender Studies=WMST=100=Global Representation of Women
 Women & Gender Studies=WMST=200=Introduction to Women and Gender Studies
 Women & Gender Studies=WMST=208=Introduction to Lesbian, Gay, Bisexual, Transgender, and Queer Studies

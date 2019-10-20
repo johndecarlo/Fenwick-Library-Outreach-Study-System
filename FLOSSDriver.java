@@ -52,7 +52,8 @@ public class FLOSSDriver {
    public static void main(String[]args) throws IOException {
       JFrame display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1200, 830);			      //Size of display window
-      display.setLocation(150, 25);				   //Location of display window on the screen
+      //display.setLocation(150, 25);				   //Location of display window on the screen
+      display.setLocation(0, 0);
       display.setResizable(false);              //Cannot change size of the screen
       display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Exit when close out 
       
