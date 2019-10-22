@@ -230,7 +230,7 @@ public class FLOSSDriver {
    
    public static void initializeClasses() throws IOException {
       classList = new ArrayList<Class>();
-      File file = new File("classes.txt");
+      File file = new File("dataFiles/classes.txt");
       BufferedReader reader = new BufferedReader(new FileReader(file));
       String line = "";
       while ((line = reader.readLine()) != null) {
