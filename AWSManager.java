@@ -109,7 +109,7 @@ public class AWSManager implements RemoteDBManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public List<String> fetchStudyMates( String id ) {
 		// TODO Auto-generated method stub
