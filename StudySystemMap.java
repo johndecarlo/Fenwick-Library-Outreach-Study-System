@@ -46,18 +46,17 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    protected static int mouseY;        //location for the mouse pointer Y
 
    public StudySystemMap() throws IOException {
-      floorNumber = 1;                    //Initialize the floor number
+      floorNumber = 2;                    //Initialize the floor number
       initializeTables();                 //Initialize the table arrays
       addMouseListener( this );           //Initalize mouseListener
       addMouseMotionListener( this );     //Initalize mouseMotionListener
       mouseX = 0;                         //Set X location of the mouse
       mouseY = 0;                         //Set Y location of the mouse
-   }
-   
-   public void test() {
-      for(int i = 0; i < floor1Tables.size(); i++) {
-         floor1Tables.get(i).setOccupied();
-      }
+      
+      //Tester to test if data is implemented
+      floor1Tables.get(0).setOccupied();
+      floor1Tables.get(0).setStudentName("John Jones");
+      floor1Tables.get(0).setCourse(new Class("Accounting", "ACCT", 203, "courseTitle"));
    }
    
    public void setFloorNumber(int num) {
@@ -71,8 +70,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       int startRow, startCol, endRow, endCol;
       if(button == MouseEvent.BUTTON1) {
          if(floorNumber == 1) {
-            System.out.println(mouseX);
-            System.out.println(mouseY);
             for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
                table = floor1Tables.get(ind1);  //Create a temporary table
                startRow = table.getRow();       //Get the starting row
@@ -126,8 +123,31 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    {}
    
    public void mouseMoved( MouseEvent e) {
+      int startRow, startCol, endRow, endCol;
+      Table table = null;
+      
       mouseX = e.getX();	//Get mouseX value
-      mouseY = e.getY();	//Get mouseY value'
+      mouseY = e.getY();	//Get mouseY value
+      if(floorNumber == 1) {
+         for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
+            table = floor1Tables.get(ind1);  //Create a temporary table
+            startRow = table.getRow();       //Get the starting row
+            startCol = table.getCol();       //Get the starting column
+            endRow = startRow + table.getRowSize();   //Get the end row
+            endCol = startCol + table.getColSize();   //Get the end col
+            if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+               FLOSSDriver.displayStudentName(table.getStudentName());
+               if(table.getCourse().getNumber() != 0)
+                  FLOSSDriver.displayTableCourse(table.getCourse());
+               else
+                  FLOSSDriver.resetTableCourse();  
+               break;
+            } else {
+               FLOSSDriver.displayStudentName("");
+               FLOSSDriver.resetTableCourse();  
+            }  
+         }
+      }
       repaint();			//Refresh the screen
    }
 

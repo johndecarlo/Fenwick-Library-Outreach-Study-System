@@ -10,16 +10,22 @@ public class Table {
    private int colSize;
    private boolean occupied;
    private String shape;
+   private String studentName;
+   private Class course;
+   private String message;
    
    //Constructor for Table class w/ no parameters
    public Table() {
       this.floor = 1;
-      this.row = 55;
-      this.col = 729;
-      this.rowSize = 7;
-      this.colSize = 7;
-      this.occupied = false;
-      this.shape = "SEAT";
+      this.row = 0;
+      this.col = 0;
+      this.rowSize = 30;
+      this.colSize = 30;
+      this.occupied = true;
+      this.shape = "BLOCK";
+      this.studentName = "";
+      this.course = new Class();
+      this.message = "";
    }
    
    //Constructor for Table class w/ parameters
@@ -31,6 +37,9 @@ public class Table {
       this.colSize = colSize;
       this.occupied = false;
       this.shape = shape;
+      this.studentName = "";
+      this.course = new Class();
+      this.message = "";
    }
    
    public int getFloor() {
@@ -91,4 +100,29 @@ public class Table {
    public void setShape(String shape) {
       this.shape = shape;
    }
+   
+   public String getStudentName() {
+      return this.studentName;
+   }
+   
+   public void setStudentName(String name) {
+      this.studentName = name;
+   }
+   
+   public Class getCourse() {
+      return this.course;
+   }
+   
+   public void setCourse(Class course) {
+      this.course = course;
+   }
+   
+   public String getMessage() {
+      return this.message;
+   }
+   
+   public void setMessage(String message) {
+      this.message = message;
+   }
+   
 }

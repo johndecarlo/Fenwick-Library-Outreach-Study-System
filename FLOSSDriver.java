@@ -172,7 +172,7 @@ public class FLOSSDriver {
       tableInformationPanel = new JPanel();
       tableInformationPanel.setBounds(950, 0, 250, 800);
       tableInformationPanel.setLayout(null);
-      tableStudentName = new JLabel("Name: John Paul Jones");
+      tableStudentName = new JLabel("Name:");
       tableStudentName.setBounds(25, 0, 300, 100);
       tableInformationPanel.add(tableStudentName);
       tableClass = new JLabel("Class:");
@@ -214,6 +214,18 @@ public class FLOSSDriver {
       profileGnumber = new JLabel("G########");
       profileGnumber.setBounds(25, 200, 300, 120);
       profileInformationPanel.add(profileGnumber);
+   }
+   
+   public static void displayStudentName(String name) {
+      tableStudentName.setText("Name: " + name);
+   }
+   
+   public static void displayTableCourse(Class course) {
+      tableClass.setText("Course: " + course.getSubjectCode() + " " + course.getNumber());
+   }
+   
+   public static void resetTableCourse() {
+      tableClass.setText("Course: ");
    }
    
    public static void initializeClasses() throws IOException {
