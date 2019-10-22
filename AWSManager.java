@@ -28,7 +28,7 @@ public class AWSManager implements RemoteDBManager {
 	private AmazonDynamoDB dynamoDB;
 	
 	public AWSManager( ) {
-		ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider( "./credentials", "DefaultProfile" );
+		ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider( "./credentials", "default" );
         try {
             credentialsProvider.getCredentials();
         } catch (Exception e) {
