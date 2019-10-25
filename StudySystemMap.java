@@ -31,35 +31,61 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon floor1 = new ImageIcon("Fenwick_Library_Maps/Floor1.png");  //Image for the map of floor 1
    private ImageIcon floor2 = new ImageIcon("Fenwick_Library_Maps/Floor2.png");  //Image for the map of floor 2
    private ImageIcon floor3 = new ImageIcon("Fenwick_Library_Maps/Floor3.png");  //Image for the map of floor 3
-   private ImageIcon searchIcon = new ImageIcon("search_icon.png");     //Icon for the search button
-   private ImageIcon profileIcon = new ImageIcon("profile_icon.png");   //Icon for the profile button
-   private ImageIcon blockTable = new ImageIcon("Occupied_Tables/green_block_occupied.png");    //Block table display
-   private ImageIcon circleTable = new ImageIcon("Occupied_Tables/green_circle_occupied.png");  //Circle table display
-   private ImageIcon smallCircleTable_h = new ImageIcon("Occupied_Tables/green_small_circle_occupied.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v = new ImageIcon("Occupied_Tables/green_smallcircle_occupied_v.png");   //Small cirlce talbe (vertical)
+   //Images for displaying tables that have been selected
+   private ImageIcon blockTable_occupied = new ImageIcon("table_images/green_block_occupied.png");                   //Block table display
+   private ImageIcon circleTable_occupied = new ImageIcon("table_images/green_circle_occupied.png");                 //Circle table display
+   private ImageIcon smallCircleTable_h_occupied = new ImageIcon("table_images/green_small_circle_occupied.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/green_smallcircle_occupied_v.png");   //Small cirlce talbe (vertical)
+   //Images for displaying table that the user has selected
+   private ImageIcon blockTable_selected = new ImageIcon("table_images/green_block_selected.png");                   //Block table display
+   private ImageIcon circleTable_selected = new ImageIcon("table_images/green_circle_selected.png");                 //Circle table display
+   private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/green_small_circle_selected.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/green_smallcircle_selected_v.png");   //Small cirlce talbe (vertical)
+   //Images for displaying table that the user is occupying
+   private ImageIcon blockTable_user = new ImageIcon("table_images/green_block_user.png");                    //Block table display
+   private ImageIcon circleTable_user = new ImageIcon("table_images/green_circle_user.png");                  //Circle table display
+   private ImageIcon smallCircleTable_h_user= new ImageIcon("table_images/green_small_circle_user.png");      //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_user = new ImageIcon("table_images/green_smallcircle_user_v.png");    //Small cirlce talbe (vertical)
+   //Images for displaying tables that match with what the user is searching for
+   private ImageIcon blockTable_match = new ImageIcon("table_images/green_block_matchd.png");                   //Block table display
+   private ImageIcon circleTable_match = new ImageIcon("table_images/green_circle_match.png");                 //Circle table display
+   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/green_small_circle_match.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/green_smallcircle_match_v.png");   //Small cirlce talbe (vertical)
    
    private static int floorNumber;     //Floor number that the user is currently viewing 
    protected static int mouseX;			//location for the mouse pointer X
    protected static int mouseY;        //location for the mouse pointer Y
+   
+   private static Table selectedTable;    //Displays the table we have selected
+   private static boolean tableSelected;  //Whether or not we have selected a table
 
    //Basic constructor for the StudySystemMap w/ no parameters
    public StudySystemMap() throws IOException {
-      floorNumber = 2;                    //Initialize the floor number
+      floorNumber = 1;                    //Initialize the floor number
       initializeTables();                 //Initialize the table arrays
       addMouseListener( this );           //Initalize mouseListener
       addMouseMotionListener( this );     //Initalize mouseMotionListener
       mouseX = 0;                         //Set X location of the mouse
       mouseY = 0;                         //Set Y location of the mouse
-      
-      //Tester to test if data is implemented
-      floor1Tables.get(0).setOccupied();
-      floor1Tables.get(0).setStudentName("John Jones");
-      floor1Tables.get(0).setCourse(new Class("Accounting", "ACCT", 203, "courseTitle"));
+      selectedTable = new Table();        //Initialize the table we are selected
+      tableSelected = false;              //Initialize whether or not we have selected a table
    }
    
    //Set the floor number that the user is currently viewing
    public void setFloorNumber(int num) {
       this.floorNumber = num;
+   }
+   
+   public Table getSelectedTable() {
+      return this.selectedTable;
+   }
+   
+   public void setSelectedTable(Table table) {
+      this.selectedTable = table;
+   }
+   
+   public void setTableSelected(boolean tableSelected) {
+      this.tableSelected = tableSelected;
    }
    
     //Mouse ActionListener
@@ -75,8 +101,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                startCol = table.getCol();       //Get the starting column
                endRow = startRow + table.getRowSize();   //Get the end row
                endCol = startCol + table.getColSize();   //Get the end col
-               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
-                  floor1Tables.get(ind1).setOccupied();           //Switch the table from occupied to non-occupied 
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() == false) {    //If it is between the start and end row and the start and end column
+                  selectedTable = table;
+                  tableSelected = true;
+                  FLOSSDriver.displayCourseOptions(true);
+                  break;
+               } else {
+                  FLOSSDriver.displayCourseOptions(false);
+                  tableSelected = false;
                }
             }
          } else if(floorNumber == 2) {
@@ -86,8 +118,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                startCol = table.getCol();       //Get the starting column
                endRow = startRow + table.getRowSize();   //Get the end row
                endCol = startCol + table.getColSize();   //Get the end col
-               if(mouseX >= startRow && mouseX <= endRow) {    //If it is between the start and end row and the start and end column
-                  floor2Tables.get(ind2).setOccupied();           //Switch the table from occupied to non-occupied 
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() == false) {    //If it is between the start and end row and the start and end column
+                  selectedTable = table;
+                  tableSelected = true;
+                  FLOSSDriver.displayCourseOptions(true);
+                  break;
+               } else {
+                  FLOSSDriver.displayCourseOptions(false);
+                  tableSelected = false;
                }
             }
          } else if(floorNumber == 3) {
@@ -97,8 +135,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                startCol = table.getCol();       //Get the starting column
                endRow = startRow + table.getRowSize();   //Get the end row
                endCol = startCol + table.getColSize();   //Get the end col
-               if(mouseX >= startRow && mouseX <= endRow) {    //If it is between the start and end row and the start and end column
-                  floor3Tables.get(ind3).setOccupied();           //Switch the table from occupied to non-occupied 
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() == false) {    //If it is between the start and end row and the start and end column
+                  selectedTable = table;
+                  tableSelected = true;
+                  FLOSSDriver.displayCourseOptions(true);
+                  break;
+               } else {
+                  FLOSSDriver.displayCourseOptions(false);
+                  tableSelected = false;
                }
             }
          }
@@ -180,7 +224,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                if(table.getCourse().getNumber() != 0)
                   FLOSSDriver.displayTableCourse(table.getCourse());
                else
-                  FLOSSDriver.resetTableCourse();  
+                  FLOSSDriver.resetTableCourse(); 
                break;
             } else {
                FLOSSDriver.displayStudentName("");
@@ -203,10 +247,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    public void paintComponent(Graphics g) {
       g.setColor(Color.red);     //Set the background color to no pieces as red
       super.paintComponent(g); 	//Call super method
-      paintBoard(g, floorNumber);
+      paintMap(g, floorNumber);
+      paintSelectedTable(g);
    }
    
-   public void paintBoard(Graphics g, int floor) {
+   public void paintMap(Graphics g, int floor) {
       //Display floor 1 if the user is viewing that floor
       if(floor == 1) {
          g.drawImage(floor1.getImage(), 0, 0, 800, 800, null);
@@ -238,13 +283,26 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    //Paint the table if it is being occupied by the user
    public void paintOccupiedTable(Graphics g, Table t) {
       if(t.getShape().equals("BLOCK")) 
-         g.drawImage(blockTable.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+         g.drawImage(blockTable_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
       else if(t.getShape().equals("CIRCLE")) 
-         g.drawImage(circleTable.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+         g.drawImage(circleTable_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
       else if(t.getShape().equals("SMALLCIRCLE_H")) 
-         g.drawImage(smallCircleTable_h.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+         g.drawImage(smallCircleTable_h_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
       else if(t.getShape().equals("SMALLCIRCLE_V")) 
-         g.drawImage(smallCircleTable_v.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+         g.drawImage(smallCircleTable_v_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+   }
+   
+   public void paintSelectedTable(Graphics g) {
+      if(tableSelected == true) {
+         if(selectedTable.getShape().equals("BLOCK")) 
+            g.drawImage(blockTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
+         else if(selectedTable.getShape().equals("CIRCLE")) 
+            g.drawImage(circleTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
+         else if(selectedTable.getShape().equals("SMALLCIRCLE_H")) 
+            g.drawImage(smallCircleTable_h_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
+         else if(selectedTable.getShape().equals("SMALLCIRCLE_V")) 
+            g.drawImage(smallCircleTable_v_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null);
+      } 
    }
    
    //Read in the tables.txt file and set the information for all the tables that a student can sit at

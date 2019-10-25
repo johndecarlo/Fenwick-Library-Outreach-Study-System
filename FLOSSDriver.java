@@ -15,12 +15,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("unchecked")
 public class FLOSSDriver {
 
    public static StudySystemMap fenwickLibrary;    //JPanel that holds the study maps
    public static JPanel buttons;                   //JPanel that holds the JButtons
    public static JPanel sidePanel;                 //JPanel that is the side information panel
-   public static ArrayList<Class> classList;       //List of most of the classes offered at GMU
+   public static ArrayList<Class> classList = new ArrayList<Class>();       //List of most of the classes offered at GMU
    
    public static JPanel tableInformationPanel;     //Information about a table that someone's mouse is over
    public static JPanel searchPanel;               //Implemented when searching for someone
@@ -38,6 +39,12 @@ public class FLOSSDriver {
    public static JLabel messageLabel;
    public static JTextField message;
    
+   //Classes list ComboBox
+   public static String[] subjectStrings = {"ACCT", "AFAM", "ANTH", "ARAB", "ARTH", "EDAT", "ASTR", "ATEP", "BENG", "BINF", "BENG", "BIOL", "BUS", "BULE", "CHEM", "CHIN", "CEIE", "CLAS", "CLIM", "COS", "CVPA", "COMM", "CDS", "GAME", "CS", "CONF", "CRIM", "CULT", "CYSE", "DANC", "DSGN", "ECED", "ECON", "EDIT", "EDUC", "EDPO", "EDPS", "ECE", "ELED", "ENGR", "ENGH", "ENVPP", "FAVS", "FNAN", "FRLN", "FRSC", "FREN", "GGS", "GEOL", "GERM", "GLOA", "GCH", "GOVT", "HEAL", "HAP", "HHS", "HEBR", "HIST", "HNRS", "HNRT", "HDFS", "IT", "INTS", "ITAL", "JAPA", "KINE", "KORE", "LATN", "LING", "MGMT", "MIS", "MKTG", "MATH", "ME", "MLAB", "MLSC", "MBUS", "NEUR", "NURS", "NUTR", "OM", "OR", "PRLS", "PERS", "PHIL", "PHED", "PHYS", "PORT", "PROV", "PSYC", "EDRD", "RHBS", "RELI", "RUSS", "SOCW", "SOCI", "SWE", "SPAN", "EDSE", "SPMT", "SRST", "STAT", "SYST", "THR", "TOUR", "TURK", "UNIV", "WMST"};
+   public static JComboBox courseSubjects;
+   public static JComboBox courseNumbers;
+   public static JButton addTable;
+   
    //Search tool text labels
    public static JLabel searchTitle;
    public static JTextField searchBar;
@@ -52,7 +59,7 @@ public class FLOSSDriver {
    public static void main(String[]args) throws IOException {
       JFrame display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1200, 830);			      //Size of display window
-      //display.setLocation(150, 25);				   //Location of display window on the screen
+      display.setLocation(150, 25);				   //Location of display window on the screen
       display.setLocation(0, 0);
       display.setResizable(false);              //Cannot change size of the screen
       display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Exit when close out 
@@ -67,8 +74,8 @@ public class FLOSSDriver {
       displayButtons();                            //Add all the buttons and options
       sidePanel = new JPanel();                    //Initialize the side panel that shows all our options
       sidePanel.setBounds(900, 0, 250, 800);       //Set the bounds for the interactive map
+      initializeClasses();                         //Initialize the class list
       initializeSidePanels();                      //Initialize the side panel
-      initializeClasses();
    
       container.add(fenwickLibrary);   //Add JPanel map to the main display screen 
       container.add(buttons);          //Add JPanel buttons to the main display screen 
@@ -84,8 +91,8 @@ public class FLOSSDriver {
       floor1 = new JButton("1st Floor");   //Initialize the JButton
       floor2 = new JButton("2nd Floor");   //Initialize the JButton
       floor3 = new JButton("3rd Floor");   //Initialize the JButton
-      ImageIcon searchIcon = new ImageIcon("images/search_icon.png");    //Initialize the image to add to the JButton
-      ImageIcon profileIcon = new ImageIcon("images/profile_icon.png");  //Initialize the image to add to the JButton
+      ImageIcon searchIcon = new ImageIcon("icon_images/search_icon.png");    //Initialize the image to add to the JButton
+      ImageIcon profileIcon = new ImageIcon("icon_images/profile_icon.png");  //Initialize the image to add to the JButton
       search = new JButton(searchIcon);    //Add button to the JFrame
       profile = new JButton(profileIcon);  //Add button to the JFrame
       floor1.setBounds(0, 0, 150, 160);       //Set the bounds to the floor 1 button
@@ -100,6 +107,8 @@ public class FLOSSDriver {
                floor1.setEnabled(false);
                loadSidePanel(1);
                fenwickLibrary.setFloorNumber(1);
+               fenwickLibrary.setTableSelected(false);
+               displayCourseOptions(false);
                fenwickLibrary.repaint();
             } });   
       floor2.addActionListener(
@@ -109,6 +118,8 @@ public class FLOSSDriver {
                floor2.setEnabled(false);
                loadSidePanel(2);
                fenwickLibrary.setFloorNumber(2);
+               fenwickLibrary.setTableSelected(false);
+               displayCourseOptions(false);
                fenwickLibrary.repaint();
             } });    
       floor3.addActionListener(
@@ -118,6 +129,8 @@ public class FLOSSDriver {
                floor3.setEnabled(false);
                loadSidePanel(3);
                fenwickLibrary.setFloorNumber(3);
+               fenwickLibrary.setTableSelected(false);
+               displayCourseOptions(false);
                fenwickLibrary.repaint();
             } });  
       search.addActionListener(
@@ -125,6 +138,8 @@ public class FLOSSDriver {
             public void actionPerformed(ActionEvent e) {
                enableButtons();
                search.setEnabled(false);
+               fenwickLibrary.setTableSelected(false);
+               displayCourseOptions(false);
                loadSidePanel(4);
             } });  
       profile.addActionListener(
@@ -132,6 +147,8 @@ public class FLOSSDriver {
             public void actionPerformed(ActionEvent e) {
                enableButtons();
                profile.setEnabled(false);
+               fenwickLibrary.setTableSelected(false);
+               displayCourseOptions(false);
                loadSidePanel(5);
             } });  
       buttons.add(floor1);      //Add button to the JFrame
@@ -161,6 +178,14 @@ public class FLOSSDriver {
       profile.setEnabled(true);
    }
    
+   public static void displayCourseOptions(boolean display) {
+      courseSubjects.setVisible(display);
+      courseNumbers.setVisible(display);
+      messageLabel.setVisible(display);
+      message.setVisible(display);
+      addTable.setVisible(display);
+   }
+   
    public static void initializeSidePanels() {
       initializeTablePanel();
       initializeSearchPanel();
@@ -172,18 +197,63 @@ public class FLOSSDriver {
       tableInformationPanel = new JPanel();
       tableInformationPanel.setBounds(950, 0, 250, 800);
       tableInformationPanel.setLayout(null);
-      tableStudentName = new JLabel("Name:");
+      tableStudentName = new JLabel("");
       tableStudentName.setBounds(25, 0, 300, 100);
       tableInformationPanel.add(tableStudentName);
-      tableClass = new JLabel("Class:");
-      tableClass.setBounds(25, 50, 300, 100);
+      tableClass = new JLabel("");
+      tableClass.setBounds(25, 30, 300, 100);
       tableInformationPanel.add(tableClass);
-      messageLabel = new JLabel("Other information");
-      messageLabel.setBounds(25, 100, 100, 100);
+      messageLabel = new JLabel("Study Description:");
+      messageLabel.setBounds(25, 230, 200, 25);
       tableInformationPanel.add(messageLabel);
       message = new JTextField(20);
-      message.setBounds(25, 175, 200, 25);
+      message.setBounds(25, 250, 175, 50);
       tableInformationPanel.add(message);
+      courseSubjects = new JComboBox(subjectStrings);
+      courseSubjects.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               String subject = (String)courseSubjects.getSelectedItem();
+               String[] list = initializeSubjectNumbers(subject);
+               courseNumbers.removeAllItems();
+               for(int i = 0; i < list.length; i++)
+                  courseNumbers.addItem(list[i]);
+            } });
+      courseSubjects.setBounds(25, 125, 75, 25);
+      tableInformationPanel.add(courseSubjects);
+      courseNumbers = new JComboBox(initializeSubjectNumbers(classList.get(0).getSubjectCode()));
+      courseNumbers.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            } });
+      courseNumbers.setBounds(125, 125, 75, 25);
+      tableInformationPanel.add(courseNumbers);
+      addTable = new JButton("Finish");
+      addTable.setBounds(25, 310, 175, 25);
+      addTable.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               fenwickLibrary.getSelectedTable().setOccupied();
+               fenwickLibrary.getSelectedTable().setStudentName("Mr. Jones");
+               String course = (String)courseSubjects.getSelectedItem();
+               String number = (String)courseNumbers.getSelectedItem();
+               fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
+               courseSubjects.setSelectedIndex(0);
+               displayCourseOptions(false);
+               fenwickLibrary.setTableSelected(false);
+               fenwickLibrary.repaint();
+            } });  
+      tableInformationPanel.add(addTable);
+      displayCourseOptions(false);
+   }
+   
+   public static Class findClass(String course, String number) {
+      for(int i = 0; i < classList.size(); i++) {
+         if(classList.get(i).getSubjectCode().equals(course) && classList.get(i).getNumber() == Integer.parseInt(number)) {
+            return classList.get(i);
+         }
+      }
+      return new Class();
    }
    
    public static void initializeSearchPanel() {
@@ -217,7 +287,10 @@ public class FLOSSDriver {
    }
    
    public static void displayStudentName(String name) {
-      tableStudentName.setText("Name: " + name);
+      if(!name.equals(""))
+         tableStudentName.setText("Name: " + name);
+      else
+         tableStudentName.setText("");
    }
    
    public static void displayTableCourse(Class course) {
@@ -225,11 +298,10 @@ public class FLOSSDriver {
    }
    
    public static void resetTableCourse() {
-      tableClass.setText("Course: ");
+      tableClass.setText("");
    }
    
    public static void initializeClasses() throws IOException {
-      classList = new ArrayList<Class>();
       File file = new File("dataFiles/classes.txt");
       BufferedReader reader = new BufferedReader(new FileReader(file));
       String line = "";
@@ -240,6 +312,20 @@ public class FLOSSDriver {
          }
       }
       reader.close();
+   }
+   
+   public static String[] initializeSubjectNumbers(String code) {
+      ArrayList<Integer> codes = new ArrayList<Integer>();
+      for(int i = 0; i < classList.size(); i++) {
+         if(code.equals(classList.get(i).getSubjectCode())) {
+            codes.add(classList.get(i).getNumber());
+         }
+      }
+      String[] finalCodes = new String[codes.size()];
+      for(int i = 0; i < codes.size(); i++) {
+         finalCodes[i] = String.valueOf(codes.get(i));
+      }
+      return finalCodes;
    }
    
    public static class listen implements KeyListener 
