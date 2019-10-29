@@ -70,10 +70,11 @@ public class FLOSSDriver {
    
       container.add(fenwickLibrary);   //Add JPanel map to the main display screen 
       container.add(sidePanel);        //Add JPanel sidePanel to the main display screen 
-      
-      Login login = new Login();
-     login.setVisible(true);
       display.setContentPane(container);  //Set the contents of the JFrame display to the container holding all the display info
+      display.setVisible(true);
+      
+      //Login login = new Login(display);
+      //login.setVisible(true);
    }
    
    public static void displaySidePanel()
@@ -185,7 +186,7 @@ public class FLOSSDriver {
       courseNumbers.setBounds(175, 235, 75, 25);
       sidePanel.add(courseNumbers);
       messageLabel = new JLabel("User Description:");
-
+   
       messageLabel.setBounds(50, 360, 200, 25);
       sidePanel.add(messageLabel);
       message = new JTextField(20);
