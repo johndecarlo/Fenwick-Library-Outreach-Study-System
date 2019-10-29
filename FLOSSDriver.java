@@ -53,8 +53,6 @@ public class FLOSSDriver {
    public static JLabel profileGnumber;   //Profile display g-number
    
    public static void main(String[]args) throws IOException {
-      String word = "Currenty studying for CS 367, would love to have someone come and work on project 2 with me.  Please come right on by if you would like to study";
-      System.out.println(word.length());
       JFrame display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1112, 830);			      //Size of display window
       display.setLocation(250, 0);				   //Location of display window on the screen
