@@ -39,7 +39,7 @@ public class Table {
    }
    
    //Constructor for Table class w/ parameters
-   public Table(int floor, int row, int col, int rowSize, int colSize, String shape, int id){
+   public Table(int floor, int row, int col, int rowSize, int colSize, String shape, int id) {
       this.floor = floor;
       this.row = row;
       this.col = col;

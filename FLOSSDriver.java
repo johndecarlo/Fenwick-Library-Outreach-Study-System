@@ -23,11 +23,11 @@ public class FLOSSDriver {
    public static JPanel sidePanel;                 //JPanel that is the side information panel
    public static ArrayList<Class> classList = new ArrayList<Class>();       //List of most of the classes offered at GMU
    
-   public static JButton floor1;       //When pressed will display first floor information
-   public static JButton floor2;       //When pressed will display second floor information     
-   public static JButton floor3;       //When pressed will display third floor information
-   public static JButton search;       //When pressed will display search table information
-   public static JButton profile;      //When pressed will display the profile information
+   //JButtons to display the floors and the search feature
+   public static JButton floor1;       
+   public static JButton floor2;          
+   public static JButton floor3;       
+   public static JButton search;       
    
    //Floor Information text labels
    public static JLabel tableStudentName;
@@ -42,8 +42,10 @@ public class FLOSSDriver {
    public static JComboBox courseNumbers;
    public static JButton addTable;
    
-   //Search tool text labels
+   //Search feature ComboBoxes
    public static JLabel searchTitle;
+   public static JComboBox searchSubjects;
+   public static JComboBox searchNumbers;
    
    //Profile JPanel text labels
    public static JLabel profileName;      //Profile display name
@@ -66,19 +68,28 @@ public class FLOSSDriver {
       fenwickLibrary.setBounds(0, 0, 800, 800);    //Set the bounds for the interactive map
       displaySidePanel();                            //Add all the buttons and options
       initializeClasses();                         //Initialize the class list
-      initializeSidePanel();
+      initializeSidePanel();                       //Initialize the side panel
+      initializeSearchFeature();                   //Initialize the search feature for the class
    
-      container.add(fenwickLibrary);   //Add JPanel map to the main display screen 
-      container.add(sidePanel);        //Add JPanel sidePanel to the main display screen 
-      display.setContentPane(container);  //Set the contents of the JFrame display to the container holding all the display info
-      display.setVisible(true);
+      container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
+      container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
+      display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info
+      display.setVisible(true);              //Set the display to visible
       
       //Login login = new Login(display);
       //login.setVisible(true);
    }
    
-   public static void displaySidePanel()
-   {
+   public static String getSearchSubject() {
+      return (String)searchSubjects.getSelectedItem();
+   }
+   
+   public static int getSearchNumber() {
+      return Integer.parseInt((String)searchNumbers.getSelectedItem());
+   }
+   
+   //Method that initializes the buttons for the side panel
+   public static void displaySidePanel() {
       sidePanel = new JPanel();
       sidePanel.setBounds(800, 0, 300, 800);
       sidePanel.setLayout(null);
@@ -86,9 +97,7 @@ public class FLOSSDriver {
       floor2 = new JButton("2F");   //Initialize the JButton
       floor3 = new JButton("3F");   //Initialize the JButton
       ImageIcon searchIcon = new ImageIcon("icon_images/search_icon.png");    //Initialize the image to add to the JButton
-      ImageIcon profileIcon = new ImageIcon("icon_images/profile_icon.png");  //Initialize the image to add to the JButton
       search = new JButton(searchIcon);    //Add button to the JFrame
-      profile = new JButton(profileIcon);  //Add button to the JFrame
       floor1.setBounds(0, 0, 75, 75);       //Set the bounds to the floor 1 button
       floor2.setBounds(75, 0, 75, 75);     //Set the bounds to the floor 2 button
       floor3.setBounds(150, 0, 75, 75);     //Set the bounds to the floor 3 button
@@ -131,6 +140,11 @@ public class FLOSSDriver {
                search.setEnabled(false);
                fenwickLibrary.setTableSelected(false);
                displayCourseOptions(false);
+               fenwickLibrary.setSearchEnabled(true);
+               searchSubjects.setVisible(true);
+               searchNumbers.setVisible(true);
+               searchTitle.setVisible(true);
+               fenwickLibrary.repaint();
             } });  
       sidePanel.add(floor1);      //Add button to the JFrame
       sidePanel.add(floor2);      //Add button to the JFrame
@@ -144,7 +158,6 @@ public class FLOSSDriver {
       floor2.setEnabled(true);
       floor3.setEnabled(true);
       search.setEnabled(true);
-      profile.setEnabled(true);
    }
    
    //Whether or not we want to display certain aspects of our side panel
@@ -156,6 +169,7 @@ public class FLOSSDriver {
       addTable.setVisible(display);
    }
    
+   //Method that initializes the side panel and all the JLabel and JComboBox features
    public static void initializeSidePanel() {
       tableStudentName = new JLabel("");
       tableStudentName.setBounds(25, 90, 300, 25);
@@ -179,10 +193,6 @@ public class FLOSSDriver {
       courseSubjects.setBounds(50, 235, 75, 25);
       sidePanel.add(courseSubjects);
       courseNumbers = new JComboBox(initializeSubjectNumbers(classList.get(0).getSubjectCode()));
-      courseNumbers.addActionListener(
-         new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            } });
       courseNumbers.setBounds(175, 235, 75, 25);
       sidePanel.add(courseNumbers);
       messageLabel = new JLabel("User Description:");
@@ -207,6 +217,7 @@ public class FLOSSDriver {
                fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
                message.setText("");
                displayCourseOptions(false);
+               fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                fenwickLibrary.setTableSelected(false);
                fenwickLibrary.repaint();
             } });  
@@ -214,6 +225,38 @@ public class FLOSSDriver {
       displayCourseOptions(false);
    }
    
+   //Initialize the search features for the side panel
+   public static void initializeSearchFeature() {
+      searchTitle = new JLabel("Course Search");
+      searchTitle.setBounds(100, 500, 100, 25);
+      sidePanel.add(searchTitle);
+      searchTitle.setVisible(false);
+      searchSubjects = new JComboBox(subjectStrings);
+      searchSubjects.setBounds(50, 525, 75, 25);
+      searchSubjects.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               String subject = (String)searchSubjects.getSelectedItem();
+               String[] list = initializeSubjectNumbers(subject);
+               searchNumbers.removeAllItems();
+               for(int i = 0; i < list.length; i++)
+                  searchNumbers.addItem(list[i]);
+               fenwickLibrary.repaint();
+            } });
+      sidePanel.add(searchSubjects);
+      searchSubjects.setVisible(false);
+      searchNumbers = new JComboBox(initializeSubjectNumbers(classList.get(0).getSubjectCode()));
+      searchNumbers.setBounds(175, 525, 75, 25);
+      searchNumbers.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               fenwickLibrary.repaint();
+            } });         
+      sidePanel.add(searchNumbers);
+      searchNumbers.setVisible(false);
+   }
+   
+   //Determine if the provided course and number are that of a real class
    public static Class findClass(String course, String number) {
       for(int i = 0; i < classList.size(); i++) {
          if(classList.get(i).getSubjectCode().equals(course) && classList.get(i).getNumber() == Integer.parseInt(number)) {
@@ -223,22 +266,27 @@ public class FLOSSDriver {
       return new Class();
    }
    
+   //Display the name of the student
    public static void displayStudentName(String name) {
       tableStudentName.setText(name);
    }
    
+   //Display the message that the user wants to send to other users
    public static void displayMessage(String message) {
       tableMessage.setText("<html>" + message + "</html>");
    }
    
+   //Display the course that the user/student is studying for
    public static void displayTableCourse(Class course) {
       tableClass.setText(course.getSubjectCode() + " " + course.getNumber());
    }
    
+   //Reset the JLabel for the table display
    public static void resetTableCourse() {
       tableClass.setText("");
    }
    
+   //Initialize the classes that are provided from the text file
    public static void initializeClasses() throws IOException {
       File file = new File("dataFiles/classes.txt");
       BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -252,6 +300,7 @@ public class FLOSSDriver {
       reader.close();
    }
    
+   //Initialize the subject numbers for each of the courses
    public static String[] initializeSubjectNumbers(String code) {
       ArrayList<Integer> codes = new ArrayList<Integer>();
       for(int i = 0; i < classList.size(); i++) {

@@ -48,7 +48,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon smallCircleTable_h_user= new ImageIcon("table_images/green_small_circle_user.png");      //Small circle table (horizontal)
    private ImageIcon smallCircleTable_v_user = new ImageIcon("table_images/green_smallcircle_user_v.png");    //Small cirlce talbe (vertical)
    //Images for displaying tables that match with what the user is searching for
-   private ImageIcon blockTable_match = new ImageIcon("table_images/green_block_matchd.png");                   //Block table display
+   private ImageIcon blockTable_match = new ImageIcon("table_images/green_block_match.png");                   //Block table display
    private ImageIcon circleTable_match = new ImageIcon("table_images/green_circle_match.png");                 //Circle table display
    private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/green_small_circle_match.png");    //Small circle table (horizontal)
    private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/green_smallcircle_match_v.png");   //Small cirlce talbe (vertical)
@@ -57,8 +57,10 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    protected static int mouseX;			//location for the mouse pointer X
    protected static int mouseY;        //location for the mouse pointer Y
    
-   private static Table selectedTable;    //Displays the table we have selected
+   private static Table userTable;        //Table that the user is currently occupying
+   private static Table selectedTable;    //Table that the user has selected
    private static boolean tableSelected;  //Whether or not we have selected a table
+   private static boolean searchFeature;  //Whether or not the search feature is active
 
    //Basic constructor for the StudySystemMap w/ no parameters
    public StudySystemMap() throws IOException {
@@ -69,7 +71,9 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       mouseX = 0;                         //Set X location of the mouse
       mouseY = 0;                         //Set Y location of the mouse
       selectedTable = new Table();        //Initialize the table we are selected
+      userTable = null;                   //Initialze the user table
       tableSelected = false;              //Initialize whether or not we have selected a table
+      searchFeature = false;              //Initialize whether or not the search feature is active
    }
    
    //Set the floor number that the user is currently viewing
@@ -87,9 +91,24 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       this.selectedTable = table;
    }
    
+      //Get the table that we have selected
+   public Table getUserTable() {
+      return this.userTable;
+   }
+   
+   //Set our selectedTable variable
+   public void setUserTable(Table table) {
+      this.userTable = table;
+   }
+   
    //Set our tableSelected variable
    public void setTableSelected(boolean tableSelected) {
       this.tableSelected = tableSelected;
+   }
+   
+   //Set our search feature variable
+   public void setSearchEnabled(boolean searchFeature) {
+      this.searchFeature = searchFeature;
    }
    
    //Mouse ActionListener
@@ -173,7 +192,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    public void mouseMoved( MouseEvent e) {
       int startRow, startCol, endRow, endCol;
       Table table = null;
-      
       mouseX = e.getX();	//Get mouseX value
       mouseY = e.getY();	//Get mouseY value
       if(floorNumber == 1) {
@@ -237,12 +255,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       repaint();			//Refresh the screen
    }
 
+   //When we drag the mouse across the board
    public void mouseDragged( MouseEvent e) {
       mouseX = e.getX();	//Get mouseX value
       mouseY = e.getY();	//Get mouseY value
       repaint();			//Refresh the screen
    }
    
+   //Mouse Exited
    public void mouseExited( MouseEvent e )
    {}
    
@@ -252,6 +272,8 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       super.paintComponent(g); 	//Call super method
       paintMap(g, floorNumber);
       paintSelectedTable(g);
+      paintUserTable(g);
+      paintMatchingTable(g);
    }
    
    //Paint out the image of the floors for Fenwick
@@ -312,15 +334,43 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    
    //Paint the table that the user is currently occupying
    public void paintUserTable(Graphics g) {
-      if(tableSelected == true) {
-         if(selectedTable.getShape().equals("BLOCK")) 
-            g.drawImage(blockTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
-         else if(selectedTable.getShape().equals("CIRCLE")) 
-            g.drawImage(circleTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
-         else if(selectedTable.getShape().equals("SMALLCIRCLE_H")) 
-            g.drawImage(smallCircleTable_h_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
-         else if(selectedTable.getShape().equals("SMALLCIRCLE_V")) 
-            g.drawImage(smallCircleTable_v_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null);
+      if(userTable != null) {
+         if(userTable.getShape().equals("BLOCK") && userTable.getFloor() == floorNumber) 
+            g.drawImage(blockTable_user.getImage(), userTable.getRow(), userTable.getCol(), userTable.getRowSize(), userTable.getColSize(), null); 
+         else if(userTable.getShape().equals("CIRCLE") && userTable.getFloor() == floorNumber) 
+            g.drawImage(circleTable_user.getImage(), userTable.getRow(), userTable.getCol(), userTable.getRowSize(), userTable.getColSize(), null); 
+         else if(userTable.getShape().equals("SMALLCIRCLE_H") && userTable.getFloor() == floorNumber) 
+            g.drawImage(smallCircleTable_h_user.getImage(), userTable.getRow(), userTable.getCol(), userTable.getRowSize(), userTable.getColSize(), null); 
+         else if(userTable.getShape().equals("SMALLCIRCLE_V") && userTable.getFloor() == floorNumber) 
+            g.drawImage(smallCircleTable_v_user.getImage(), userTable.getRow(), userTable.getCol(), userTable.getRowSize(), userTable.getColSize(), null);
+      } 
+   }
+   
+   //Paint the table that matches with the users search feature
+   public void paintMatchingTable(Graphics g) {
+      if(searchFeature == true) {
+         ArrayList<Table> tables;
+         if(floorNumber == 1)
+            tables = floor1Tables;
+         else if (floorNumber == 2)
+            tables = floor2Tables;
+         else if (floorNumber == 3)
+            tables = floor3Tables;
+         else
+            tables = floor1Tables;
+         String subjectCode = FLOSSDriver.getSearchSubject();
+         int courseNumber = FLOSSDriver.getSearchNumber();
+         for(int index = 0; index < tables.size(); index++) {
+            Table table = tables.get(index);
+            if(table.getShape().equals("BLOCK") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
+               g.drawImage(blockTable_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+            else if(table.getShape().equals("CIRCLE") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+               g.drawImage(circleTable_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+            else if(table.getShape().equals("SMALLCIRCLE_H") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+               g.drawImage(smallCircleTable_h_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);  
+            else if(table.getShape().equals("SMALLCIRCLE_V") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+               g.drawImage(smallCircleTable_v_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+         }
       } 
    }
    
