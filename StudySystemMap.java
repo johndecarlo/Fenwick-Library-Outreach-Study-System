@@ -185,14 +185,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
             endCol = startCol + table.getColSize();   //Get the end col
             if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
                FLOSSDriver.displayStudentName(table.getStudentName());
+               FLOSSDriver.displayMessage(table.getMessage());
                if(table.getCourse().getNumber() != 0)
                   FLOSSDriver.displayTableCourse(table.getCourse());
                else
                   FLOSSDriver.resetTableCourse();  
                break;
             } else {
-               FLOSSDriver.displayStudentName("");
-               FLOSSDriver.resetTableCourse();  
+               resetMessages();
             }  
          }
       }
@@ -211,8 +211,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                   FLOSSDriver.resetTableCourse();  
                break;
             } else {
-               FLOSSDriver.displayStudentName("");
-               FLOSSDriver.resetTableCourse();  
+               resetMessages();
             }  
          }
       }
@@ -231,8 +230,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                   FLOSSDriver.resetTableCourse(); 
                break;
             } else {
-               FLOSSDriver.displayStudentName("");
-               FLOSSDriver.resetTableCourse();  
+               resetMessages();
             }  
          }
       }
@@ -343,5 +341,12 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
          id_count++;
       }
       reader.close();
+   }
+   
+   //Reset the JLabels so we don't display information about a table we are not over
+   public static void resetMessages() {
+      FLOSSDriver.displayStudentName("");
+      FLOSSDriver.resetTableCourse();  
+      FLOSSDriver.displayMessage(""); 
    }
 }

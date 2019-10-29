@@ -161,7 +161,7 @@ public class FLOSSDriver {
       tableClass = new JLabel("");
       tableClass.setBounds(25, 115, 300, 25);
       sidePanel.add(tableClass);
-      tableMessage = new JLabel("<html>Currenty studying for CS 367, would love to have someone come and work on project 2 with me.  Please come right on by if you would like to study</html>");
+      tableMessage = new JLabel("");
       tableMessage.setBounds(25, 140, 200, 80);
       sidePanel.add(tableMessage);
       courseSubjects = new JComboBox(subjectStrings);
@@ -201,6 +201,8 @@ public class FLOSSDriver {
                String number = (String)courseNumbers.getSelectedItem();
                fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
                courseSubjects.setSelectedIndex(0);
+               fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
+               message.setText("");
                displayCourseOptions(false);
                fenwickLibrary.setTableSelected(false);
                fenwickLibrary.repaint();
@@ -219,14 +221,15 @@ public class FLOSSDriver {
    }
    
    public static void displayStudentName(String name) {
-      if(!name.equals(""))
-         tableStudentName.setText("Name: " + name);
-      else
-         tableStudentName.setText("");
+      tableStudentName.setText(name);
+   }
+   
+   public static void displayMessage(String message) {
+      tableMessage.setText("<html>" + message + "</html>");
    }
    
    public static void displayTableCourse(Class course) {
-      tableClass.setText("Course: " + course.getSubjectCode() + " " + course.getNumber());
+      tableClass.setText(course.getSubjectCode() + " " + course.getNumber());
    }
    
    public static void resetTableCourse() {
