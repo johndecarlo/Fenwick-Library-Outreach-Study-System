@@ -9,7 +9,7 @@ public interface RemoteDBManager {
     boolean editPassword( String id, String newPassword );
 
     //manage studying status
-    boolean toggleStudying( String id, boolean val );
+    boolean toggleStudying( String id, boolean val, int tableID, String message );
     boolean isStudying( String id );
 
     //manage study mates
