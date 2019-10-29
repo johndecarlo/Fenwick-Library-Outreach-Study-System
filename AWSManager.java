@@ -38,15 +38,17 @@ public class AWSManager implements RemoteDBManager {
 	private static final String USER_ID = "UserID";
 	private static final String USER_IS_STUDYING = "IsStudying";
 	private static final String USER_TABLE_AT = "MyTable";
-	private static final String USER_MESSAGE = "Message";
 	private static final String USER_NAME = "Name";
 	private static final String USER_PASSWORD = "Password";
+	private static final String USER_MAJOR = "Major";
 	
 	//Column Names - TABLES_TABLE
 	private static final String TABLE_ID = "id";
 	private static final String TABLE_ACTIVE = "IsActive";
 	private static final String TABLE_FOUNDER = "FounderID";
 	private static final String TABLE_STUDYMATES = "StudyMates";
+	private static final String TABLE_MESSAGE = "StudyMessage";
+	private static final String TABLE_CLASS = "ClassStudying";
 	
 	public AWSManager( ) {
 		ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider( "./credentials", "default" );
@@ -75,11 +77,23 @@ public class AWSManager implements RemoteDBManager {
 		ScanResult result = dynamoDB.scan( scanRequest );
 		return result.getCount( ) != 0;
 	}
+	
+	@Override
+	public String getPassword( String id ) {
+		if ( !exists( id ) ) return null;
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withS( id ) );
+		scanFilter.put( USER_ID, condition );
+		ScanRequest scanRequest = new ScanRequest( USER_TABLE ).withScanFilter( scanFilter );
+		ScanResult result = dynamoDB.scan( scanRequest );
+		return result.getItems( ).get( 0 ).get( USER_PASSWORD ).getS( );
+	}
 
 	@Override
-	public boolean addUser( String userID, String name, String password ) {
+	public boolean addUser( String userID, String name, String password, String major ) {
 		if ( exists( userID ) ) return false;
-		Map<String, AttributeValue> item = newItem( userID, name, password );
+		Map<String, AttributeValue> item = newItem( userID, name, password, major );
 		PutItemRequest request = new PutItemRequest( USER_TABLE, item );
 		dynamoDB.putItem( request );
 		return true;
@@ -110,20 +124,33 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean toggleStudying( String id, boolean val, int tableID, String message ) {
+	public boolean startStudying( String id, int tableID, String message, String classInfo ) {
 		if ( !exists( id ) ) return false;
-		if ( isStudying( id ) && val ) return false;
+		if ( isStudying( id ) ) return false;
 		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
 		item.put( USER_ID, new AttributeValue( id ) );
-		item.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( val ) );
+		item.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( true ) );
 		
 		PutItemRequest request = new PutItemRequest( USER_TABLE, item );
 		dynamoDB.putItem( request );
+		
+		
 		return true;
+	}
+	
+	@Override
+	public boolean joinStudying( String id, int tableID ) {
+		
+	}
+	
+	@Override
+	public boolean stopStudying( String id ) {
+		
 	}
 
 	@Override
 	public boolean isStudying( String id ) {
+		if ( !exists( id ) ) return false;
 		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
 		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
 				.withAttributeValueList( new AttributeValue( ).withS( id ) );
@@ -224,7 +251,7 @@ public class AWSManager implements RemoteDBManager {
 		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
 		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
 				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
-		scanFilter.put( "id", condition );
+		scanFilter.put( TABLE_ID, condition );
 		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter );
 		ScanResult result = dynamoDB.scan( scanRequest );
 		if ( result.getCount( ) == 0 ) return false;
@@ -239,11 +266,33 @@ public class AWSManager implements RemoteDBManager {
 		return true;
 	}
 	
-	private static Map<String, AttributeValue> newItem( String userID, String name, String password ) {
+	private boolean tableIsTaken( int tableID ) {
+		if ( !tableExists( tableID ) ) return false;
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		scanFilter.put( TABLE_ID, condition );
+		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter );
+		ScanResult result = dynamoDB.scan( scanRequest );
+		return result.getItems( ).get( 0 ).get( TABLE_ACTIVE ).getBOOL( );
+	}
+	
+	private boolean tableExists( int tableID ) {
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		scanFilter.put( TABLE_ID, condition );
+		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter );
+		ScanResult result = dynamoDB.scan( scanRequest );
+		return result.getCount( ) == 1;
+	}
+	
+	private static Map<String, AttributeValue> newItem( String userID, String name, String password, String major ) {
         Map<String, AttributeValue> item = new HashMap<String, AttributeValue>();
         item.put( USER_ID, new AttributeValue( userID ) );
         item.put( USER_NAME, new AttributeValue( name ) );
         item.put( USER_PASSWORD, new AttributeValue( password ) );
+        item.put( USER_MAJOR, new AttributeValue( major ) );
 
         return item;
     }
