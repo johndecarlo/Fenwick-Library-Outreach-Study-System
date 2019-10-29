@@ -1,25 +1,23 @@
-import java.util.list;
+import java.util.List;
 
 //Basic methods needed for accessing and changing information per student in the remote database
 public interface RemoteDBManager {
-    boolean exists( int id );
-    boolean getID( int studentID ); 
-        //get the unique id which the database uses to identify students, different from student id for security
+    boolean exists( String id );
 
-    boolean addUser( int id, String name /*add more values as student info decided on*/ );
-    boolean editName( int id, String value );
-    boolean editStudentID( int id, int studentID );
+    boolean addUser( String userID, String name, String password );
+    boolean editName( String id, String value );
+    boolean editPassword( String id, String newPassword );
 
     //manage studying status
-    boolean toggleStudying( int id, boolean val );
-    boolean isStudying( int id );
+    boolean toggleStudying( String id, boolean val, int tableID, String message );
+    boolean isStudying( String id );
 
     //manage study mates
-    List<Integer> fetchStudyMates( int id );
-    boolean addStudyMates( int id );
+    List<String> fetchStudyMates( String id );
+    boolean addStudyMates( String id, String... studyMates );
 
     //manage study location, int would be some combination of floor and table number
     //system would check if table is available, and would return false to editing if not
-    int fetchStudyLocation( int id );
-    boolean editStudyLocation( int id, int location );
+    int fetchStudyLocation( String id );
+    boolean editStudyLocation( String id, int location );
 }
