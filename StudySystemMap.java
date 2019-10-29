@@ -28,6 +28,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ArrayList<Table> floor2Tables = new ArrayList<Table>();   //List of tables on floor 2
    private ArrayList<Table> floor3Tables = new ArrayList<Table>();   //List of tables on floor 3
          
+   //Images for the floors
    private ImageIcon floor1 = new ImageIcon("Fenwick_Library_Maps/Floor1.png");  //Image for the map of floor 1
    private ImageIcon floor2 = new ImageIcon("Fenwick_Library_Maps/Floor2.png");  //Image for the map of floor 2
    private ImageIcon floor3 = new ImageIcon("Fenwick_Library_Maps/Floor3.png");  //Image for the map of floor 3
@@ -76,19 +77,22 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       this.floorNumber = num;
    }
    
+   //Get the table that we have selected
    public Table getSelectedTable() {
       return this.selectedTable;
    }
    
+   //Set our selectedTable variable
    public void setSelectedTable(Table table) {
       this.selectedTable = table;
    }
    
+   //Set our tableSelected variable
    public void setTableSelected(boolean tableSelected) {
       this.tableSelected = tableSelected;
    }
    
-    //Mouse ActionListener
+   //Mouse ActionListener
    public void mouseClicked( MouseEvent e ) {
       int button = e.getButton();  
       Table table = null;
@@ -240,10 +244,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       mouseY = e.getY();	//Get mouseY value
       repaint();			//Refresh the screen
    }
-
+   
    public void mouseExited( MouseEvent e )
    {}
    
+   //Call all the paint methods for displaying the image
    public void paintComponent(Graphics g) {
       g.setColor(Color.red);     //Set the background color to no pieces as red
       super.paintComponent(g); 	//Call super method
@@ -251,6 +256,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       paintSelectedTable(g);
    }
    
+   //Paint out the image of the floors for Fenwick
    public void paintMap(Graphics g, int floor) {
       //Display floor 1 if the user is viewing that floor
       if(floor == 1) {
@@ -292,7 +298,22 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
          g.drawImage(smallCircleTable_v_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
    }
    
+   //Paint the table if the user has selected it
    public void paintSelectedTable(Graphics g) {
+      if(tableSelected == true) {
+         if(selectedTable.getShape().equals("BLOCK")) 
+            g.drawImage(blockTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
+         else if(selectedTable.getShape().equals("CIRCLE")) 
+            g.drawImage(circleTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
+         else if(selectedTable.getShape().equals("SMALLCIRCLE_H")) 
+            g.drawImage(smallCircleTable_h_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
+         else if(selectedTable.getShape().equals("SMALLCIRCLE_V")) 
+            g.drawImage(smallCircleTable_v_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null);
+      } 
+   }
+   
+   //Paint the table that the user is currently occupying
+   public void paintUserTable(Graphics g) {
       if(tableSelected == true) {
          if(selectedTable.getShape().equals("BLOCK")) 
             g.drawImage(blockTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
@@ -310,14 +331,16 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       File file = new File("dataFiles/tables.txt");
       BufferedReader reader = new BufferedReader(new FileReader(file));
       String line = "";
+      int id_count = 0;
       while ((line = reader.readLine()) != null) {
          String[] table = line.split(",");
          if(table[0].equals("1"))
-            floor1Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5]));
+            floor1Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count));
          else if(table[0].equals("2"))
-            floor2Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5]));
+            floor2Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count));
          else if(table[0].equals("3"))
-            floor3Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5]));
+            floor3Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count));
+         id_count++;
       }
       reader.close();
    }

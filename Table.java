@@ -22,6 +22,7 @@ public class Table {
    private String studentName;   //Name of student sitting at the table
    private Class course;         //Course that the student is studying for
    private String message;       //Message that the student can send out describing their studies
+   private int id;               //ID to identify our table by (Will be index in the array)
    
    //Constructor for Table class w/ no parameters
    public Table() {
@@ -38,7 +39,7 @@ public class Table {
    }
    
    //Constructor for Table class w/ parameters
-   public Table(int floor, int row, int col, int rowSize, int colSize, String shape){
+   public Table(int floor, int row, int col, int rowSize, int colSize, String shape, int id){
       this.floor = floor;
       this.row = row;
       this.col = col;
@@ -49,6 +50,7 @@ public class Table {
       this.studentName = "";
       this.course = new Class();
       this.message = "";
+      this.id = id;
    }
    
    //Get the floor number
@@ -152,6 +154,16 @@ public class Table {
    //Set the message describing the student studies
    public void setMessage(String message) {
       this.message = message;
+   }
+   
+   //Get the id of the table
+   public int getID() {
+      return this.id;
+   }
+   
+   //Set the id of the table
+   public void setID(int id) {
+      this.id = id;
    }
    
 }
