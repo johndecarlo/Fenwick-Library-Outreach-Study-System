@@ -4,12 +4,15 @@ import java.util.List;
 public interface RemoteDBManager {
     boolean exists( String id );
 
-    boolean addUser( String userID, String name, String password );
+    boolean addUser( String userID, String name, String password, String major );
     boolean editName( String id, String value );
     boolean editPassword( String id, String newPassword );
+    String getPassword( String id );
 
     //manage studying status
-    boolean toggleStudying( String id, boolean val, int tableID, String message );
+    boolean startStudying( String id, int tableID, String message, String classInfo );
+    boolean joinStudying( String id, int tableID );
+    boolean stopStudying( String id );
     boolean isStudying( String id );
 
     //manage study mates
