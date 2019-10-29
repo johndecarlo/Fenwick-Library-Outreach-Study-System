@@ -81,8 +81,10 @@ public class FLOSSDriver {
       container.add(buttons);          //Add JPanel buttons to the main display screen 
       container.add(sidePanel);        //Add JPanel sidePanel to the main display screen 
       
-      display.setContentPane(container);  //Set the contents of the JFrame display to the container holding all the display info
-      display.setVisible(true);           //Set the JFrame visible
+      display.setContentPane(container); // Set the contents of the JFrame display to the container holding all the
+                                         // display info
+      Login login = new Login(display);
+      login.setVisible(true);
    }
    
    public static void displayButtons()
