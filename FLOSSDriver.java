@@ -27,7 +27,8 @@ public class FLOSSDriver {
    public static JButton floor1;       
    public static JButton floor2;          
    public static JButton floor3;       
-   public static JButton search;       
+   public static JButton search;
+   public static JButton removeUserTable;       
    
    //Floor Information text labels
    public static JLabel tableStudentName;
@@ -53,6 +54,7 @@ public class FLOSSDriver {
    public static JLabel profileMajor;     //Profile display major
    public static JLabel profileMinor;     //Profile display minor
    public static JLabel profileGnumber;   //Profile display g-number
+   public static boolean enableSearch = false;  //Whether the search feature is enabled
    
    public static void main(String[]args) throws IOException {
       JFrame display = new JFrame("FLOSS");     //Create our JFrame
@@ -74,10 +76,9 @@ public class FLOSSDriver {
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
       container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
       display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info
-      display.setVisible(true);              //Set the display to visible
       
-      //Login login = new Login(display);
-      //login.setVisible(true);
+      Login login = new Login(display);
+      login.setVisible(true);
    }
    
    public static String getSearchSubject() {
@@ -137,13 +138,7 @@ public class FLOSSDriver {
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                enableButtons();
-               search.setEnabled(false);
-               fenwickLibrary.setTableSelected(false);
-               displayCourseOptions(false);
-               fenwickLibrary.setSearchEnabled(true);
-               searchSubjects.setVisible(true);
-               searchNumbers.setVisible(true);
-               searchTitle.setVisible(true);
+               enableSearch();   
                fenwickLibrary.repaint();
             } });  
       sidePanel.add(floor1);      //Add button to the JFrame
@@ -152,12 +147,27 @@ public class FLOSSDriver {
       sidePanel.add(search);      //Add button to the JFrame
    }
    
+   public static void enableSearch() {
+      if(enableSearch) {
+         fenwickLibrary.setSearchEnabled(false);
+         searchSubjects.setVisible(false);
+         searchNumbers.setVisible(false);
+         searchTitle.setVisible(false);
+         enableSearch = false;
+      } else {
+         fenwickLibrary.setSearchEnabled(true);
+         searchSubjects.setVisible(true);
+         searchNumbers.setVisible(true);
+         searchTitle.setVisible(true);
+         enableSearch = true;
+      }
+   }
+   
    //Enable the buttons for the floors
    public static void enableButtons() {
       floor1.setEnabled(true);
       floor2.setEnabled(true);
       floor3.setEnabled(true);
-      search.setEnabled(true);
    }
    
    //Whether or not we want to display certain aspects of our side panel
@@ -219,10 +229,25 @@ public class FLOSSDriver {
                displayCourseOptions(false);
                fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                fenwickLibrary.setTableSelected(false);
+               removeUserTable.setVisible(true);
                fenwickLibrary.repaint();
             } });  
       sidePanel.add(addTable);
       displayCourseOptions(false);
+      removeUserTable = new JButton("Leave Table");
+      removeUserTable.setBounds(50, 700, 200, 25);
+      removeUserTable.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               fenwickLibrary.getUserTable().setOccupied();
+               fenwickLibrary.getUserTable().setStudentName("");
+               fenwickLibrary.getUserTable().setCourse(new Class());
+               fenwickLibrary.setUserTable(new Table());
+               removeUserTable.setVisible(false);
+               fenwickLibrary.repaint();
+            } });  
+      sidePanel.add(removeUserTable);
+      removeUserTable.setVisible(false);
    }
    
    //Initialize the search features for the side panel

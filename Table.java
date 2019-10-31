@@ -29,13 +29,14 @@ public class Table {
       this.floor = 1;
       this.row = 0;
       this.col = 0;
-      this.rowSize = 30;
-      this.colSize = 30;
+      this.rowSize = 0;
+      this.colSize = 0;
       this.occupied = true;
       this.shape = "BLOCK";
       this.studentName = "";
       this.course = new Class();
       this.message = "";
+      this.id = -1;
    }
    
    //Constructor for Table class w/ parameters
