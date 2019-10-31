@@ -11,6 +11,8 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.PrimaryKey;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
@@ -27,6 +29,9 @@ import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
+import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
+import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 
 public class AWSManager implements RemoteDBManager {
 	private AmazonDynamoDB dynamoDB;
@@ -101,26 +106,30 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean editName( String id, String value ) { //change to update
+	public boolean editName( String id, String value ) { //change to update---------------
 		if ( !exists( id ) ) return false;
-		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
-		item.put( USER_ID, new AttributeValue( id ) );
-		item.put( USER_NAME, new AttributeValue( value ) );
+		Table userTable = new DynamoDB( dynamoDB ).getTable( USER_TABLE );
 		
-		PutItemRequest request = new PutItemRequest( USER_TABLE, item );
-		dynamoDB.putItem( request );
+		UpdateItemSpec spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( USER_ID, id ) ).
+				withUpdateExpression( "set " + USER_NAME + " = :val" ).
+				withValueMap( new ValueMap( ).withString( ":val", value ) );
+		
+		userTable.updateItem( spec );
+		
 		return true;
 	}
 
 	@Override
-	public boolean editPassword( String id, String newPassword ) { //change to update
+	public boolean editPassword( String id, String newPassword ) { //change to update----------------------
 		if ( !exists( id ) ) return false;
-		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
-		item.put( USER_ID, new AttributeValue( id ) );
-		item.put( USER_PASSWORD, new AttributeValue( newPassword ) );
+		Table userTable = new DynamoDB( dynamoDB ).getTable( USER_TABLE );
 		
-		PutItemRequest request = new PutItemRequest( USER_TABLE, item );
-		dynamoDB.putItem( request );
+		UpdateItemSpec spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( USER_ID, id ) ).
+				withUpdateExpression( "set " + USER_PASSWORD + " = :val" ).
+				withValueMap( new ValueMap( ).withString( ":val", newPassword ) );
+		
+		userTable.updateItem( spec );
+		
 		return true;
 	}
 
