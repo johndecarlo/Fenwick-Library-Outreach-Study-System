@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 
 //Basic methods needed for accessing and changing information per student in the remote database
 public interface RemoteDBManager {
@@ -15,10 +16,10 @@ public interface RemoteDBManager {
     boolean stopStudying( String id );
     boolean isStudying( String id );
 
-    //manage study mates
     List<String> fetchStudyMates( String id );
-    boolean addStudyMates( String id, String... studyMates );
-
+    
+    Map<Integer, Boolean> fetchTableStatuses( );
+    
     //manage study location, int would be some combination of floor and table number
     //system would check if table is available, and would return false to editing if not
     int fetchStudyLocation( String id );

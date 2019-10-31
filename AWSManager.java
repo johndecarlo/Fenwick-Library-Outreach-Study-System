@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -100,7 +101,7 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean editName( String id, String value ) {
+	public boolean editName( String id, String value ) { //change to update
 		if ( !exists( id ) ) return false;
 		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
 		item.put( USER_ID, new AttributeValue( id ) );
@@ -112,7 +113,7 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean editPassword( String id, String newPassword ) {
+	public boolean editPassword( String id, String newPassword ) { //change to update
 		if ( !exists( id ) ) return false;
 		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
 		item.put( USER_ID, new AttributeValue( id ) );
@@ -124,28 +125,73 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean startStudying( String id, int tableID, String message, String classInfo ) {
+	public boolean startStudying( String id, int tableID, String message, String classInfo ) { //change to update
 		if ( !exists( id ) ) return false;
 		if ( isStudying( id ) ) return false;
-		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
-		item.put( USER_ID, new AttributeValue( id ) );
-		item.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( true ) );
+		if ( tableIsTaken( tableID ) ) return false;
 		
-		PutItemRequest request = new PutItemRequest( USER_TABLE, item );
-		dynamoDB.putItem( request );
+		Map<String, AttributeValue> userItem = new HashMap<String, AttributeValue>( ),
+				tableItem = new HashMap<String, AttributeValue>( );
 		
+		userItem.put( USER_ID, new AttributeValue( id ) );
+		userItem.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( true ) );
+		userItem.put( USER_TABLE_AT, new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		
+		tableItem.put( TABLE_ID, new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		tableItem.put( TABLE_MESSAGE, new AttributeValue( message ) );
+		tableItem.put( TABLE_CLASS, new AttributeValue( classInfo ) );
+		tableItem.put( TABLE_ACTIVE, new AttributeValue( ).withBOOL( true ) );
+		tableItem.put( TABLE_FOUNDER, new AttributeValue( id ) );
+		
+		PutItemRequest userTableRequest = new PutItemRequest( USER_TABLE, userItem ),
+				tableRequest = new PutItemRequest( TABLES_TABLE, tableItem );
+		dynamoDB.putItem( userTableRequest );
+		dynamoDB.putItem( tableRequest );
 		
 		return true;
 	}
 	
 	@Override
-	public boolean joinStudying( String id, int tableID ) {
+	public boolean joinStudying( String id, int tableID ) { //change to update
+		if ( !exists( id ) ) return false;
+		if ( isStudying( id ) ) return false;
+		if ( !tableIsTaken( tableID ) ) return false;
 		
+		Map<String, AttributeValue> userItem = new HashMap<String, AttributeValue>( );
+		
+		userItem.put( USER_ID, new AttributeValue( id ) );
+		userItem.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( true ) );
+		userItem.put( USER_TABLE_AT, new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		
+		addStudyMate( tableID, id );
+		
+		PutItemRequest request = new PutItemRequest( USER_TABLE, userItem );
+		dynamoDB.putItem( request );
+		
+		return true;
 	}
 	
 	@Override
-	public boolean stopStudying( String id ) {
+	public Map<Integer, Boolean> fetchTableStatuses( ) {
+		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE );
+		ScanResult scanResult = dynamoDB.scan( scanRequest );
+		TreeMap<Integer, Boolean> tableStatuses = new TreeMap<Integer, Boolean>( );
 		
+		int elems = scanResult.getCount( );
+		List<Map<String, AttributeValue>> vals = scanResult.getItems( );
+		for ( int i = 0; i < elems; i++ )
+			tableStatuses.put( Integer.parseInt( vals.get( i ).get( TABLE_ID ).getN( ) ), 
+					vals.get( i ).get( TABLE_ACTIVE ).getBOOL( ) );
+		
+		return tableStatuses;
+	}
+	
+	@Override
+	public boolean stopStudying( String id ) { //change to update
+		if ( !exists( id ) ) return false;
+		if ( !isStudying( id ) ) return false;
+		
+		return releaseTable( tableID );
 	}
 
 	@Override
@@ -173,26 +219,20 @@ public class AWSManager implements RemoteDBManager {
 		return result.getItems( ).get( 0 ).get( TABLE_STUDYMATES ).getSS( );
 	}
 
-	@Override
-	public boolean addStudyMates( String id, String... studyMates ) {
-		if ( !exists( id ) ) return false;
-		if ( !isStudying( id ) ) return false;
+	private boolean addStudyMate( int tableID, String studyMate ) { //change to update
 		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
 		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
-				.withAttributeValueList( new AttributeValue( ).withS( id ) );
-		scanFilter.put( TABLE_FOUNDER, condition );
+				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		scanFilter.put( TABLE_ID, condition );
 		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter );
 		ScanResult result = dynamoDB.scan( scanRequest );
 		List<String> currStudyMates = result.getItems( ).get( 0 ).get( TABLE_STUDYMATES ).getSS( );
 		
-		String[] newStudyMates = new String[studyMates.length + currStudyMates.size( )];
+		String[] newStudyMates = new String[1 + currStudyMates.size( )];
 		int i;
-		for ( i = 0; i < studyMates.length; i++ )
-			newStudyMates[i] = studyMates[i];
-		for ( int j = 0; j < currStudyMates.size( ); j++ ) {
-			newStudyMates[i] = currStudyMates.get( j );
-			i++;
-		}
+		for ( i = 0; i < currStudyMates.size( ); i++ )
+			newStudyMates[i] = currStudyMates.get( i );
+		newStudyMates[i] = studyMate;
 		
 		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
 		item.put( TABLE_ID, new AttributeValue( ).withN( result.getItems( ).get( 0 ).get( TABLE_ID ).getN( ) ) );
@@ -216,7 +256,7 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean editStudyLocation( String id, int tableID ) {
+	public boolean editStudyLocation( String id, int tableID ) { //change to update
 		if ( !exists( id ) ) return false;
 		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
 		item.put( USER_ID, new AttributeValue( id ) );
@@ -231,7 +271,7 @@ public class AWSManager implements RemoteDBManager {
 		return true;
 	}
 	
-	private boolean useTable( int tableID, String founderID, String... studyMates ) {
+	private boolean useTable( int tableID, String founderID, String... studyMates ) { //change to update
 		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
 		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
 				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
@@ -247,7 +287,7 @@ public class AWSManager implements RemoteDBManager {
 		return true;
 	}
 	
-	private boolean releaseTable( int tableID ) {
+	private boolean releaseTable( int tableID ) { //change to update
 		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
 		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
 				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
