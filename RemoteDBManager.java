@@ -92,12 +92,10 @@ public interface RemoteDBManager {
     List<String> fetchStudyMates( String id );
     
     /**
-     * Creates a mapping of a table ID to whether or not the table
-     * is currently "active" or being used, note that this map will not 
-     * contain every possible table, and any table not in the map can 
-     * be assumed to be open
+     * Creates a map of all active tables to the study group's message,
+     * if a table is not included then it is open
      * @return Mapping of id's to the study group's message, which has
-     * to have a value, and if it is null, indicates that the table is open
+     * to have a value
      */
     Map<Integer, String> fetchTableStatuses( );
     

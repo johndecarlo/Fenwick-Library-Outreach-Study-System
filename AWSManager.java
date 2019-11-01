@@ -17,6 +17,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
+import com.amazonaws.services.dynamodbv2.model.ConditionalOperator;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.DescribeTableRequest;
 import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
@@ -24,12 +25,15 @@ import com.amazonaws.services.dynamodbv2.model.KeyType;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 import com.amazonaws.services.dynamodbv2.model.PutItemResult;
+import com.amazonaws.services.dynamodbv2.model.ReturnValue;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome;
+import com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 
@@ -181,16 +185,16 @@ public class AWSManager implements RemoteDBManager {
 	}
 	
 	@Override
-	public Map<Integer, Boolean> fetchTableStatuses( ) {
+	public Map<Integer, String> fetchTableStatuses( ) {
 		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE );
 		ScanResult scanResult = dynamoDB.scan( scanRequest );
-		TreeMap<Integer, Boolean> tableStatuses = new TreeMap<Integer, Boolean>( );
+		Map<Integer, String> tableStatuses = new TreeMap<Integer, String>( );
 		
 		int elems = scanResult.getCount( );
 		List<Map<String, AttributeValue>> vals = scanResult.getItems( );
 		for ( int i = 0; i < elems; i++ )
 			tableStatuses.put( Integer.parseInt( vals.get( i ).get( TABLE_ID ).getN( ) ), 
-					vals.get( i ).get( TABLE_ACTIVE ).getBOOL( ) );
+					vals.get( i ).get( TABLE_ACTIVE ).getBOOL( )?vals.get( i ).get( TABLE_MESSAGE ).getS( ):null );
 		
 		return tableStatuses;
 	}
@@ -200,7 +204,22 @@ public class AWSManager implements RemoteDBManager {
 		if ( !exists( id ) ) return false;
 		if ( !isStudying( id ) ) return false;
 		
-		return releaseTable( tableID );
+		//update USER_TABLE to set the USER_TABLE_AT value to 0 and get the USER_TABLE_AT value
+		Table userTable = new DynamoDB( dynamoDB ).getTable( USER_TABLE ),
+				tablesTable = new DynamoDB( dynamoDB ).getTable( TABLES_TABLE );
+		
+		UpdateItemSpec spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( USER_ID, id ) ).
+				withUpdateExpression( "set " + USER_TABLE_AT + " = :val" ).
+				withValueMap( new ValueMap( ).withNumber( ":val", 0 ) ).
+				withReturnValues( ReturnValue.UPDATED_OLD );
+		
+		UpdateItemOutcome outcome = userTable.updateItem( spec );
+		int tableID = outcome.getItem( ).getNumber( USER_TABLE_AT ).intValue( );
+		
+		//delete the table entry from TABLES_TABLE where the TABLE_ID == tableID
+		tablesTable.deleteItem( new PrimaryKey( TABLE_ID, tableID ) );
+		
+		return true;
 	}
 
 	@Override
@@ -275,7 +294,6 @@ public class AWSManager implements RemoteDBManager {
 		dynamoDB.putItem( request );
 		
 		List<String> currStudyMates = fetchStudyMates( id );
-		releaseTable( fetchStudyLocation( id ) );
 		useTable( tableID, id, currStudyMates.toArray( new String[0] ) );
 		return true;
 	}
@@ -292,25 +310,6 @@ public class AWSManager implements RemoteDBManager {
 		}
 		else {
 			
-		}
-		return true;
-	}
-	
-	private boolean releaseTable( int tableID ) { //change to update
-		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
-		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
-				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
-		scanFilter.put( TABLE_ID, condition );
-		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter );
-		ScanResult result = dynamoDB.scan( scanRequest );
-		if ( result.getCount( ) == 0 ) return false;
-		else {
-			Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
-			item.put( TABLE_ID, new AttributeValue( ).withN( Integer.toString( tableID ) ) );
-			item.put( TABLE_ACTIVE, new AttributeValue( ).withBOOL( false ) );
-			
-			PutItemRequest request = new PutItemRequest( USER_TABLE, item );
-			dynamoDB.putItem( request );
 		}
 		return true;
 	}
