@@ -47,8 +47,5 @@ public class Group {
 				groupList.remove(i);
 			}
 		}
-	}
-	
-	
-	
+	}	
 }
