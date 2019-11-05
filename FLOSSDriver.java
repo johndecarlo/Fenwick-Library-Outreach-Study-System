@@ -76,7 +76,7 @@ public class FLOSSDriver {
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
       container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
       display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info
-      
+      //display.setVisible(true);
       Login login = new Login(display);
       login.setVisible(true);
    }

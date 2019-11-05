@@ -35,6 +35,8 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    //Images for displaying tables that have been selected
    private ImageIcon blockTable_occupied = new ImageIcon("table_images/green_block_occupied.png");                   //Block table display
    private ImageIcon circleTable_occupied = new ImageIcon("table_images/green_circle_occupied.png");                 //Circle table display
+   private ImageIcon circleTable_halfLeft_occupied = new ImageIcon("table_images/green_circle_halfLeft_occupied.png");
+   private ImageIcon circleTable_halfRight_occupied = new ImageIcon("table_images/green_circle_halfRight_occupied.png");
    private ImageIcon smallCircleTable_h_occupied = new ImageIcon("table_images/green_small_circle_occupied.png");    //Small circle table (horizontal)
    private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/green_smallcircle_occupied_v.png");   //Small cirlce talbe (vertical)
    //Images for displaying table that the user has selected
@@ -312,6 +314,10 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
          g.drawImage(blockTable_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
       else if(t.getShape().equals("CIRCLE")) 
          g.drawImage(circleTable_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+      else if(t.getShape().equals("CIRCLE_HL")) 
+         g.drawImage(circleTable_halfLeft_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
+      else if(t.getShape().equals("CIRCLE_HR")) 
+         g.drawImage(circleTable_halfRight_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
       else if(t.getShape().equals("SMALLCIRCLE_H")) 
          g.drawImage(smallCircleTable_h_occupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
       else if(t.getShape().equals("SMALLCIRCLE_V")) 
