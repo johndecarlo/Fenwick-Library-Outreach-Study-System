@@ -4,9 +4,10 @@ import java.util.*;
 public class Student {
 	
 	//Student Fields
-	private String FirstName, LastName, password;
+	private String FirstName, LastName, password, major;
 	private int G_number, numberOfFriends = 0;
 	private ArrayList<Student> friends;
+	private boolean isLeader = false;
 	
 	
 	//Scanner to read user's input
@@ -53,6 +54,16 @@ public class Student {
 		numberOfFriends++;
 	}
 	
+	//Set the major of the student
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	
+	//Reture the major of the student
+	public String getMajor() {
+		return major;
+	}
+	
 	//Remove friend from friends list, and decrease number of friend by one
 	public void removeFriends(Student friend) {
 		if(!friends.contains(friend)) {
@@ -70,6 +81,18 @@ public class Student {
 	//Get number of friends the person have.
 	public int getNumberOfFriends() {
 		return numberOfFriends;
+	}
+	
+	public void setLeaderTrue() {
+		isLeader = true;
+	}
+	
+	public void setLeaderFalse() {
+		isLeader = false;
+	}
+	
+	public boolean isLeader() {
+		return isLeader;
 	}
 	
 	//String output for class.
