@@ -84,8 +84,9 @@ public interface RemoteDBManager {
 
     /**
      * Attain a listing of all of the fellow study mates given
-     * a specific individual
-     * @param id The user id of who to find study mates for
+     * a specific founder
+     * @param id The user id of the founder of a given study group to fetch
+     * the fellow study mates for, ONLY works with founders
      * @return A list of user id's of fellow study mates, if the given id is 
      * currently studying, if the user given by id is not studying, returns null
      */
