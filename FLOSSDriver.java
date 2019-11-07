@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("unchecked")
 public class FLOSSDriver {
 
+   public static JFrame display;
    public static StudySystemMap fenwickLibrary;    //JPanel that holds the study maps
    public static JPanel sidePanel;                 //JPanel that is the side information panel
    public static ArrayList<Class> classList = new ArrayList<Class>();       //List of most of the classes offered at GMU
@@ -30,17 +31,25 @@ public class FLOSSDriver {
    public static JButton search;
    public static JButton removeUserTable;       
    
+   //JButtons to display whether to leave a table or not
+   public static JDialog leaveTable;
+   public static JPanel leaveContainer;
+   public static JButton yes;
+   public static JButton no;
+   public static JLabel leaveMessage;
+   
    //Floor Information text labels
    public static JLabel tableStudentName;
    public static JLabel tableClass;
    public static JLabel tableMessage;
-   public static JLabel messageLabel;
-   public static JTextField message;
+   public static JLabel errorMessage;
    
    //Classes list ComboBox
    public static String[] subjectStrings = {"ACCT", "AFAM", "ANTH", "ARAB", "ARTH", "EDAT", "ASTR", "ATEP", "BENG", "BINF", "BENG", "BIOL", "BUS", "BULE", "CHEM", "CHIN", "CEIE", "CLAS", "CLIM", "COS", "CVPA", "COMM", "CDS", "GAME", "CS", "CONF", "CRIM", "CULT", "CYSE", "DANC", "DSGN", "ECED", "ECON", "EDIT", "EDUC", "EDPO", "EDPS", "ECE", "ELED", "ENGR", "ENGH", "ENVPP", "FAVS", "FNAN", "FRLN", "FRSC", "FREN", "GGS", "GEOL", "GERM", "GLOA", "GCH", "GOVT", "HEAL", "HAP", "HHS", "HEBR", "HIST", "HNRS", "HNRT", "HDFS", "IT", "INTS", "ITAL", "JAPA", "KINE", "KORE", "LATN", "LING", "MGMT", "MIS", "MKTG", "MATH", "ME", "MLAB", "MLSC", "MBUS", "NEUR", "NURS", "NUTR", "OM", "OR", "PRLS", "PERS", "PHIL", "PHED", "PHYS", "PORT", "PROV", "PSYC", "EDRD", "RHBS", "RELI", "RUSS", "SOCW", "SOCI", "SWE", "SPAN", "EDSE", "SPMT", "SRST", "STAT", "SYST", "THR", "TOUR", "TURK", "UNIV", "WMST"};
    public static JComboBox courseSubjects;
    public static JComboBox courseNumbers;
+   public static JLabel messageLabel;
+   public static JTextField message;
    public static JButton addTable;
    
    //Search feature ComboBoxes
@@ -56,8 +65,11 @@ public class FLOSSDriver {
    public static JLabel profileGnumber;   //Profile display g-number
    public static boolean enableSearch = false;  //Whether the search feature is enabled
    
+   public static Student user;
+   
    public static void main(String[]args) throws IOException {
-      JFrame display = new JFrame("FLOSS");     //Create our JFrame
+      user = new Student();
+      display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1112, 830);			      //Size of display window
       display.setLocation(250, 0);				   //Location of display window on the screen
       display.setResizable(false);              //Cannot change size of the screen
@@ -68,7 +80,7 @@ public class FLOSSDriver {
    
       fenwickLibrary = new StudySystemMap();       //Initialize the interactive Fenwick library map
       fenwickLibrary.setBounds(0, 0, 800, 800);    //Set the bounds for the interactive map
-      displaySidePanel();                            //Add all the buttons and options
+      displaySidePanel();                          //Add all the buttons and options
       initializeClasses();                         //Initialize the class list
       initializeSidePanel();                       //Initialize the side panel
       initializeSearchFeature();                   //Initialize the search feature for the class
@@ -76,9 +88,21 @@ public class FLOSSDriver {
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
       container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
       display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info
-      //display.setVisible(true);
-      Login login = new Login(display);
-      login.setVisible(true);
+      display.setVisible(true);              
+      
+      leaveTable = new JDialog();            //Create our JFrame
+      leaveTable.setSize(300, 150);			   //Size of display window (600, 300)
+      leaveTable.setLocation(600, 300);	   //Location of display window on the screen
+      leaveTable.setResizable(false);        //Cannot change size of the screen
+      leaveTable.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  //Exit when close out
+      initializeLeaveTable();
+      
+      //Login login = new Login(display);
+      //login.setVisible(true);
+      
+      // **Test Cases for the FLOSS Program**
+      
+      
    }
    
    public static String getSearchSubject() {
@@ -88,7 +112,7 @@ public class FLOSSDriver {
    public static int getSearchNumber() {
       return Integer.parseInt((String)searchNumbers.getSelectedItem());
    }
-   
+         
    //Method that initializes the buttons for the side panel
    public static void displaySidePanel() {
       sidePanel = new JPanel();
@@ -182,14 +206,17 @@ public class FLOSSDriver {
    //Method that initializes the side panel and all the JLabel and JComboBox features
    public static void initializeSidePanel() {
       tableStudentName = new JLabel("");
-      tableStudentName.setBounds(25, 90, 300, 25);
+      tableStudentName.setBounds(25, 90, 200, 25);
       sidePanel.add(tableStudentName);
       tableClass = new JLabel("");
-      tableClass.setBounds(25, 115, 300, 25);
+      tableClass.setBounds(25, 115, 200, 25);
       sidePanel.add(tableClass);
       tableMessage = new JLabel("");
       tableMessage.setBounds(25, 140, 200, 80);
       sidePanel.add(tableMessage);
+      errorMessage = new JLabel("<html>MAX TABLE OCCUPANCY REACHED</html>");
+      errorMessage.setBounds(25, 230, 225, 25);
+      sidePanel.add(errorMessage);
       courseSubjects = new JComboBox(subjectStrings);
       courseSubjects.addActionListener(
          new ActionListener() {
@@ -200,37 +227,43 @@ public class FLOSSDriver {
                for(int i = 0; i < list.length; i++)
                   courseNumbers.addItem(list[i]);
             } });
-      courseSubjects.setBounds(50, 235, 75, 25);
+      courseSubjects.setBounds(50, 270, 75, 25);
       sidePanel.add(courseSubjects);
       courseNumbers = new JComboBox(initializeSubjectNumbers(classList.get(0).getSubjectCode()));
-      courseNumbers.setBounds(175, 235, 75, 25);
+      courseNumbers.setBounds(175, 270, 75, 25);
       sidePanel.add(courseNumbers);
       messageLabel = new JLabel("User Description:");
    
-      messageLabel.setBounds(50, 360, 200, 25);
+      messageLabel.setBounds(50, 395, 200, 25);
       sidePanel.add(messageLabel);
       message = new JTextField(20);
-      message.setBounds(50, 385, 200, 25);
+      message.setBounds(50, 420, 200, 25);
       message.setDocument(new JTextFieldLimit(140));
       sidePanel.add(message);
       addTable = new JButton("Finish");
-      addTable.setBounds(75, 415, 150, 25);
+      addTable.setBounds(75, 450, 150, 25);
       addTable.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               fenwickLibrary.getSelectedTable().setOccupied();
-               fenwickLibrary.getSelectedTable().setStudentName("Mr. Jones");
-               String course = (String)courseSubjects.getSelectedItem();
-               String number = (String)courseNumbers.getSelectedItem();
-               fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
-               courseSubjects.setSelectedIndex(0);
-               fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
-               message.setText("");
-               displayCourseOptions(false);
-               fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
-               fenwickLibrary.setTableSelected(false);
-               removeUserTable.setVisible(true);
-               fenwickLibrary.repaint();
+               if(user.getOccupyTable()) {
+                  leaveTable.setVisible(true);
+                  display.setEnabled(false);
+               } else {
+                  fenwickLibrary.getSelectedTable().setOccupied();
+                  fenwickLibrary.getSelectedTable().addStudent(user);
+                  user.setOccupyTable();
+                  String course = (String)courseSubjects.getSelectedItem();
+                  String number = (String)courseNumbers.getSelectedItem();
+                  fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
+                  courseSubjects.setSelectedIndex(0);
+                  fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
+                  message.setText("");
+                  displayCourseOptions(false);
+                  fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
+                  fenwickLibrary.setTableSelected(false);
+                  removeUserTable.setVisible(true);
+                  fenwickLibrary.repaint();
+               }
             } });  
       sidePanel.add(addTable);
       displayCourseOptions(false);
@@ -240,15 +273,17 @@ public class FLOSSDriver {
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                fenwickLibrary.getUserTable().setOccupied();
-               fenwickLibrary.getUserTable().setStudentName("");
+               fenwickLibrary.getUserTable().addStudent(user);
                fenwickLibrary.getUserTable().setCourse(new Class());
                fenwickLibrary.setUserTable(new Table());
-               removeUserTable.setVisible(false);
+               fenwickLibrary.getSelectedTable().addStudent(user);
+               user.setOccupyTable();
                fenwickLibrary.repaint();
             } });  
       sidePanel.add(removeUserTable);
       removeUserTable.setVisible(false);
    }
+
    
    //Initialize the search features for the side panel
    public static void initializeSearchFeature() {
@@ -310,6 +345,56 @@ public class FLOSSDriver {
    public static void resetTableCourse() {
       tableClass.setText("");
    }
+   
+   public static void showErrorMessage(boolean show) {
+      errorMessage.setVisible(show);
+   }
+   
+   //Initialize the option to leave the table you are sitting at and choose another
+   public static void initializeLeaveTable() {
+      leaveContainer = new JPanel();
+      leaveContainer.setLayout(null);
+      yes = new JButton("YES");
+      yes.setBounds(50, 75, 75, 25); 
+      yes.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               fenwickLibrary.getUserTable().setOccupied();
+               fenwickLibrary.getUserTable().addStudent(user);
+               fenwickLibrary.getUserTable().setCourse(new Class());
+               fenwickLibrary.setUserTable(new Table());
+               fenwickLibrary.getSelectedTable().setOccupied();
+               fenwickLibrary.getSelectedTable().addStudent(user);
+               String course = (String)courseSubjects.getSelectedItem();
+               String number = (String)courseNumbers.getSelectedItem();
+               fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
+               courseSubjects.setSelectedIndex(0);
+               fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
+               message.setText("");
+               displayCourseOptions(false);
+               fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
+               fenwickLibrary.setTableSelected(false);
+               removeUserTable.setVisible(true);
+               leaveTable.setVisible(false);
+               display.setEnabled(true);
+               fenwickLibrary.repaint();
+            } });        
+      no = new JButton("NO");
+      no.setBounds(175, 75, 75, 25);  
+      no.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               leaveTable.setVisible(false);
+               display.setEnabled(true);
+            } });            
+      leaveMessage = new JLabel("<html>Would you like to leave the table you are currenlty sitting at and move to another?</html>");
+      leaveMessage.setBounds(25, 25, 250, 35);   
+      leaveContainer.add(yes);
+      leaveContainer.add(no);
+      leaveContainer.add(leaveMessage);
+      leaveTable.setContentPane(leaveContainer);
+   }
+
    
    //Initialize the classes that are provided from the text file
    public static void initializeClasses() throws IOException {

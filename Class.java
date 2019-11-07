@@ -15,10 +15,10 @@ public class Class {
    
    //Base constructor for Class
    public Class() {
-      this.subject = "";
-      this.subjectCode = "";
-      this.number = 0;
-      this.title = "";
+      this.subject = "Accounting";
+      this.subjectCode = "ACCT";
+      this.number = 203;
+      this.title = "Survey of Accounting";
    }
    
    //Class Constructor with parameters

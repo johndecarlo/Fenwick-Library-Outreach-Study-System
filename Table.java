@@ -19,10 +19,11 @@ public class Table {
    private int colSize;    //Size of the table (y-axis based)
    private boolean occupied;  //Table is occupied by a student or not
    private String shape;      //What shape is the table (BLOCK, CIRCLE, etc.)
-   private String studentName;   //Name of student sitting at the table
+   private ArrayList<Student> students;   //List of the students studying at the table
    private Class course;         //Course that the student is studying for
    private String message;       //Message that the student can send out describing their studies
    private int id;               //ID to identify our table by (Will be index in the array)
+   private int capacity;         //The maximum capacity of students that can be at a table
    
    //Constructor for Table class w/ no parameters
    public Table() {
@@ -33,14 +34,15 @@ public class Table {
       this.colSize = 0;
       this.occupied = true;
       this.shape = "BLOCK";
-      this.studentName = "";
       this.course = new Class();
       this.message = "";
-      this.id = -1;
+      this.id = -1; 
+      this.students = new ArrayList<Student>();
+      this.capacity = 1;
    }
    
    //Constructor for Table class w/ parameters
-   public Table(int floor, int row, int col, int rowSize, int colSize, String shape, int id) {
+   public Table(int floor, int row, int col, int rowSize, int colSize, String shape, int id, int capacity) {
       this.floor = floor;
       this.row = row;
       this.col = col;
@@ -48,10 +50,11 @@ public class Table {
       this.colSize = colSize;
       this.occupied = false;
       this.shape = shape;
-      this.studentName = "";
       this.course = new Class();
       this.message = "";
       this.id = id;
+      this.students = new ArrayList<Student>();
+      this.capacity = capacity;
    }
    
    //Get the floor number
@@ -127,16 +130,6 @@ public class Table {
       this.shape = shape;
    }
    
-   //Get the name of the student sitting at the table
-   public String getStudentName() {
-      return this.studentName;
-   }
-   
-   //Set the name of the student sitting at the table
-   public void setStudentName(String name) {
-      this.studentName = name;
-   }
-   
    //Get the course the student is studying for
    public Class getCourse() {
       return this.course;
@@ -167,4 +160,34 @@ public class Table {
       this.id = id;
    }
    
+   public int getCapacity() {
+      return this.capacity;
+   }
+   
+   public void setCapacity(int capacity) {
+      this.capacity = capacity;
+   }
+   
+   public void addStudent(Student student) {
+      if(students.size() < capacity) {
+         students.add(student);
+      }
+   }
+   
+   public String getStudentNames() {
+      String studentsList = "";
+      for(int i = 0; i < students.size(); i++) {
+         String studentName = students.get(i).getFirstName() + " " + students.get(i).getLastName();
+         studentsList += studentName + " \n";
+      }
+      return studentsList;
+   }
+   
+   public int getNumStudents() {
+      return students.size();
+   }
+   
+   public String getStudentContactInfo() {
+      return "";
+   }
 }

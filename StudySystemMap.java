@@ -76,6 +76,16 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       userTable = null;                   //Initialze the user table
       tableSelected = false;              //Initialize whether or not we have selected a table
       searchFeature = false;              //Initialize whether or not the search feature is active
+      
+      // ** Test Cases for the FLOSS Program **
+      //Cannot join a table that is occupied by the max number of students
+      floor1Tables.get(0).setOccupied();
+      floor1Tables.get(0).addStudent(new Student());
+      floor1Tables.get(0).addStudent(new Student());
+      floor1Tables.get(0).addStudent(new Student());
+      floor1Tables.get(0).addStudent(new Student());
+      floor1Tables.get(0).setCourse(new Class());
+      floor1Tables.get(0).setMessage("Come study with us about the small brown dog jumped over the big thick log of wood and how the man loved his pet fish go sports and go team I love it here");
    }
    
    //Set the floor number that the user is currently viewing
@@ -126,11 +136,18 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                startCol = table.getCol();       //Get the starting column
                endRow = startRow + table.getRowSize();   //Get the end row
                endCol = startCol + table.getColSize();   //Get the end col
-               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() == false) {    //If it is between the start and end row and the start and end column
-                  selectedTable = table;
-                  tableSelected = true;
-                  FLOSSDriver.displayCourseOptions(true);
-                  break;
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+                  if(table.getOccupied() == false) {
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayCourseOptions(true);
+                     break;
+                  } else if(table.getNumStudents() < table.getCapacity()) {
+                     FLOSSDriver.displayCourseOptions(false);
+                     selectedTable = table;
+                     tableSelected = true;
+                     break;
+                  }
                } else {
                   FLOSSDriver.displayCourseOptions(false);
                   tableSelected = false;
@@ -143,11 +160,18 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                startCol = table.getCol();       //Get the starting column
                endRow = startRow + table.getRowSize();   //Get the end row
                endCol = startCol + table.getColSize();   //Get the end col
-               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() == false) {    //If it is between the start and end row and the start and end column
-                  selectedTable = table;
-                  tableSelected = true;
-                  FLOSSDriver.displayCourseOptions(true);
-                  break;
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+                  if(table.getOccupied() == false) {
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayCourseOptions(true);
+                     break;
+                  } else if(table.getNumStudents() < table.getCapacity()) {
+                     FLOSSDriver.displayCourseOptions(false);
+                     selectedTable = table;
+                     tableSelected = true;
+                     break;
+                  }
                } else {
                   FLOSSDriver.displayCourseOptions(false);
                   tableSelected = false;
@@ -160,11 +184,18 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                startCol = table.getCol();       //Get the starting column
                endRow = startRow + table.getRowSize();   //Get the end row
                endCol = startCol + table.getColSize();   //Get the end col
-               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() == false) {    //If it is between the start and end row and the start and end column
-                  selectedTable = table;
-                  tableSelected = true;
-                  FLOSSDriver.displayCourseOptions(true);
-                  break;
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+                  if(table.getOccupied() == false) {
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayCourseOptions(true);
+                     break;
+                  } else if(table.getNumStudents() < table.getCapacity()) {
+                     FLOSSDriver.displayCourseOptions(false);
+                     selectedTable = table;
+                     tableSelected = true;
+                     break;
+                  }
                } else {
                   FLOSSDriver.displayCourseOptions(false);
                   tableSelected = false;
@@ -204,12 +235,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
             endRow = startRow + table.getRowSize();   //Get the end row
             endCol = startCol + table.getColSize();   //Get the end col
             if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
-               FLOSSDriver.displayStudentName(table.getStudentName());
+               FLOSSDriver.displayStudentName(table.getStudentNames());
                FLOSSDriver.displayMessage(table.getMessage());
                if(table.getCourse().getNumber() != 0)
                   FLOSSDriver.displayTableCourse(table.getCourse());
                else
                   FLOSSDriver.resetTableCourse();  
+               if(table.getNumStudents() == table.getCapacity())
+                  FLOSSDriver.showErrorMessage(true);
                break;
             } else {
                resetMessages();
@@ -224,7 +257,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
             endRow = startRow + table.getRowSize();   //Get the end row
             endCol = startCol + table.getColSize();   //Get the end col
             if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
-               FLOSSDriver.displayStudentName(table.getStudentName());
+               FLOSSDriver.displayStudentName(table.getStudentNames());
                if(table.getCourse().getNumber() != 0)
                   FLOSSDriver.displayTableCourse(table.getCourse());
                else
@@ -243,7 +276,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
             endRow = startRow + table.getRowSize();   //Get the end row
             endCol = startCol + table.getColSize();   //Get the end col
             if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
-               FLOSSDriver.displayStudentName(table.getStudentName());
+               FLOSSDriver.displayStudentName(table.getStudentNames());
                if(table.getCourse().getNumber() != 0)
                   FLOSSDriver.displayTableCourse(table.getCourse());
                else
@@ -389,11 +422,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       while ((line = reader.readLine()) != null) {
          String[] table = line.split(",");
          if(table[0].equals("1"))
-            floor1Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count));
+            floor1Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count, Integer.parseInt(table[6])));
          else if(table[0].equals("2"))
-            floor2Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count));
+            floor2Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count, Integer.parseInt(table[6])));
          else if(table[0].equals("3"))
-            floor3Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count));
+            floor3Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count, Integer.parseInt(table[6])));
          id_count++;
       }
       reader.close();
@@ -404,5 +437,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       FLOSSDriver.displayStudentName("");
       FLOSSDriver.resetTableCourse();  
       FLOSSDriver.displayMessage(""); 
+      FLOSSDriver.showErrorMessage(false);
    }
 }
