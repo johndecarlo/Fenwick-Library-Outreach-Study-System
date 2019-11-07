@@ -105,14 +105,4 @@ public interface RemoteDBManager {
      * @return The table id, or 0 if user is not studying
      */
     int fetchStudyLocation( String id );
-    
-    /**
-     * Change study location to a new table, can ONLY be performed by the study
-     * group founder
-     * @param id The founder's user id, of the group to move
-     * @param location The new study location
-     * @return If successful return true, if incorrect or invalid id or location
-     * then false is returned
-     */
-    boolean editStudyLocation( String id, int location );
 }
