@@ -85,8 +85,8 @@ public interface RemoteDBManager {
     /**
      * Attain a listing of all of the people studying at a given table location
      * @param tableID The table location to grab the people studying for
-     * @return A list of user id's of fellow study mates, if the given id is 
-     * currently studying, if the user given by id is not studying, returns null
+     * @return A list of the people studying at a given table, null if table invalid,
+     * or if the table is currently unpopulated
      */
     List<String> fetchStudyMates( int tableID );
     
