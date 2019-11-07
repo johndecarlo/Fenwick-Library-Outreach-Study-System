@@ -83,14 +83,12 @@ public interface RemoteDBManager {
     boolean isStudying( String id );
 
     /**
-     * Attain a listing of all of the fellow study mates given
-     * a specific founder
-     * @param id The user id of the founder of a given study group to fetch
-     * the fellow study mates for, ONLY works with founders
+     * Attain a listing of all of the people studying at a given table location
+     * @param tableID The table location to grab the people studying for
      * @return A list of user id's of fellow study mates, if the given id is 
      * currently studying, if the user given by id is not studying, returns null
      */
-    List<String> fetchStudyMates( String id );
+    List<String> fetchStudyMates( int tableID );
     
     /**
      * Creates a map of all active tables to the study group's message,
