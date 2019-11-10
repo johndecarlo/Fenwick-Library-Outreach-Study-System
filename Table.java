@@ -32,9 +32,9 @@ public class Table {
       this.col = 0;
       this.rowSize = 0;
       this.colSize = 0;
-      this.occupied = true;
+      this.occupied = false;
       this.shape = "BLOCK";
-      this.course = new Class();
+      this.course = null;
       this.message = "";
       this.id = -1; 
       this.students = new ArrayList<Student>();
@@ -168,9 +168,23 @@ public class Table {
       this.capacity = capacity;
    }
    
+   public ArrayList<Student> getStudents() {
+      return this.students;
+   }
+   
    public void addStudent(Student student) {
       if(students.size() < capacity) {
          students.add(student);
+      }
+   }
+   
+   public void removeStudent(Student leave) {
+      for(int index = 0; index < students.size(); index++) {
+         Student temp = students.get(index);
+         if(leave.getGNumber() == temp.getGNumber()) {
+            students.remove(index);
+            break;
+         }
       }
    }
    

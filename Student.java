@@ -23,6 +23,16 @@ public class Student {
       this.gNumber = 01234567;
       this.friends = new ArrayList<Student>();
    }
+   
+   public Student(String first, String last, String email, String password, String major, int num) {
+      this.firstName = first;
+      this.lastName = last;
+      this.masonEmail = email;
+      this.password = password;
+      this.major = major;
+      this.gNumber = num;
+      this.friends = new ArrayList<Student>();
+   }
 	
    //Getter for FirsttName
    public String getFirstName() {
@@ -34,14 +44,22 @@ public class Student {
       this.firstName = firstName;
    }
 	
+    //Getter for LastName
+   public String getLastName() {
+      return lastName;
+   }
+   
 	//Setter for LastName
    public void setLastName(String lastName) {
       this.lastName = lastName;
    }
-	
-	//Getter for LastName
-   public String getLastName() {
-      return lastName;
+   
+   public String getMasonEmail() {
+      return this.masonEmail;
+   }
+   
+   public void getMasonEmail(String email) {
+      this.masonEmail = email;
    }
 	
    //Getter for Gnumber
