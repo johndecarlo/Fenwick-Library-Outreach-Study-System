@@ -4,14 +4,25 @@ public class Group {
 	
 	//Group fields
 	ArrayList<Student> groupList;
+	private int tableSize = 0;
+	private int groupSize = 0;
 	
 	public Group() {
 		
 	}
 	
+	
 	//Class constructor with limit of 10
 	public void creatGroup() {
-		groupList = new ArrayList<Student>(10);
+		groupList = new ArrayList<Student>();
+	}
+	
+	public void tableSize(int size) {
+		this.tableSize = size;
+	}
+	
+	public int getTableSize() {
+		return tableSize;
 	}
 	
 	//Delete group
@@ -24,12 +35,18 @@ public class Group {
 		groupList.clear();
 	}
 	
-	//Add member into a group. If group is null, 
+	//Add member into a group. If group is null, ask user to create group first. 
 	public void addMember(Student member) {
 		if(groupList.equals(null)) {
 			System.out.println("Need to create group first");
 		}else {
-			groupList.add(member);
+			if(groupSize < tableSize) {
+				groupList.add(member);
+				groupSize++;
+			}else {
+				System.out.println("Table cannot occupy anymore members.");
+			}
+			
 		}
 	}
 	
@@ -47,5 +64,5 @@ public class Group {
 				groupList.remove(i);
 			}
 		}
-	}	
+	}
 }
