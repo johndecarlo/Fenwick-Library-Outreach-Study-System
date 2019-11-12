@@ -80,7 +80,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
 
    //Basic constructor for the StudySystemMap w/ no parameters
    public StudySystemMap() throws IOException {
-      floorNumber = 1;                    //Initialize the floor number
+      floorNumber = 3;                    //Initialize the floor number
       initializeTables();                 //Initialize the table arrays
       addMouseListener( this );           //Initalize mouseListener
       addMouseMotionListener( this );     //Initalize mouseMotionListener
@@ -107,6 +107,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics", 12416781));
       floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
       floor1Tables.get(7).setMessage("Come study with us");
+   }
+   
+    //Get the floor number that the user is currently viewing
+   public int getFloorNumber() {
+      return this.floorNumber;
    }
    
    //Set the floor number that the user is currently viewing
@@ -150,6 +155,8 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       Table table = null;
       int startRow, startCol, endRow, endCol;
       if(button == MouseEvent.BUTTON1) {
+         System.out.println(mouseX);
+         System.out.println(mouseY);
          if(floorNumber == 1) {
             for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
                table = floor1Tables.get(ind1);  //Create a temporary table
@@ -168,9 +175,9 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                      FLOSSDriver.displayCourseOptions(false);
                      selectedTable = table;
                      tableSelected = true;
-                     FLOSSDriver.displayStudentName(table.getStudents());
-                     FLOSSDriver.showAddFriend(table, table.getNumStudents());
-                     FLOSSDriver.displayMessage(table.getMessage());
+                     FLOSSDriver.displayStudentName(selectedTable.getStudents());
+                     FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
+                     FLOSSDriver.displayMessage(selectedTable.getMessage());
                      if(table.getCourse().getNumber() != 0)
                         FLOSSDriver.displayTableCourse(table.getCourse());
                      else
