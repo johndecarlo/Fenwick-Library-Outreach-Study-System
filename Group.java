@@ -6,18 +6,33 @@ public class Group {
 	ArrayList<Student> groupList;
 	private int tableSize = 0;
 	private int groupSize = 0;
+	private int groupID = 0;
 	
 	public Group() {
-		
+		this.tableSize = 0;
+		this.groupSize = 0;
+		this.groupID = 0;
+		this.groupList = new ArrayList();
+	}
+	
+	public Group(int tSize, int gSize, int gID) {
+		this.groupSize = gSize;
+		this.groupID = gID;
+		this.tableSize = tSize;
+		this.groupList = new ArrayList();
 	}
 	
 	
-	//Class constructor with limit of 10
+	//Class constructor
 	public void creatGroup() {
 		groupList = new ArrayList<Student>();
 	}
 	
-	public void tableSize(int size) {
+	public int getGroupID() {
+		return groupID;
+	}
+	
+	public void setTableSize(int size) {
 		this.tableSize = size;
 	}
 	
@@ -63,6 +78,12 @@ public class Group {
 			if(groupList.get(i).equals(member)) {
 				groupList.remove(i);
 			}
+		}
+	}
+	
+	public void getMembers() {
+		for(int i = 0; i < groupList.size(); i++) {
+			System.out.println(groupList.indexOf(i));
 		}
 	}
 }
