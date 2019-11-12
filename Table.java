@@ -34,7 +34,7 @@ public class Table {
       this.colSize = 0;
       this.occupied = false;
       this.shape = "BLOCK";
-      this.course = new Class();
+      this.course = null;
       this.message = "";
       this.id = -1; 
       this.students = new ArrayList<Student>();

@@ -15,7 +15,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.floss.manager.*;
 
 @SuppressWarnings("unchecked")
 public class FLOSSDriver {
@@ -24,7 +23,6 @@ public class FLOSSDriver {
    public static StudySystemMap fenwickLibrary;    //JPanel that holds the study maps
    public static JPanel sidePanel;                 //JPanel that is the side information panel
    public static ArrayList<Class> classList = new ArrayList<Class>();       //List of most of the classes offered at GMU
-   public static RemoteDBManager manager;
    
    //JButtons to display the floors and the search feature
    public static JButton floor1;       
@@ -78,7 +76,6 @@ public class FLOSSDriver {
    public static Student user;
    
    public static void main(String[]args) throws IOException {
-      manager = new AWSManager();
       user = new Student();
       display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1112, 830);			      //Size of display window
@@ -94,7 +91,6 @@ public class FLOSSDriver {
       displaySidePanel();                          //Add all the buttons and options
       initializeClasses();                         //Initialize the class list
       initializeSidePanel();                       //Initialize the side panel
-      initializeJoinTable();
       initializeAddTable();
       initializeRemoveUserTable();
       initializeSearchFeature();                   //Initialize the search feature for the class
@@ -115,10 +111,6 @@ public class FLOSSDriver {
       //login.setVisible(true);
       
       // **Test Cases for the FLOSS Program** 
-   }
-   
-   public RemoteDBManager getManager() {
-      return this.manager;
    }
    
    public static String getSearchSubject() {
@@ -264,6 +256,27 @@ public class FLOSSDriver {
       errorMessage = new JLabel("<html>TABLE MAX OCCUPANCY REACHED</html>");
       errorMessage.setBounds(25, 285, 225, 25);
       sidePanel.add(errorMessage);
+      joinTable = new JButton("Join Table");
+      joinTable.setBounds(25, 285, 225, 25);
+      joinTable.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               if(user.getOccupyTable()) {
+                  leaveTable.setVisible(true);
+                  display.setEnabled(false);
+               } else {
+                  fenwickLibrary.getSelectedTable().addStudent(user);
+                  user.setOccupyTable();
+                  displayCourseOptions(false);
+                  fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
+                  fenwickLibrary.setTableSelected(false);
+                  removeUserTable.setVisible(true);
+                  joinTable.setVisible(false);
+                  fenwickLibrary.repaint();
+               }
+            } });  
+      joinTable.setVisible(false);
+      sidePanel.add(joinTable);
       courseSubjects = new JComboBox(subjectStrings);
       courseSubjects.addActionListener(
          new ActionListener() {
@@ -288,32 +301,6 @@ public class FLOSSDriver {
       sidePanel.add(message);
    }
    
-   public static void initializeJoinTable() {
-      joinTable = new JButton("Join Table");
-      joinTable.setBounds(25, 285, 225, 25);
-      joinTable.addActionListener(
-         new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               if(user.getOccupyTable()) {
-                  leaveTable.setVisible(true);
-                  display.setEnabled(false);
-               } else {
-                  fenwickLibrary.getSelectedTable().addStudent(user);
-                  manager.joinStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID()); //AWS IMPLEMENTATION
-                  user.setOccupyTable();
-                  displayCourseOptions(false);
-                  fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
-                  fenwickLibrary.setTableSelected(false);
-                  removeUserTable.setVisible(true);
-                  fenwickLibrary.updateMessages();
-                  joinTable.setVisible(false);
-                  fenwickLibrary.repaint();
-               }
-            } });  
-      joinTable.setVisible(false);
-      sidePanel.add(joinTable);
-   }
-   
    public static void initializeAddTable() {
       addTable = new JButton("Finish");
       addTable.setBounds(50, 500, 200, 25);
@@ -332,13 +319,10 @@ public class FLOSSDriver {
                   fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
                   courseSubjects.setSelectedIndex(0);
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
-                  String classInfo = course + number;
-                  manager.startStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID(), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //AWS IMPLEMENTATION
                   message.setText("");
                   displayCourseOptions(false);
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                   fenwickLibrary.setTableSelected(false);
-                  fenwickLibrary.updateMessages();
                   removeUserTable.setVisible(true);
                   fenwickLibrary.repaint();
                }
@@ -361,9 +345,8 @@ public class FLOSSDriver {
                   fenwickLibrary.getUserTable().setOccupied();
                }
                fenwickLibrary.setUserTable(new Table());
-               manager.stopStudying(user.getMasonEmail());
                user.setOccupyTable();
-               fenwickLibrary.updateMessages();
+               fenwickLibrary.resetMessages();
                fenwickLibrary.setTableSelected(false);
                fenwickLibrary.repaint();
                removeUserTable.setVisible(false);
@@ -388,25 +371,20 @@ public class FLOSSDriver {
                   fenwickLibrary.getUserTable().setMessage("");
                   fenwickLibrary.getUserTable().setOccupied();
                }
-               manager.stopStudying(user.getMasonEmail());           //*** AWS IMPLEMENTATION ***
                fenwickLibrary.getSelectedTable().addStudent(user);
                if(!fenwickLibrary.getSelectedTable().getOccupied()) {
                   String course = (String)courseSubjects.getSelectedItem();
                   String number = (String)courseNumbers.getSelectedItem();
-                  String classInfo = course + number;
                   fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
                   courseSubjects.setSelectedIndex(0);
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
                   message.setText("");
                   fenwickLibrary.getSelectedTable().setOccupied();
                   displayCourseOptions(false);
-                  manager.startStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID(), fenwickLibrary.getSelectedTable().getMessage(), classInfo);
-               } else {
-                  manager.joinStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID());
                }
                fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                fenwickLibrary.setTableSelected(false);
-               fenwickLibrary.updateMessages();
+               fenwickLibrary.resetMessages();
                removeUserTable.setVisible(true);
                leaveTable.setVisible(false);
                display.setEnabled(true);
@@ -506,10 +484,7 @@ public class FLOSSDriver {
    
    //Display the course that the user/student is studying for
    public static void displayTableCourse(Class course) {
-      if(course.getNumber() == 0)
-         tableClass.setText(course.getSubjectCode());
-      else
-         tableClass.setText(course.getSubjectCode() + " " + course.getNumber());
+      tableClass.setText(course.getSubjectCode() + " " + course.getNumber());
    }
    
    //Reset the JLabel for the table display
@@ -525,53 +500,33 @@ public class FLOSSDriver {
       if(size == 1) {
          if(table.getStudents().get(0).getGNumber() != user.getGNumber())
             addFriend1.setVisible(true);
-         else 
-            addFriend1.setVisible(false);
          addFriend2.setVisible(false);
          addFriend3.setVisible(false);
          addFriend4.setVisible(false);
       } else if(size == 2) {
          if(table.getStudents().get(0).getGNumber() != user.getGNumber())
             addFriend1.setVisible(true);
-         else 
-            addFriend1.setVisible(false);
          if(table.getStudents().get(1).getGNumber() != user.getGNumber())
             addFriend2.setVisible(true);
-         else
-            addFriend2.setVisible(false);
          addFriend3.setVisible(false);
          addFriend4.setVisible(false);
       } else if(size == 3) {
          if(table.getStudents().get(0).getGNumber() != user.getGNumber())
             addFriend1.setVisible(true);
-         else 
-            addFriend1.setVisible(false);
          if(table.getStudents().get(1).getGNumber() != user.getGNumber())
             addFriend2.setVisible(true);
-         else
-            addFriend2.setVisible(false);
          if(table.getStudents().get(2).getGNumber() != user.getGNumber())
             addFriend3.setVisible(true);
-         else
-            addFriend3.setVisible(false);
          addFriend4.setVisible(false);
       } else if(size == 4) {
          if(table.getStudents().get(0).getGNumber() != user.getGNumber())
             addFriend1.setVisible(true);
-         else 
-            addFriend1.setVisible(false);
          if(table.getStudents().get(1).getGNumber() != user.getGNumber())
             addFriend2.setVisible(true);
-         else
-            addFriend2.setVisible(false);
          if(table.getStudents().get(2).getGNumber() != user.getGNumber())
             addFriend3.setVisible(true);
-         else
-            addFriend3.setVisible(false);
          if(table.getStudents().get(3).getGNumber() != user.getGNumber())
             addFriend4.setVisible(true);
-         else
-            addFriend4.setVisible(false);
       } else  {
          addFriend1.setVisible(false);
          addFriend2.setVisible(false);

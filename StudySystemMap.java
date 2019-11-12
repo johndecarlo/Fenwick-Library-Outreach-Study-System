@@ -80,7 +80,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
 
    //Basic constructor for the StudySystemMap w/ no parameters
    public StudySystemMap() throws IOException {
-      floorNumber = 1;                    //Initialize the floor number
+      floorNumber = 3;                    //Initialize the floor number
       initializeTables();                 //Initialize the table arrays
       addMouseListener( this );           //Initalize mouseListener
       addMouseMotionListener( this );     //Initalize mouseMotionListener
@@ -91,10 +91,8 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       tableSelected = false;              //Initialize whether or not we have selected a table
       searchFeature = false;              //Initialize whether or not the search feature is active
       
-      Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
       // ** Test Cases for the FLOSS Program **
       //Cannot join a table that is occupied by the max number of students
-      /*
       floor1Tables.get(0).setOccupied();
       floor1Tables.get(0).addStudent(new Student("John", "Paul", "jpaul1", "pass", "Criminology", 01043567));
       floor1Tables.get(0).addStudent(new Student("Chris", "Smith", "csmith1", "pass", "Nursing", 01023456));
@@ -109,7 +107,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics", 12416781));
       floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
       floor1Tables.get(7).setMessage("Come study with us");
-      */
    }
    
     //Get the floor number that the user is currently viewing
@@ -156,153 +153,111 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    public void mouseClicked( MouseEvent e ) {
       int button = e.getButton();  
       Table table = null;
+      int startRow, startCol, endRow, endCol;
       if(button == MouseEvent.BUTTON1) {
          System.out.println(mouseX);
          System.out.println(mouseY);
          if(floorNumber == 1) {
             for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
                table = floor1Tables.get(ind1);  //Create a temporary table
-               if(clickedTable(table))
-                  break;
+               startRow = table.getRow();       //Get the starting row
+               startCol = table.getCol();       //Get the starting column
+               endRow = startRow + table.getRowSize();   //Get the end row
+               endCol = startCol + table.getColSize();   //Get the end col
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+                  if(table.getOccupied() == false) {
+                     resetMessages();
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayCourseOptions(true);
+                     break;
+                  } else if(table.getNumStudents() <= table.getCapacity()) {
+                     FLOSSDriver.displayCourseOptions(false);
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayStudentName(selectedTable.getStudents());
+                     FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
+                     FLOSSDriver.displayMessage(selectedTable.getMessage());
+                     if(table.getCourse().getNumber() != 0)
+                        FLOSSDriver.displayTableCourse(table.getCourse());
+                     else
+                        FLOSSDriver.resetTableCourse();  
+                     if(table.getNumStudents() == table.getCapacity()) {
+                        FLOSSDriver.showErrorMessage(true);
+                        FLOSSDriver.showJoinTable(false);
+                     }
+                     else if(table.getID() != userTable.getID())
+                        FLOSSDriver.showJoinTable(true);
+                     break;
+                  } 
+               } else {
+                  FLOSSDriver.displayCourseOptions(false);
+                  tableSelected = false;
+               }
             }
          } else if(floorNumber == 2) {
             for(int ind2 = 0; ind2 < floor2Tables.size(); ind2++) {
                table = floor2Tables.get(ind2);  //Create a temporary table
-               if(clickedTable(table))
-                  break;
+               startRow = table.getRow();       //Get the starting row
+               startCol = table.getCol();       //Get the starting column
+               endRow = startRow + table.getRowSize();   //Get the end row
+               endCol = startCol + table.getColSize();   //Get the end col
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+                  if(table.getOccupied() == false) {
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayCourseOptions(true);
+                     break;
+                  } else if(table.getNumStudents() < table.getCapacity()) {
+                     FLOSSDriver.displayCourseOptions(false);
+                     selectedTable = table;
+                     tableSelected = true;
+                     break;
+                  }
+               } else {
+                  FLOSSDriver.displayCourseOptions(false);
+                  tableSelected = false;
+               }
             }
          } else if(floorNumber == 3) {
             for(int ind3 = 0; ind3 < floor3Tables.size(); ind3++) {
                table = floor3Tables.get(ind3);  //Create a temporary table
-               if(clickedTable(table))
-                  break;
+               startRow = table.getRow();       //Get the starting row
+               startCol = table.getCol();       //Get the starting column
+               endRow = startRow + table.getRowSize();   //Get the end row
+               endCol = startCol + table.getColSize();   //Get the end col
+               if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+                  if(table.getOccupied() == false) {
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayCourseOptions(true);
+                     break;
+                  } else if(table.getNumStudents() < table.getCapacity()) {
+                     FLOSSDriver.displayCourseOptions(false);
+                     selectedTable = table;
+                     tableSelected = true;
+                     FLOSSDriver.displayStudentName(table.getStudents());
+                     FLOSSDriver.displayMessage(table.getMessage());
+                     if(table.getCourse().getNumber() != 0)
+                        FLOSSDriver.displayTableCourse(table.getCourse());
+                     else
+                        FLOSSDriver.resetTableCourse();  
+                     if(table.getNumStudents() == table.getCapacity()) {
+                        FLOSSDriver.showErrorMessage(true);
+                        FLOSSDriver.showJoinTable(false);
+                     }
+                     else
+                        FLOSSDriver.showJoinTable(true);
+                     break;
+                  } 
+               } else {
+                  FLOSSDriver.displayCourseOptions(false);
+                  tableSelected = false;
+               }
             }
          }
          repaint();
       }  
-   }
-   
-   public static boolean clickedTable(Table table) {
-      int startRow, startCol, endRow, endCol;
-      startRow = table.getRow();       //Get the starting row
-      startCol = table.getCol();       //Get the starting column
-      endRow = startRow + table.getRowSize();   //Get the end row
-      endCol = startCol + table.getColSize();   //Get the end col
-      if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getID() != userTable.getID()) {    //If it is between the start and end row and the start and end column
-         if(table.getOccupied() == false) {
-            updateMessages();
-            selectedTable = table;
-            tableSelected = true;
-            FLOSSDriver.displayCourseOptions(true);
-            FLOSSDriver.showJoinTable(false);
-            return true;
-         } else if(table.getNumStudents() <= table.getCapacity()) {
-            FLOSSDriver.displayCourseOptions(false);
-            FLOSSDriver.showErrorMessage(false);
-            selectedTable = table;
-            tableSelected = true;
-            FLOSSDriver.displayStudentName(selectedTable.getStudents());
-            FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
-            FLOSSDriver.displayMessage(selectedTable.getMessage());
-            if(table.getCourse().getNumber() != 0)
-               FLOSSDriver.displayTableCourse(table.getCourse());
-            else
-               FLOSSDriver.resetTableCourse();  
-            if(table.getNumStudents() == table.getCapacity()) {
-               FLOSSDriver.showErrorMessage(true);
-               FLOSSDriver.showJoinTable(false);
-            }
-            else if(table.getID() != userTable.getID())
-               FLOSSDriver.showJoinTable(true);
-            return true;
-         } 
-      } else {
-         FLOSSDriver.displayCourseOptions(false);
-         updateMessages();
-         tableSelected = false;
-         return false;
-      }
-      return false;
-   }
-   
-    //When we move the mouse, we can see information of tables that our cursor is hovering over
-   public void mouseMoved( MouseEvent e) {
-      Table table = null;
-      mouseX = e.getX();	//Get mouseX value
-      mouseY = e.getY();	//Get mouseY value
-      if(floorNumber == 1) {
-         for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
-            table = floor1Tables.get(ind1);  //Create a temporary table
-            if(movedMouse(table))
-               break;
-         }
-      }
-      else if(floorNumber == 2) {
-         for(int ind2 = 0; ind2 < floor2Tables.size(); ind2++) {
-            table = floor2Tables.get(ind2);  //Create a temporary table
-            if(movedMouse(table))
-               break;
-         }
-      }
-      else if(floorNumber == 3) {
-         for(int ind3 = 0; ind3 < floor3Tables.size(); ind3++) {
-            table = floor3Tables.get(ind3);  //Create a temporary table
-            if(movedMouse(table))
-               break;
-         }
-      }
-      repaint();			//Refresh the screen
-   }
-   
-   public static boolean movedMouse(Table table) {
-      int startRow, startCol, endRow, endCol;
-      startRow = table.getRow();       //Get the starting row
-      startCol = table.getCol();       //Get the starting column
-      endRow = startRow + table.getRowSize();   //Get the end row
-      endCol = startCol + table.getColSize();   //Get the end col
-      if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() && table.getID() != selectedTable.getID()) {    //If it is between the start and end row and the start and end column
-         FLOSSDriver.displayStudentName(table.getStudents());
-         FLOSSDriver.displayMessage(table.getMessage());
-         if(table.getCourse().getNumber() != 0)
-            FLOSSDriver.displayTableCourse(table.getCourse());
-         else
-            FLOSSDriver.resetTableCourse();  
-         if(table.getNumStudents() == table.getCapacity())
-            FLOSSDriver.showErrorMessage(true);
-         FLOSSDriver.showJoinTable(false);
-         FLOSSDriver.showAddFriend(new Table(), 0);
-         return true;
-      } else if(tableSelected == true) {
-         if(selectedTable.getOccupied()) {
-            FLOSSDriver.displayStudentName(selectedTable.getStudents());
-            FLOSSDriver.displayMessage(selectedTable.getMessage());
-            if(selectedTable.getCourse().getNumber() != 0)
-               FLOSSDriver.displayTableCourse(selectedTable.getCourse());
-            else
-               FLOSSDriver.resetTableCourse();  
-            if(selectedTable.getNumStudents() == selectedTable.getCapacity())
-               FLOSSDriver.showErrorMessage(true);
-            if(selectedTable.getID() != userTable.getID()) 
-               FLOSSDriver.showJoinTable(true);
-            FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
-            FLOSSDriver.showErrorMessage(false); 
-            return false;
-         } else {
-            FLOSSDriver.showJoinTable(false);
-            updateMessages();
-            return false;
-         }
-      } else {
-         updateMessages();
-         return false;
-      }
-   }
-
-   //When we drag the mouse across the board
-   public void mouseDragged( MouseEvent e) {
-      mouseX = e.getX();	//Get mouseX value
-      mouseY = e.getY();	//Get mouseY value
-      repaint();			//Refresh the screen
    }
     
    private class Listener implements ActionListener {
@@ -319,6 +274,82 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
 
    public void mouseEntered( MouseEvent e )
    {}
+   
+   //When we move the mouse, we can see information of tables that our cursor is hovering over
+   public void mouseMoved( MouseEvent e) {
+      int startRow, startCol, endRow, endCol;
+      Table table = null;
+      mouseX = e.getX();	//Get mouseX value
+      mouseY = e.getY();	//Get mouseY value
+      if(floorNumber == 1) {
+         for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
+            table = floor1Tables.get(ind1);  //Create a temporary table
+            startRow = table.getRow();       //Get the starting row
+            startCol = table.getCol();       //Get the starting column
+            endRow = startRow + table.getRowSize();   //Get the end row
+            endCol = startCol + table.getColSize();   //Get the end col
+            if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && tableSelected == false) {    //If it is between the start and end row and the start and end column
+               FLOSSDriver.displayStudentName(table.getStudents());
+               FLOSSDriver.displayMessage(table.getMessage());
+               if(table.getCourse().getNumber() != 0)
+                  FLOSSDriver.displayTableCourse(table.getCourse());
+               else
+                  FLOSSDriver.resetTableCourse();  
+               if(table.getNumStudents() == table.getCapacity())
+                  FLOSSDriver.showErrorMessage(true);
+               break;
+            } else if(tableSelected == false) {
+               resetMessages();
+            }  
+         }
+      }
+      else if(floorNumber == 2) {
+         for(int ind2 = 0; ind2 < floor2Tables.size(); ind2++) {
+            table = floor2Tables.get(ind2);  //Create a temporary table
+            startRow = table.getRow();       //Get the starting row
+            startCol = table.getCol();       //Get the starting column
+            endRow = startRow + table.getRowSize();   //Get the end row
+            endCol = startCol + table.getColSize();   //Get the end col
+            if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+               FLOSSDriver.displayStudentName(table.getStudents());
+               if(table.getCourse().getNumber() != 0)
+                  FLOSSDriver.displayTableCourse(table.getCourse());
+               else
+                  FLOSSDriver.resetTableCourse();  
+               break;
+            } else {
+               resetMessages();
+            }  
+         }
+      }
+      else if(floorNumber == 3) {
+         for(int ind3 = 0; ind3 < floor3Tables.size(); ind3++) {
+            table = floor3Tables.get(ind3);  //Create a temporary table
+            startRow = table.getRow();       //Get the starting row
+            startCol = table.getCol();       //Get the starting column
+            endRow = startRow + table.getRowSize();   //Get the end row
+            endCol = startCol + table.getColSize();   //Get the end col
+            if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol) {    //If it is between the start and end row and the start and end column
+               FLOSSDriver.displayStudentName(table.getStudents());
+               if(table.getCourse().getNumber() != 0)
+                  FLOSSDriver.displayTableCourse(table.getCourse());
+               else
+                  FLOSSDriver.resetTableCourse(); 
+               break;
+            } else {
+               resetMessages();
+            }  
+         }
+      }
+      repaint();			//Refresh the screen
+   }
+
+   //When we drag the mouse across the board
+   public void mouseDragged( MouseEvent e) {
+      mouseX = e.getX();	//Get mouseX value
+      mouseY = e.getY();	//Get mouseY value
+      repaint();			//Refresh the screen
+   }
    
    //Mouse Exited
    public void mouseExited( MouseEvent e )
@@ -486,12 +517,12 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    }
    
    //Reset the JLabels so we don't display information about a table we are not over
-   public static void updateMessages() {
-      FLOSSDriver.displayStudentName(userTable.getStudents());
-      FLOSSDriver.displayTableCourse(userTable.getCourse());  
-      FLOSSDriver.displayMessage(userTable.getMessage()); 
+   public static void resetMessages() {
+      FLOSSDriver.displayStudentName(new ArrayList<Student>());
+      FLOSSDriver.resetTableCourse();  
+      FLOSSDriver.displayMessage(""); 
       FLOSSDriver.showErrorMessage(false);
-      FLOSSDriver.showAddFriend(userTable, userTable.getNumStudents());
+      FLOSSDriver.showAddFriend(new Table(), 0);
       FLOSSDriver.showJoinTable(false);
    }
 }
