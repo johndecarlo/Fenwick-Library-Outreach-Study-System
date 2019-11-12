@@ -24,13 +24,13 @@ public class Student {
       this.friends = new ArrayList<Student>();
    }
    
-   public Student(String first, String last, String email, String password, String major, int num) {
+   public Student(String first, String last, String email, String password, String major) {
       this.firstName = first;
       this.lastName = last;
       this.masonEmail = email;
       this.password = password;
       this.major = major;
-      this.gNumber = num;
+      this.gNumber = 0;
       this.friends = new ArrayList<Student>();
    }
 	
@@ -74,13 +74,22 @@ public class Student {
 	
    //setter for student password
    public void setPassword(String password) {
-	   this.password = password;
+      this.password = password;
    }
    
    //getter for student password
    public String getPassword() {
-	   return password;
+      return password;
    }
+   
+   public ArrayList<Student> getFriends() {
+      return this.friends;
+   }
+   
+   public void setFriends(ArrayList<Student> friends) {
+      this.friends = friends;
+   }
+   
 	//Add friend into friend list, and increase number of friend by one
    public void addFriend(Student friend) {
       friends.add(friend);

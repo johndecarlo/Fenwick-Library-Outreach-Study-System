@@ -113,12 +113,14 @@ public class FLOSSDriver {
       
       //Login login = new Login(display);
       //login.setVisible(true);
-      
-      // **Test Cases for the FLOSS Program** 
    }
    
-   public RemoteDBManager getManager() {
-      return this.manager;
+   public static Student getUser() {
+      return user;
+   }
+   
+   public static RemoteDBManager getManager() {
+      return manager;
    }
    
    public static String getSearchSubject() {

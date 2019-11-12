@@ -102,17 +102,18 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       // ** Test Cases for the FLOSS Program **
       //Cannot join a table that is occupied by the max number of students
       floor1Tables.get(0).setOccupied();
-      floor1Tables.get(0).addStudent(new Student("John", "Paul", "jpaul1", "pass", "Criminology", 01043567));
-      floor1Tables.get(0).addStudent(new Student("Chris", "Smith", "csmith1", "pass", "Nursing", 01023456));
-      floor1Tables.get(0).addStudent(new Student("Sam", "Patrick", "spatrick", "pass", "ISOM", 11056789));
-      floor1Tables.get(0).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
+      floor1Tables.get(0).addStudent(new Student("John", "Paul", "jpaul1", "pass", "Criminology"));
+      floor1Tables.get(0).addStudent(new Student("Chris", "Smith", "csmith1", "pass", "Nursing"));
+      floor1Tables.get(0).addStudent(new Student("Sam", "Patrick", "spatrick", "pass", "ISOM"));
+      floor1Tables.get(0).addStudent(new Student("Billy", "Williamson", "bwillia", "pass", "Computer Science"));
+      floor1Tables.get(0).setCourse(new Class("Accounting", "CS", 310, "Data Structures"));
       floor1Tables.get(0).setMessage("Come study with us about the small brown dog jumped over the big thick log of wood and how the man loved his pet fish go sports and go team I love it here");
       floor1Tables.get(5).setOccupied();
-      floor1Tables.get(5).addStudent(new Student("Mike", "Milan", "mmilan1", "pass", "Computer Sciene", 11016719));
+      floor1Tables.get(5).addStudent(new Student("Mike", "Milan", "mmilan1", "pass", "Computer Sciene"));
       floor1Tables.get(5).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
       floor1Tables.get(5).setMessage("Come study with us");
       floor1Tables.get(7).setOccupied();
-      floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics", 12416781));
+      floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics"));
       floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
       floor1Tables.get(7).setMessage("Come study with us");
    }
@@ -274,6 +275,8 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
             FLOSSDriver.resetTableCourse();  
          if(table.getNumStudents() == table.getCapacity())
             FLOSSDriver.showErrorMessage(true);
+         else
+            FLOSSDriver.showErrorMessage(false);
          FLOSSDriver.showJoinTable(false);
          FLOSSDriver.showAddFriend(new Table(), 0);
          return true;
@@ -287,10 +290,14 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                FLOSSDriver.resetTableCourse();  
             if(selectedTable.getNumStudents() == selectedTable.getCapacity())
                FLOSSDriver.showErrorMessage(true);
-            if(selectedTable.getID() != userTable.getID()) 
+            if(selectedTable.getID() != userTable.getID() && selectedTable.getNumStudents() < selectedTable.getCapacity()) {
                FLOSSDriver.showJoinTable(true);
+               FLOSSDriver.showErrorMessage(false); 
+            } else {
+               FLOSSDriver.showJoinTable(false);
+               FLOSSDriver.showErrorMessage(true); 
+            }
             FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
-            FLOSSDriver.showErrorMessage(false); 
             return false;
          } else {
             FLOSSDriver.showJoinTable(false);
@@ -335,6 +342,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       super.paintComponent(g); 	//Call super method
       paintMap(g, floorNumber);
       paintMatchingTable(g);
+      paintFriendTable(g);
       paintUserTable(g);
       paintSelectedTable(g);
    }
@@ -459,14 +467,54 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
                g.drawImage(blockTable_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
             else if(table.getShape().equals("CIRCLE") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
                g.drawImage(circleTable_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
-            else if(table.getShape().equals("CIRCLE_HL")) 
+            else if(table.getShape().equals("CIRCLE_HL") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
                g.drawImage(circleTable_halfLeft_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
-            else if(table.getShape().equals("CIRCLE_HR")) 
+            else if(table.getShape().equals("CIRCLE_HR") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
                g.drawImage(circleTable_halfRight_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);
             else if(table.getShape().equals("SMALLCIRCLE_H") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
                g.drawImage(smallCircleTable_h_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);  
             else if(table.getShape().equals("SMALLCIRCLE_V") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
                g.drawImage(smallCircleTable_v_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+         }
+      } 
+   }
+   
+    //Paint the table that matches with the users search feature
+   public void paintFriendTable(Graphics g) {
+      if(searchFeature == true) {
+         ArrayList<Table> tables;
+         if(floorNumber == 1)
+            tables = floor1Tables;
+         else if (floorNumber == 2)
+            tables = floor2Tables;
+         else if (floorNumber == 3)
+            tables = floor3Tables;
+         else
+            tables = floor1Tables;
+         String subjectCode = FLOSSDriver.getSearchSubject();
+         int courseNumber = FLOSSDriver.getSearchNumber();
+         for(int index = 0; index < tables.size(); index++) {
+            Table table = tables.get(index);
+            for(int friendIndex = 0; friendIndex < FLOSSDriver.getUser().getFriends().size(); friendIndex++) {
+               Student friend = FLOSSDriver.getUser().getFriends().get(friendIndex);
+               ArrayList<Student> students = table.getStudents();
+               for(int tableIndex = 0; tableIndex < table.getNumStudents(); tableIndex++) {
+                  if(friend.getMasonEmail().equals(students.get(tableIndex).getMasonEmail())) {
+                     if(table.getShape().equals("BLOCK")) 
+                        g.drawImage(blockTable_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+                     else if(table.getShape().equals("CIRCLE")) 
+                        g.drawImage(circleTable_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+                     else if(table.getShape().equals("CIRCLE_HL")) 
+                        g.drawImage(circleTable_halfLeft_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+                     else if(table.getShape().equals("CIRCLE_HR")) 
+                        g.drawImage(circleTable_halfRight_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);
+                     else if(table.getShape().equals("SMALLCIRCLE_H")) 
+                        g.drawImage(smallCircleTable_h_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);  
+                     else if(table.getShape().equals("SMALLCIRCLE_V")) 
+                        g.drawImage(smallCircleTable_v_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
+                  }
+               }
+            }
          }
       } 
    }
