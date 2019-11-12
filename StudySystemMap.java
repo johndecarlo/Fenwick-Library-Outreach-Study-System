@@ -38,36 +38,43 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon circleTable_unoccupied = new ImageIcon("table_images/circle_unoccupied.png");                 //Circle table display
    private ImageIcon circleTable_halfLeft_unoccupied = new ImageIcon("table_images/circle_halfLeft_unoccupied.png");
    private ImageIcon circleTable_halfRight_unoccupied = new ImageIcon("table_images/circle_halfRight_unoccupied.png");
-   private ImageIcon smallCircleTable_h_unoccupied = new ImageIcon("table_images/small_circle_unoccupied.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_unoccupied = new ImageIcon("table_images/smallcircle_unoccupied.png");   //Small cirlce talbe (vertical)
+   private ImageIcon smallCircleTable_h_unoccupied = new ImageIcon("table_images/smallcircle_h_unoccupied.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_unoccupied = new ImageIcon("table_images/smallcircle_v_unoccupied.png");   //Small cirlce talbe (vertical)
    //Images for displaying tables that have been selected
-   private ImageIcon blockTable_occupied = new ImageIcon("table_images/green_block_occupied.png");                   //Block table display
-   private ImageIcon circleTable_occupied = new ImageIcon("table_images/green_circle_occupied.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_occupied = new ImageIcon("table_images/green_circle_halfLeft_occupied.png");
-   private ImageIcon circleTable_halfRight_occupied = new ImageIcon("table_images/green_circle_halfRight_occupied.png");
-   private ImageIcon smallCircleTable_h_occupied = new ImageIcon("table_images/green_small_circle_occupied.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/green_smallcircle_occupied_v.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_occupied = new ImageIcon("table_images/block_occupied.png");                   //Block table display
+   private ImageIcon circleTable_occupied = new ImageIcon("table_images/circle_occupied.png");                 //Circle table display
+   private ImageIcon circleTable_halfLeft_occupied = new ImageIcon("table_images/circle_halfLeft_occupied.png");
+   private ImageIcon circleTable_halfRight_occupied = new ImageIcon("table_images/circle_halfRight_occupied.png");
+   private ImageIcon smallCircleTable_h_occupied = new ImageIcon("table_images/smallcircle_h_occupied.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/smallcircle_v_occupied.png");   //Small cirlce talbe (vertical)
    //Images for displaying table that the user has selected
-   private ImageIcon blockTable_selected = new ImageIcon("table_images/green_block_selected.png");                   //Block table display
+   private ImageIcon blockTable_selected = new ImageIcon("table_images/block_selected.png");                   //Block table display
    private ImageIcon circleTable_selected = new ImageIcon("table_images/green_circle_selected.png");                 //Circle table display
    private ImageIcon circleTable_halfLeft_selected = new ImageIcon("table_images/circle_halfLeft_selected.png");
    private ImageIcon circleTable_halfRight_selected = new ImageIcon("table_images/circle_halfRight_selected.png");
-   private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/green_small_circle_selected.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/green_smallcircle_selected_v.png");   //Small cirlce talbe (vertical)
+   private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/smallcircle_h_selected.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/smallcircle_v_selected_v.png");   //Small cirlce talbe (vertical)
    //Images for displaying table that the user is occupying
-   private ImageIcon blockTable_user = new ImageIcon("table_images/green_block_user.png");                    //Block table display
-   private ImageIcon circleTable_user = new ImageIcon("table_images/green_circle_user.png");                  //Circle table display
-   private ImageIcon circleTable_halfLeft_user = new ImageIcon("table_images/circle_halfLeft_user.png");
+   private ImageIcon blockTable_user = new ImageIcon("table_images/block_user.png");                    //Block table display
+   private ImageIcon circleTable_user = new ImageIcon("table_images/circle_user.png");                  //Circle table display
+   private ImageIcon circleTable_halfLeft_user = new ImageIcon("table_images/halfLeft_user.png");
    private ImageIcon circleTable_halfRight_user = new ImageIcon("table_images/circle_halfRight_user.png");
-   private ImageIcon smallCircleTable_h_user= new ImageIcon("table_images/green_small_circle_user.png");      //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_user = new ImageIcon("table_images/green_smallcircle_user_v.png");    //Small cirlce talbe (vertical)
+   private ImageIcon smallCircleTable_h_user= new ImageIcon("table_images/smallcircle_h_user.png");      //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_user = new ImageIcon("table_images/smallcircle_v_user.png");    //Small cirlce talbe (vertical)
    //Images for displaying tables that match with what the user is searching for
-   private ImageIcon blockTable_match = new ImageIcon("table_images/green_block_match.png");                   //Block table display
-   private ImageIcon circleTable_match = new ImageIcon("table_images/green_circle_match.png");                 //Circle table display
+   private ImageIcon blockTable_match = new ImageIcon("table_images/block_match.png");                   //Block table display
+   private ImageIcon circleTable_match = new ImageIcon("table_images/circle_match.png");                 //Circle table display
    private ImageIcon circleTable_halfLeft_match = new ImageIcon("table_images/circle_halfLeft_match.png");
-   private ImageIcon circleTable_halfRight_match = new ImageIcon("table_imagescircle_halfRight_match.png");
-   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/green_small_circle_match.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/green_smallcircle_match_v.png");   //Small cirlce talbe (vertical)
+   private ImageIcon circleTable_halfRight_match = new ImageIcon("table_images/circle_halfRight_match.png");
+   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/smallcircle_h_match.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/smallcircle_v_match.png");   //Small cirlce talbe (vertical)
+   //Images for displaying tables that a users friend is sitting at
+   private ImageIcon blockTable_match = new ImageIcon("table_images/block_friend.png");                   //Block table display
+   private ImageIcon circleTable_match = new ImageIcon("table_images/circle_friend.png");                 //Circle table display
+   private ImageIcon circleTable_halfLeft_match = new ImageIcon("table_images/circle_halfLeft_friend.png");
+   private ImageIcon circleTable_halfRight_match = new ImageIcon("table_imagescircle_halfRight_friend.png");
+   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/smallcircle_h_friend.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/smallcircle_v_friend.png");   //Small cirlce talbe (vertical)
    
    private static int floorNumber;     //Floor number that the user is currently viewing 
    protected static int mouseX;			//location for the mouse pointer X
@@ -94,7 +101,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
       // ** Test Cases for the FLOSS Program **
       //Cannot join a table that is occupied by the max number of students
-      /*
       floor1Tables.get(0).setOccupied();
       floor1Tables.get(0).addStudent(new Student("John", "Paul", "jpaul1", "pass", "Criminology", 01043567));
       floor1Tables.get(0).addStudent(new Student("Chris", "Smith", "csmith1", "pass", "Nursing", 01023456));
@@ -109,7 +115,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics", 12416781));
       floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
       floor1Tables.get(7).setMessage("Come study with us");
-      */
    }
    
     //Get the floor number that the user is currently viewing

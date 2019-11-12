@@ -232,6 +232,11 @@ public class FLOSSDriver {
       sidePanel.add(tableStudentName1);
       addFriend1 = new JButton("Follow");
       addFriend1.setBounds(200, 60, 85, 15);
+      addFriend1.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               System.out.println("Add Friend");
+            } });
       addFriend1.setVisible(false);
       sidePanel.add(addFriend1);
       tableStudentName2 = new JLabel("Student 2");
@@ -239,6 +244,11 @@ public class FLOSSDriver {
       sidePanel.add(tableStudentName2);
       addFriend2 = new JButton("Follow");
       addFriend2.setBounds(200, 85, 85, 15);
+      addFriend2.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               System.out.println("Add Friend");
+            } });
       addFriend2.setVisible(false);
       sidePanel.add(addFriend2);
       tableStudentName3 = new JLabel("Student 3");
@@ -246,6 +256,11 @@ public class FLOSSDriver {
       sidePanel.add(tableStudentName3);
       addFriend3 = new JButton("Follow");
       addFriend3.setBounds(200, 110, 85, 15);
+      addFriend3.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               System.out.println("Add Friend");
+            } });
       addFriend3.setVisible(false);
       sidePanel.add(addFriend3);
       tableStudentName4 = new JLabel("Student 4");
@@ -253,6 +268,11 @@ public class FLOSSDriver {
       sidePanel.add(tableStudentName4);
       addFriend4 = new JButton("Follow");
       addFriend4.setBounds(200, 135, 85, 15);
+      addFriend4.addActionListener(
+         new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               System.out.println("Add Friend");
+            } });
       addFriend4.setVisible(false);
       sidePanel.add(addFriend4);
       tableClass = new JLabel("");
