@@ -53,7 +53,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon circleTable_halfLeft_selected = new ImageIcon("table_images/circle_halfLeft_selected.png");
    private ImageIcon circleTable_halfRight_selected = new ImageIcon("table_images/circle_halfRight_selected.png");
    private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/smallcircle_h_selected.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/smallcircle_v_selected_v.png");   //Small cirlce talbe (vertical)
+   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/smallcircle_v_selected.png");   //Small cirlce talbe (vertical)
    //Images for displaying table that the user is occupying
    private ImageIcon blockTable_user = new ImageIcon("table_images/block_user.png");                    //Block table display
    private ImageIcon circleTable_user = new ImageIcon("table_images/circle_user.png");                  //Circle table display
@@ -72,7 +72,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon blockTable_friend = new ImageIcon("table_images/block_friend.png");                   //Block table display
    private ImageIcon circleTable_friend = new ImageIcon("table_images/circle_friend.png");                 //Circle table display
    private ImageIcon circleTable_halfLeft_friend = new ImageIcon("table_images/circle_halfLeft_friend.png");
-   private ImageIcon circleTable_halfRight_friend = new ImageIcon("table_imagescircle_halfRight_friend.png");
+   private ImageIcon circleTable_halfRight_friend = new ImageIcon("table_images/circle_halfRight_friend.png");
    private ImageIcon smallCircleTable_h_friend = new ImageIcon("table_images/smallcircle_h_friend.png");    //Small circle table (horizontal)
    private ImageIcon smallCircleTable_v_friend = new ImageIcon("table_images/smallcircle_v_friend.png");   //Small cirlce talbe (vertical)
    
