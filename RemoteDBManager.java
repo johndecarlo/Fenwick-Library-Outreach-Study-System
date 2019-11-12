@@ -1,3 +1,5 @@
+package com.floss.manager;
+
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +24,22 @@ public interface RemoteDBManager {
      * a non-unique username
      */
     boolean addUser( String userID, String name, String password, String major );
+    
+    /**
+     * Add one or many friends to my friends list
+     * @param myID The user id to add friends to
+     * @param friendID The friend(s) to append to the friends list
+     * @return True if successful, false if any data is invalid
+     */
+    boolean addFriend( String myID, String... friendID );
+    
+    /**
+     * Remove a friend from my friends list
+     * @param myID The user id to remove a friend from
+     * @param friendID The friend to remove
+     * @return True if successful, false if any data is invalid
+     */
+    boolean removeFriend( String myID, String friendID );
     
     /**
      * Alter the stored name value of a given user
@@ -83,10 +101,11 @@ public interface RemoteDBManager {
     boolean isStudying( String id );
 
     /**
-     * Attain a listing of all of the people studying at a given table location
-     * @param tableID The table location to grab the people studying for
-     * @return A list of the people studying at a given table, null if table invalid,
-     * or if the table is currently unpopulated
+     * Attain a listing of all of the fellow study mates given
+     * a specific individual
+     * @param id The user id of who to find study mates for
+     * @return A list of user id's of fellow study mates, if the given id is 
+     * currently studying, if the user given by id is not studying, returns null
      */
     List<String> fetchStudyMates( int tableID );
     
