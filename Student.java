@@ -72,6 +72,15 @@ public class Student {
       this.gNumber = gNumber;
    }
 	
+   //setter for student password
+   public void setPassword(String password) {
+	   this.password = password;
+   }
+   
+   //getter for student password
+   public String getPassword() {
+	   return password;
+   }
 	//Add friend into friend list, and increase number of friend by one
    public void addFriend(Student friend) {
       friends.add(friend);
