@@ -49,7 +49,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/smallcircle_v_occupied.png");   //Small cirlce talbe (vertical)
    //Images for displaying table that the user has selected
    private ImageIcon blockTable_selected = new ImageIcon("table_images/block_selected.png");                   //Block table display
-   private ImageIcon circleTable_selected = new ImageIcon("table_images/green_circle_selected.png");                 //Circle table display
+   private ImageIcon circleTable_selected = new ImageIcon("table_images/circle_selected.png");                 //Circle table display
    private ImageIcon circleTable_halfLeft_selected = new ImageIcon("table_images/circle_halfLeft_selected.png");
    private ImageIcon circleTable_halfRight_selected = new ImageIcon("table_images/circle_halfRight_selected.png");
    private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/smallcircle_h_selected.png");    //Small circle table (horizontal)
@@ -69,12 +69,12 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/smallcircle_h_match.png");    //Small circle table (horizontal)
    private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/smallcircle_v_match.png");   //Small cirlce talbe (vertical)
    //Images for displaying tables that a users friend is sitting at
-   private ImageIcon blockTable_match = new ImageIcon("table_images/block_friend.png");                   //Block table display
-   private ImageIcon circleTable_match = new ImageIcon("table_images/circle_friend.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_match = new ImageIcon("table_images/circle_halfLeft_friend.png");
-   private ImageIcon circleTable_halfRight_match = new ImageIcon("table_imagescircle_halfRight_friend.png");
-   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/smallcircle_h_friend.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/smallcircle_v_friend.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_friend = new ImageIcon("table_images/block_friend.png");                   //Block table display
+   private ImageIcon circleTable_friend = new ImageIcon("table_images/circle_friend.png");                 //Circle table display
+   private ImageIcon circleTable_halfLeft_friend = new ImageIcon("table_images/circle_halfLeft_friend.png");
+   private ImageIcon circleTable_halfRight_friend = new ImageIcon("table_imagescircle_halfRight_friend.png");
+   private ImageIcon smallCircleTable_h_friend = new ImageIcon("table_images/smallcircle_h_friend.png");    //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_friend = new ImageIcon("table_images/smallcircle_v_friend.png");   //Small cirlce talbe (vertical)
    
    private static int floorNumber;     //Floor number that the user is currently viewing 
    protected static int mouseX;			//location for the mouse pointer X
