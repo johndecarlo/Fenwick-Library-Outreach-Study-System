@@ -1,3 +1,11 @@
+/*
+   Student.java
+   CS 321 - Section 001: Team 7
+   John DeCarlo, Huiying Jin, John Radecki, Joshua Yuen
+   ----------------------------------------------------
+   Description: This class contains the constructor and the methods for the student class.
+*/
+
 import java.util.*;
 
 
