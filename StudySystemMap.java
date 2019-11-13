@@ -99,6 +99,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       searchFeature = false;              //Initialize whether or not the search feature is active
       
       Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
+      
       // ** Test Cases for the FLOSS Program **
       //Cannot join a table that is occupied by the max number of students
       floor1Tables.get(0).setOccupied();
@@ -163,8 +164,6 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       int button = e.getButton();  
       Table table = null;
       if(button == MouseEvent.BUTTON1) {
-         System.out.println(mouseX);
-         System.out.println(mouseY);
          if(floorNumber == 1) {
             for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
                table = floor1Tables.get(ind1);  //Create a temporary table
