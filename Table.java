@@ -181,7 +181,7 @@ public class Table {
    public void removeStudent(Student leave) {
       for(int index = 0; index < students.size(); index++) {
          Student temp = students.get(index);
-         if(leave.getGNumber() == temp.getGNumber()) {
+         if(leave.getMasonEmail().equals(temp.getMasonEmail())) {
             students.remove(index);
             break;
          }

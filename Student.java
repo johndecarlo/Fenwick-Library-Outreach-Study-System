@@ -17,18 +17,16 @@ public class Student {
    private String masonEmail;
    private String password;
    private String major;
-   private int gNumber;
    private ArrayList<Student> friends;
    private boolean occupyTable;
 	
 	//Student Constructor, create a default one.
    public Student() {
-      this.firstName = "Bob";
-      this.lastName = "Jones";
-      this.masonEmail = "bjones1";
+      this.firstName = "First";
+      this.lastName = "Last";
+      this.masonEmail = "flast1";
       this.password = "password";
       this.major = "Computer Science";
-      this.gNumber = 01234567;
       this.friends = new ArrayList<Student>();
    }
    
@@ -38,7 +36,6 @@ public class Student {
       this.masonEmail = email;
       this.password = password;
       this.major = major;
-      this.gNumber = 0;
       this.friends = new ArrayList<Student>();
    }
 	
@@ -66,18 +63,8 @@ public class Student {
       return this.masonEmail;
    }
    
-   public void getMasonEmail(String email) {
+   public void setMasonEmail(String email) {
       this.masonEmail = email;
-   }
-	
-   //Getter for Gnumber
-   public int getGNumber() {
-      return gNumber;
-   }
-   
-	//Setter for Gnumber
-   public void setGNumber(int gNumber) {
-      this.gNumber = gNumber;
    }
 	
    //setter for student password
