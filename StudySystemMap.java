@@ -100,6 +100,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       
       Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
       
+      /*
       // ** Test Cases for the FLOSS Program **
       //Cannot join a table that is occupied by the max number of students
       floor1Tables.get(0).setOccupied();
@@ -117,6 +118,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics"));
       floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
       floor1Tables.get(7).setMessage("Come study with us");
+      */
    }
    
     //Get the floor number that the user is currently viewing
@@ -223,8 +225,9 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
          } 
       } else {
          FLOSSDriver.displayCourseOptions(false);
-         updateMessages();
          tableSelected = false;
+         selectedTable = userTable;
+         updateMessages();
          return false;
       }
       return false;
@@ -495,10 +498,10 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
          for(int index = 0; index < tables.size(); index++) {
             Table table = tables.get(index);
             for(int friendIndex = 0; friendIndex < FLOSSDriver.getUser().getFriends().size(); friendIndex++) {
-               Student friend = FLOSSDriver.getUser().getFriends().get(friendIndex);
+               String masonEmail = FLOSSDriver.getUser().getFriends().get(friendIndex);
                ArrayList<Student> students = table.getStudents();
                for(int tableIndex = 0; tableIndex < table.getNumStudents(); tableIndex++) {
-                  if(friend.getMasonEmail().equals(students.get(tableIndex).getMasonEmail())) {
+                  if(masonEmail.equals(students.get(tableIndex).getMasonEmail())) {
                      if(table.getShape().equals("BLOCK")) 
                         g.drawImage(blockTable_friend.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
                      else if(table.getShape().equals("CIRCLE")) 
@@ -543,7 +546,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       FLOSSDriver.displayTableCourse(userTable.getCourse());  
       FLOSSDriver.displayMessage(userTable.getMessage()); 
       FLOSSDriver.showErrorMessage(false);
-      FLOSSDriver.showAddFriend(userTable, userTable.getNumStudents());
+      FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
       FLOSSDriver.showJoinTable(false);
    }
 }

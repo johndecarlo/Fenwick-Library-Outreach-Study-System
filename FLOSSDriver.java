@@ -78,7 +78,7 @@ public class FLOSSDriver {
    public static Student user;
    
    public static void main(String[]args) throws IOException {
-      manager = new AWSManager();
+      //manager = new AWSManager();
       user = new Student();
       display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1112, 830);			      //Size of display window
@@ -152,6 +152,8 @@ public class FLOSSDriver {
                floor1.setEnabled(false);
                fenwickLibrary.setFloorNumber(1);
                fenwickLibrary.setTableSelected(false);
+               fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());
+               fenwickLibrary.updateMessages();
                displayCourseOptions(false);
                fenwickLibrary.repaint();
             } });
@@ -163,6 +165,8 @@ public class FLOSSDriver {
                floor2.setEnabled(false);
                fenwickLibrary.setFloorNumber(2);
                fenwickLibrary.setTableSelected(false);
+               fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());
+               fenwickLibrary.updateMessages();
                displayCourseOptions(false);
                fenwickLibrary.repaint();
             } });    
@@ -173,6 +177,8 @@ public class FLOSSDriver {
                floor3.setEnabled(false);
                fenwickLibrary.setFloorNumber(3);
                fenwickLibrary.setTableSelected(false);
+               fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());
+               fenwickLibrary.updateMessages();
                displayCourseOptions(false);
                fenwickLibrary.repaint();
             } });  
@@ -237,7 +243,13 @@ public class FLOSSDriver {
       addFriend1.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               System.out.println("Add Friend");
+               if(addFriend1.getText().equals("Follow")) {
+                  user.addFriend(fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail());
+                  addFriend1.setText("Unfollow");
+               } else {
+                  user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail());
+                  addFriend1.setText("Follow");
+               }
             } });
       addFriend1.setVisible(false);
       sidePanel.add(addFriend1);
@@ -249,7 +261,13 @@ public class FLOSSDriver {
       addFriend2.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               System.out.println("Add Friend");
+               if(addFriend2.getText().equals("Follow")) {
+                  user.addFriend(fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail());
+                  addFriend2.setText("Unfollow");
+               } else {
+                  user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail());
+                  addFriend2.setText("Follow");
+               }
             } });
       addFriend2.setVisible(false);
       sidePanel.add(addFriend2);
@@ -261,7 +279,13 @@ public class FLOSSDriver {
       addFriend3.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               System.out.println("Add Friend");
+               if(addFriend3.getText().equals("Follow")) {
+                  user.addFriend(fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail());
+                  addFriend3.setText("Unfollow");
+               } else {
+                  user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail());
+                  addFriend3.setText("Follow");
+               }
             } });
       addFriend3.setVisible(false);
       sidePanel.add(addFriend3);
@@ -273,7 +297,13 @@ public class FLOSSDriver {
       addFriend4.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               System.out.println("Add Friend");
+               if(addFriend4.getText().equals("Follow")) {
+                  user.addFriend(fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail());
+                  addFriend4.setText("Unfollow");
+               } else {
+                  user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail());
+                  addFriend4.setText("Follow");
+               }
             } });
       addFriend4.setVisible(false);
       sidePanel.add(addFriend4);
@@ -383,7 +413,7 @@ public class FLOSSDriver {
                   fenwickLibrary.getUserTable().setOccupied();
                }
                fenwickLibrary.setUserTable(new Table());
-               manager.stopStudying(user.getMasonEmail());
+               manager.stopStudying(user.getMasonEmail());      //*** AWS IMPLEMENTATION ***
                user.setOccupyTable();
                fenwickLibrary.updateMessages();
                fenwickLibrary.setTableSelected(false);
@@ -422,9 +452,9 @@ public class FLOSSDriver {
                   message.setText("");
                   fenwickLibrary.getSelectedTable().setOccupied();
                   displayCourseOptions(false);
-                  manager.startStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID(), fenwickLibrary.getSelectedTable().getMessage(), classInfo);
+                  manager.startStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID(), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //*** AWS IMPLEMENTATION ***
                } else {
-                  manager.joinStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID());
+                  manager.joinStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID());  ////*** AWS IMPLEMENTATION ***
                }
                fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                fenwickLibrary.setTableSelected(false);
@@ -545,54 +575,104 @@ public class FLOSSDriver {
    
    public static void showAddFriend(Table table, int size) {
       if(size == 1) {
-         if(table.getStudents().get(0).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
+               addFriend1.setText("Unfollow");
+            else
+               addFriend1.setText("Follow");
             addFriend1.setVisible(true);
+         }
          else 
             addFriend1.setVisible(false);
          addFriend2.setVisible(false);
          addFriend3.setVisible(false);
          addFriend4.setVisible(false);
       } else if(size == 2) {
-         if(table.getStudents().get(0).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
+               addFriend1.setText("Unfollow");
+            else
+               addFriend1.setText("Follow");
             addFriend1.setVisible(true);
+         }
          else 
             addFriend1.setVisible(false);
-         if(table.getStudents().get(1).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(1).getMasonEmail())) 
+               addFriend2.setText("Unfollow");
+            else
+               addFriend2.setText("Follow");
             addFriend2.setVisible(true);
-         else
+         }
+         else 
             addFriend2.setVisible(false);
          addFriend3.setVisible(false);
          addFriend4.setVisible(false);
       } else if(size == 3) {
-         if(table.getStudents().get(0).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
+               addFriend1.setText("Unfollow");
+            else
+               addFriend1.setText("Follow");
             addFriend1.setVisible(true);
+         }
          else 
             addFriend1.setVisible(false);
-         if(table.getStudents().get(1).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(1).getMasonEmail())) 
+               addFriend2.setText("Unfollow");
+            else
+               addFriend2.setText("Follow");
             addFriend2.setVisible(true);
-         else
+         }
+         else 
             addFriend2.setVisible(false);
-         if(table.getStudents().get(2).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(2).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(2).getMasonEmail())) 
+               addFriend3.setText("Unfollow");
+            else
+               addFriend3.setText("Follow");
             addFriend3.setVisible(true);
-         else
+         }
+         else 
             addFriend3.setVisible(false);
          addFriend4.setVisible(false);
       } else if(size == 4) {
-         if(table.getStudents().get(0).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
+               addFriend1.setText("Unfollow");
+            else
+               addFriend1.setText("Follow");
             addFriend1.setVisible(true);
+         }
          else 
-            addFriend1.setVisible(false);
-         if(table.getStudents().get(1).getGNumber() != user.getGNumber())
+            addFriend1.setVisible(false);            
+         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(1).getMasonEmail())) 
+               addFriend2.setText("Unfollow");
+            else
+               addFriend2.setText("Follow");
             addFriend2.setVisible(true);
-         else
-            addFriend2.setVisible(false);
-         if(table.getStudents().get(2).getGNumber() != user.getGNumber())
+         }
+         else 
+            addFriend2.setVisible(false);            
+         if(!table.getStudents().get(2).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(2).getMasonEmail())) 
+               addFriend3.setText("Unfollow");
+            else
+               addFriend3.setText("Follow");
             addFriend3.setVisible(true);
-         else
+         }
+         else 
             addFriend3.setVisible(false);
-         if(table.getStudents().get(3).getGNumber() != user.getGNumber())
+         if(!table.getStudents().get(3).getMasonEmail().equals(user.getMasonEmail())) {
+            if(user.getFriends().contains(table.getStudents().get(3).getMasonEmail())) 
+               addFriend4.setText("Unfollow");
+            else
+               addFriend4.setText("Follow");
             addFriend4.setVisible(true);
-         else
+         }
+         else 
             addFriend4.setVisible(false);
       } else  {
          addFriend1.setVisible(false);

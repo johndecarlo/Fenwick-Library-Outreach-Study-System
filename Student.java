@@ -17,7 +17,7 @@ public class Student {
    private String masonEmail;
    private String password;
    private String major;
-   private ArrayList<Student> friends;
+   private ArrayList<String> friends;
    private boolean occupyTable;
 	
 	//Student Constructor, create a default one.
@@ -27,7 +27,7 @@ public class Student {
       this.masonEmail = "flast1";
       this.password = "password";
       this.major = "Computer Science";
-      this.friends = new ArrayList<Student>();
+      this.friends = new ArrayList<String>();
    }
    
    public Student(String first, String last, String email, String password, String major) {
@@ -36,7 +36,7 @@ public class Student {
       this.masonEmail = email;
       this.password = password;
       this.major = major;
-      this.friends = new ArrayList<Student>();
+      this.friends = new ArrayList<String>();
    }
 	
    //Getter for FirsttName
@@ -77,16 +77,16 @@ public class Student {
       return password;
    }
    
-   public ArrayList<Student> getFriends() {
+   public ArrayList<String> getFriends() {
       return this.friends;
    }
    
-   public void setFriends(ArrayList<Student> friends) {
+   public void setFriends(ArrayList<String> friends) {
       this.friends = friends;
    }
    
 	//Add friend into friend list, and increase number of friend by one
-   public void addFriend(Student friend) {
+   public void addFriend(String friend) {
       friends.add(friend);
    }
 	
@@ -114,12 +114,10 @@ public class Student {
    }
 	
 	//Remove friend from friends list, and decrease number of friend by one
-   public void removeFriends(Student friend) {
-      if(friends.contains(friend)) {
-         for(int i = 0; i < friends.size(); i++) {
-            if(friends.get(i).equals(friend)) {
-               friends.remove(i);
-            }
+   public void removeFriend(String username) {
+      for(int i = 0; i < friends.size(); i++) {
+         if(friends.get(i).equals(username)) {
+            friends.remove(i);
          }
       }
    }

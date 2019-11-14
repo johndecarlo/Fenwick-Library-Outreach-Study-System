@@ -168,6 +168,10 @@ public class Table {
       this.capacity = capacity;
    }
    
+   public Student getStudent(int index) {
+      return this.students.get(index);
+   }
+   
    public ArrayList<Student> getStudents() {
       return this.students;
    }
