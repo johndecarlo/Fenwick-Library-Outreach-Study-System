@@ -101,8 +101,7 @@ public class FLOSSDriver {
    
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
       container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
-      display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info
-      display.setVisible(true);              
+      display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info              
       
       leaveTable = new JDialog();            //Create our JFrame
       leaveTable.setSize(300, 150);			   //Size of display window (600, 300)
@@ -111,8 +110,8 @@ public class FLOSSDriver {
       leaveTable.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  //Exit when close out
       initializeLeaveTable();
       
-      //Login login = new Login(display);
-      //login.setVisible(true);
+      Login login = new Login(display);
+      login.setVisible(true);
    }
    
    public static Student getUser() {
