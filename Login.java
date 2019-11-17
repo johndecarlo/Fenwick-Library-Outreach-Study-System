@@ -33,11 +33,9 @@ public class Login extends JDialog {
      *         false if not
      */
     public static boolean authenticate(String username, String password) {
-        /*
-         * AWSManager database = new AWSManager(); String dbPassword =
-         * database.getPassword(username); if (database.exists(username) &&
-         * password.equals(dbPassword)) { return true; }
-         */
+        AWSManager database = new AWSManager(); String dbPassword =
+        database.getPassword(username); if (database.exists(username) &&
+       	password.equals(dbPassword)) { return true; }
 
         if (username.equals("test") && password.equals("test")) // for testing purposes
             return true; // for testing purposes
@@ -117,6 +115,13 @@ public class Login extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 // If valid login
                 if (Login.authenticate(getUsername(), getPassword())) {
+                	String userName = getUsername( );
+                    String [] fullName = FLOSSDriver.getManager( ).getName( userName ).split( " " );
+                    
+                    FLOSSDriver.user = new Student( fullName[0], 
+                    		fullName[1], userName, getPassword( ),
+                    		FLOSSDriver.getManager( ).getMajor( userName ) );
+                	
                     parent.setVisible(true);
                     dispose();
                 } else { // If invalid login
