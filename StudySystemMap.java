@@ -100,25 +100,20 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       
       Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
       
-      /*
-      // ** Test Cases for the FLOSS Program **
-      //Cannot join a table that is occupied by the max number of students
-      floor1Tables.get(0).setOccupied();
-      floor1Tables.get(0).addStudent(new Student("John", "Paul", "jpaul1", "pass", "Criminology"));
-      floor1Tables.get(0).addStudent(new Student("Chris", "Smith", "csmith1", "pass", "Nursing"));
-      floor1Tables.get(0).addStudent(new Student("Sam", "Patrick", "spatrick", "pass", "ISOM"));
-      floor1Tables.get(0).addStudent(new Student("Billy", "Williamson", "bwillia", "pass", "Computer Science"));
-      floor1Tables.get(0).setCourse(new Class("Accounting", "CS", 310, "Data Structures"));
-      floor1Tables.get(0).setMessage("Come study with us about the small brown dog jumped over the big thick log of wood and how the man loved his pet fish go sports and go team I love it here");
-      floor1Tables.get(5).setOccupied();
-      floor1Tables.get(5).addStudent(new Student("Mike", "Milan", "mmilan1", "pass", "Computer Sciene"));
-      floor1Tables.get(5).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
-      floor1Tables.get(5).setMessage("Come study with us");
-      floor1Tables.get(7).setOccupied();
-      floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics"));
-      floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
-      floor1Tables.get(7).setMessage("Come study with us");
-      */
+      String[] fullName; //add class data to table
+      /*for ( int tableID : allTables.keySet( ) ) {
+    	   char floor = Integer.toString( tableID ).charAt( 0 );
+    	   ArrayList<Table> tables = floor == '1'?floor1Tables:( floor == '2'?floor2Tables:floor3Tables );
+    	   int index = Integer.parseInt( Integer.toString( tableID ).substring( 1 ) );
+    	   tables.get( index ).setOccupied( );
+    	   tables.get( index ).setMessage( allTables.get( tableID ) );
+    	   //tables.get( index ).setCourse(  );
+    	   
+    	   for ( String id : FLOSSDriver.getManager( ).fetchStudyMates( tableID ) ) {
+    		  fullName = FLOSSDriver.getManager( ).getName( id ).split( " " );
+    		  tables.get( index ).addStudent( new Student( fullName[0], fullName[1], id, "", FLOSSDriver.getManager( ).getMajor( id ) ) );
+    	  }
+      }*/
    }
    
     //Get the floor number that the user is currently viewing
