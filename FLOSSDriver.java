@@ -78,7 +78,7 @@ public class FLOSSDriver {
    public static Student user;
    
    public static void main(String[]args) throws IOException {
-      //manager = new AWSManager();
+      manager = new AWSManager();
       user = new Student();
       display = new JFrame("FLOSS");     //Create our JFrame
       display.setSize(1112, 830);			      //Size of display window
@@ -350,7 +350,7 @@ public class FLOSSDriver {
                   display.setEnabled(false);
                } else {
                   fenwickLibrary.getSelectedTable().addStudent(user);
-                  manager.joinStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID()); //AWS IMPLEMENTATION
+                  manager.joinStudying(user.getMasonEmail(), Integer.parseInt(fenwickLibrary.getSelectedTable( ).getFloor() + "" + fenwickLibrary.getSelectedTable().getID()));                  
                   user.setOccupyTable();
                   displayCourseOptions(false);
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
@@ -384,7 +384,8 @@ public class FLOSSDriver {
                   courseSubjects.setSelectedIndex(0);
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
                   String classInfo = course + number;
-                  manager.startStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID(), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //AWS IMPLEMENTATION
+                  manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + fenwickLibrary.getSelectedTable().getID()), 
+                		  fenwickLibrary.getSelectedTable().getMessage(), classInfo);
                   message.setText("");
                   displayCourseOptions(false);
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
