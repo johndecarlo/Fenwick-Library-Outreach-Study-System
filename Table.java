@@ -182,6 +182,10 @@ public class Table {
       }
    }
    
+   public void clearStudents( ) {
+	   students.clear();
+   }
+   
    public void removeStudent(Student leave) {
       for(int index = 0; index < students.size(); index++) {
          Student temp = students.get(index);
@@ -207,5 +211,10 @@ public class Table {
    
    public String getStudentContactInfo() {
       return "";
+   }
+   
+   @Override
+   public boolean equals( Object o ) {
+	   return ( (Table) o ).id == this.id;
    }
 }
