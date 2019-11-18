@@ -13,6 +13,7 @@ import javax.swing.border.*;
 
 import com.floss.manager.*;
 
+@SuppressWarnings("serial")
 public class Login extends JDialog {
 
     private JTextField tfUsername; // Username text field
@@ -33,9 +34,9 @@ public class Login extends JDialog {
      *         false if not
      */
     public static boolean authenticate(String username, String password) {
-        AWSManager database = new AWSManager(); String dbPassword =
-        database.getPassword(username); if (database.exists(username) &&
-       	password.equals(dbPassword)) { return true; }
+        RemoteDBManager database = FLOSSDriver.getManager( ); 
+        String dbPassword = database.getPassword(username); 
+        if (database.exists(username) && password.equals(dbPassword)) { return true; }
 
         if (username.equals("test") && password.equals("test")) // for testing purposes
             return true; // for testing purposes
