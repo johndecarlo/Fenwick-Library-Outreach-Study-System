@@ -107,7 +107,27 @@ public class FLOSSDriver {
       leaveTable.setSize(300, 150);			   //Size of display window (600, 300)
       leaveTable.setLocation(600, 300);	   //Location of display window on the screen
       leaveTable.setResizable(false);        //Cannot change size of the screen
-      leaveTable.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  //Exit when close out
+      leaveTable.addWindowListener(
+         new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+               fenwickLibrary.getUserTable().removeStudent(user);
+               System.out.println(fenwickLibrary.getUserTable().getNumStudents());
+               if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
+                  fenwickLibrary.getUserTable().setCourse(new Class());
+                  fenwickLibrary.getUserTable().setMessage("");
+                  fenwickLibrary.getUserTable().setOccupied();
+               }
+               fenwickLibrary.setUserTable(new Table());
+               manager.stopStudying(user.getMasonEmail());      //*** AWS IMPLEMENTATION ***
+               user.setOccupyTable();
+               fenwickLibrary.updateMessages();
+               fenwickLibrary.setTableSelected(false);
+               fenwickLibrary.repaint();
+               removeUserTable.setVisible(false);
+               System.out.println("Closed");
+            }
+         });
       initializeLeaveTable();
       
       Login login = new Login(display);
@@ -385,7 +405,7 @@ public class FLOSSDriver {
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
                   String classInfo = course + number;
                   manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + fenwickLibrary.getSelectedTable().getID()), 
-                		  fenwickLibrary.getSelectedTable().getMessage(), classInfo);
+                       fenwickLibrary.getSelectedTable().getMessage(), classInfo);
                   message.setText("");
                   displayCourseOptions(false);
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
