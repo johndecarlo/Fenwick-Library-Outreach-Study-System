@@ -14,14 +14,13 @@ import java.awt.Color;
 import java.util.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class StudySystemMap extends JPanel implements MouseListener, MouseMotionListener {
 
    private ArrayList<Table> floor1Tables = new ArrayList<Table>();   //List of tables on floor 1
@@ -98,22 +97,34 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       tableSelected = false;              //Initialize whether or not we have selected a table
       searchFeature = false;              //Initialize whether or not the search feature is active
       
-      Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
-      
-      String[] fullName; //add class data to table
-      /*for ( int tableID : allTables.keySet( ) ) {
-    	   char floor = Integer.toString( tableID ).charAt( 0 );
-    	   ArrayList<Table> tables = floor == '1'?floor1Tables:( floor == '2'?floor2Tables:floor3Tables );
-    	   int index = Integer.parseInt( Integer.toString( tableID ).substring( 1 ) );
-    	   tables.get( index ).setOccupied( );
-    	   tables.get( index ).setMessage( allTables.get( tableID ) );
-    	   //tables.get( index ).setCourse(  );
-    	   
-    	   for ( String id : FLOSSDriver.getManager( ).fetchStudyMates( tableID ) ) {
-    		  fullName = FLOSSDriver.getManager( ).getName( id ).split( " " );
-    		  tables.get( index ).addStudent( new Student( fullName[0], fullName[1], id, "", FLOSSDriver.getManager( ).getMajor( id ) ) );
-    	  }
-      }*/
+      refreshTables( );
+   }
+   
+   public int getTableIndex( Table table ) {
+	   if ( table.getFloor( ) == 1 ) return floor1Tables.indexOf( table );
+	   if ( table.getFloor( ) == 2 ) return floor2Tables.indexOf( table );
+	   if ( table.getFloor( ) == 3 ) return floor3Tables.indexOf( table );
+	   return -1;
+   }
+   
+   public void refreshTables( ) {
+	   Map<Integer, String> allTables = FLOSSDriver.manager.fetchTableStatuses();
+	      
+	   String[] fullName; //add class data to table
+	   for ( int tableID : allTables.keySet( ) ) {
+		   char floor = Integer.toString( tableID ).charAt( 0 );
+	       ArrayList<Table> tables = floor == '1'?floor1Tables:( floor == '2'?floor2Tables:floor3Tables );
+	       int index = Integer.parseInt( Integer.toString( tableID ).substring( 1 ) );
+	       tables.get( index ).setOccupied( );
+	   	   tables.get( index ).setMessage( allTables.get( tableID ) );
+	   	   String course = FLOSSDriver.getManager( ).getClassInfo( tableID );
+	   	   tables.get( index ).setCourse( new Class( "", course.substring( 0, course.length( ) - 3 ), Integer.parseInt( course.substring( course.length( ) - 3 ) ), "" ) );
+	    	   
+	   	   for ( String id : FLOSSDriver.getManager( ).fetchStudyMates( tableID ) ) {
+	   		  fullName = FLOSSDriver.getManager( ).getName( id ).split( " " );
+	   		  tables.get( index ).addStudent( new Student( fullName[0], fullName[1], id, "", FLOSSDriver.getManager( ).getMajor( id ) ) );
+	   	  }
+	   }
    }
    
     //Get the floor number that the user is currently viewing
@@ -514,6 +525,31 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
             }
          }
       } 
+   }
+   
+   public void resetTables( ) {
+	   Table table;
+	   for ( int i = 0; i < floor1Tables.size(); i++ ) {
+		   table = floor1Tables.get(i);
+		   table.clearStudents();
+		   if ( table.getOccupied() ) table.setOccupied();
+		   table.setMessage("");
+		   table.setCourse(new Class());
+	   }
+	   for ( int i = 0; i < floor2Tables.size(); i++ ) {
+		   table = floor2Tables.get(i);
+		   table.clearStudents();
+		   if ( table.getOccupied() ) table.setOccupied();		
+		   table.setMessage("");
+		   table.setCourse(new Class());
+	   }
+	   for ( int i = 0; i < floor3Tables.size(); i++ ) {
+		   table = floor3Tables.get(i);
+		   table.clearStudents();
+		   if ( table.getOccupied() ) table.setOccupied();
+		   table.setMessage("");
+		   table.setCourse(new Class());
+	   }
    }
    
    //Read in the tables.txt file and set the information for all the tables that a student can sit at
