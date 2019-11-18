@@ -9,9 +9,12 @@
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
+import javax.swing.Timer;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -25,6 +28,7 @@ public class FLOSSDriver {
    public static JPanel sidePanel;                 //JPanel that is the side information panel
    public static ArrayList<Class> classList = new ArrayList<Class>();       //List of most of the classes offered at GMU
    public static RemoteDBManager manager;
+   public static Timer refresh;
    
    //JButtons to display the floors and the search feature
    public static JButton floor1;       
@@ -85,6 +89,25 @@ public class FLOSSDriver {
       display.setLocation(250, 0);				   //Location of display window on the screen
       display.setResizable(false);              //Cannot change size of the screen
       display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Exit when close out 
+      display.addWindowListener(
+    	         new WindowAdapter() {
+    	            @Override
+    	            public void windowClosing(WindowEvent e) {
+    	               fenwickLibrary.getUserTable().removeStudent(user);
+    	               if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
+    	                  fenwickLibrary.getUserTable().setCourse(new Class());
+    	                  fenwickLibrary.getUserTable().setMessage("");
+    	                  fenwickLibrary.getUserTable().setOccupied();
+    	               }
+    	               fenwickLibrary.setUserTable(new Table());
+    	               manager.stopStudying(user.getMasonEmail());      //*** AWS IMPLEMENTATION ***
+    	               user.setOccupyTable();
+    	               fenwickLibrary.updateMessages();
+    	               fenwickLibrary.setTableSelected(false);
+    	               fenwickLibrary.repaint();
+    	               removeUserTable.setVisible(false);
+    	            }
+    	         });
       
       JPanel container = new JPanel();          //Establish the JPanel that will hold all our JPanel's
       container.setLayout(null);                //Set the layout to null so we can set the bounds
@@ -99,6 +122,9 @@ public class FLOSSDriver {
       initializeRemoveUserTable();
       initializeSearchFeature();                   //Initialize the search feature for the class
    
+      //initialize user data
+      user.setFriends( (ArrayList<String>) manager.getFriendList( user.getMasonEmail() ) );
+      
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
       container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
       display.setContentPane(container);     //Set the contents of the JFrame display to the container holding all the display info              
@@ -107,31 +133,23 @@ public class FLOSSDriver {
       leaveTable.setSize(300, 150);			   //Size of display window (600, 300)
       leaveTable.setLocation(600, 300);	   //Location of display window on the screen
       leaveTable.setResizable(false);        //Cannot change size of the screen
-      leaveTable.addWindowListener(
-         new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-               fenwickLibrary.getUserTable().removeStudent(user);
-               System.out.println(fenwickLibrary.getUserTable().getNumStudents());
-               if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
-                  fenwickLibrary.getUserTable().setCourse(new Class());
-                  fenwickLibrary.getUserTable().setMessage("");
-                  fenwickLibrary.getUserTable().setOccupied();
-               }
-               fenwickLibrary.setUserTable(new Table());
-               manager.stopStudying(user.getMasonEmail());      //*** AWS IMPLEMENTATION ***
-               user.setOccupyTable();
-               fenwickLibrary.updateMessages();
-               fenwickLibrary.setTableSelected(false);
-               fenwickLibrary.repaint();
-               removeUserTable.setVisible(false);
-               System.out.println("Closed");
-            }
-         });
+      leaveTable.setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
       initializeLeaveTable();
       
       Login login = new Login(display);
       login.setVisible(true);
+      
+      refresh = new Timer( 30000, 
+    		  new ActionListener( ) {
+    	  	public void actionPerformed( ActionEvent e ) {
+    	  		//display refreshing info message
+    	  		fenwickLibrary.resetTables( );
+    	  		fenwickLibrary.refreshTables( );
+    	  		fenwickLibrary.repaint( );
+    	  		//remove refreshing message
+    	  	}
+      });
+      refresh.start();
    }
    
    public static Student getUser() {
@@ -264,9 +282,11 @@ public class FLOSSDriver {
             public void actionPerformed(ActionEvent e) {
                if(addFriend1.getText().equals("Follow")) {
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail());
+                  manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail() );
                   addFriend1.setText("Unfollow");
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail());
+                  manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail() );
                   addFriend1.setText("Follow");
                }
             } });
@@ -282,9 +302,11 @@ public class FLOSSDriver {
             public void actionPerformed(ActionEvent e) {
                if(addFriend2.getText().equals("Follow")) {
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail());
+                  manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail() );
                   addFriend2.setText("Unfollow");
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail());
+                  manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail() );
                   addFriend2.setText("Follow");
                }
             } });
@@ -300,9 +322,11 @@ public class FLOSSDriver {
             public void actionPerformed(ActionEvent e) {
                if(addFriend3.getText().equals("Follow")) {
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail());
+                  manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail() );
                   addFriend3.setText("Unfollow");
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail());
+                  manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail() );
                   addFriend3.setText("Follow");
                }
             } });
@@ -318,9 +342,11 @@ public class FLOSSDriver {
             public void actionPerformed(ActionEvent e) {
                if(addFriend4.getText().equals("Follow")) {
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail());
+                  manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail() );
                   addFriend4.setText("Unfollow");
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail());
+                  manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail() );
                   addFriend4.setText("Follow");
                }
             } });
@@ -369,8 +395,10 @@ public class FLOSSDriver {
                   leaveTable.setVisible(true);
                   display.setEnabled(false);
                } else {
+            	  System.out.println("1");
                   fenwickLibrary.getSelectedTable().addStudent(user);
-                  manager.joinStudying(user.getMasonEmail(), Integer.parseInt(fenwickLibrary.getSelectedTable( ).getFloor() + "" + fenwickLibrary.getSelectedTable().getID()));                  
+                  manager.joinStudying(user.getMasonEmail(), Integer.parseInt(fenwickLibrary.getSelectedTable( ).getFloor() + "" + 
+                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())));                  
                   user.setOccupyTable();
                   displayCourseOptions(false);
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
@@ -396,6 +424,7 @@ public class FLOSSDriver {
                   display.setEnabled(false);
                } else {
                   fenwickLibrary.getSelectedTable().setOccupied();
+                  System.out.println("2");
                   fenwickLibrary.getSelectedTable().addStudent(user);
                   user.setOccupyTable();
                   String course = (String)courseSubjects.getSelectedItem();
@@ -404,8 +433,9 @@ public class FLOSSDriver {
                   courseSubjects.setSelectedIndex(0);
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
                   String classInfo = course + number;
-                  manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + fenwickLibrary.getSelectedTable().getID()), 
-                       fenwickLibrary.getSelectedTable().getMessage(), classInfo);
+                  manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + 
+                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())), 
+                		  fenwickLibrary.getSelectedTable().getMessage(), classInfo);
                   message.setText("");
                   displayCourseOptions(false);
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
@@ -426,7 +456,6 @@ public class FLOSSDriver {
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                fenwickLibrary.getUserTable().removeStudent(user);
-               System.out.println(fenwickLibrary.getUserTable().getNumStudents());
                if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
                   fenwickLibrary.getUserTable().setCourse(new Class());
                   fenwickLibrary.getUserTable().setMessage("");
@@ -454,13 +483,13 @@ public class FLOSSDriver {
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                fenwickLibrary.getUserTable().removeStudent(user);
-               System.out.println(fenwickLibrary.getUserTable().getNumStudents());
                if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
                   fenwickLibrary.getUserTable().setCourse(new Class());
                   fenwickLibrary.getUserTable().setMessage("");
                   fenwickLibrary.getUserTable().setOccupied();
                }
                manager.stopStudying(user.getMasonEmail());           //*** AWS IMPLEMENTATION ***
+               System.out.println("3");
                fenwickLibrary.getSelectedTable().addStudent(user);
                if(!fenwickLibrary.getSelectedTable().getOccupied()) {
                   String course = (String)courseSubjects.getSelectedItem();
@@ -472,9 +501,11 @@ public class FLOSSDriver {
                   message.setText("");
                   fenwickLibrary.getSelectedTable().setOccupied();
                   displayCourseOptions(false);
-                  manager.startStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID(), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //*** AWS IMPLEMENTATION ***
+                  manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + 
+                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //*** AWS IMPLEMENTATION ***
                } else {
-                  manager.joinStudying(user.getMasonEmail(), fenwickLibrary.getSelectedTable().getID());  ////*** AWS IMPLEMENTATION ***
+                  manager.joinStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + 
+                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())));  ////*** AWS IMPLEMENTATION ***
                }
                fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                fenwickLibrary.setTableSelected(false);
