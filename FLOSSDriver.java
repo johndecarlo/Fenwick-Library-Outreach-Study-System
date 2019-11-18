@@ -121,9 +121,6 @@ public class FLOSSDriver {
       initializeAddTable();
       initializeRemoveUserTable();
       initializeSearchFeature();                   //Initialize the search feature for the class
-   
-      //initialize user data
-      user.setFriends( (ArrayList<String>) manager.getFriendList( user.getMasonEmail() ) );
       
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
       container.add(sidePanel);              //Add JPanel sidePanel to the main display screen 
