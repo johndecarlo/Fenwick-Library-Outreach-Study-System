@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.ArrayList;
 
 import com.floss.manager.*;
 
@@ -122,6 +123,7 @@ public class Login extends JDialog {
                     FLOSSDriver.user = new Student( fullName[0], 
                     		fullName[1], userName, getPassword( ),
                     		FLOSSDriver.getManager( ).getMajor( userName ) );
+                    FLOSSDriver.user.setFriends( (ArrayList<String>) FLOSSDriver.getManager().getFriendList( FLOSSDriver.user.getMasonEmail() ) );
                 	
                     parent.setVisible(true);
                     dispose();
