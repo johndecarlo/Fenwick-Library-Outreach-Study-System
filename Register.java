@@ -227,8 +227,8 @@ public class Register extends JDialog {
         cs.gridwidth = 2;
         panel.add(pfPassword, cs);
 
-        panel.setBorder(new LineBorder(Color.GRAY));
-        JPanel buttonpanel = new JPanel();
+        panel.setBorder(new LineBorder(Color.GRAY)); // Gray line to separate register and cancel buttons
+        JPanel buttonpanel = new JPanel(); // Panel that holds the register and cancel buttons
 
         // Register button
         btnRegister = new JButton("Register");

@@ -1,5 +1,5 @@
 /*
-   Loginjava
+   Login.java
    CS 321 - Section 001: Team 7
    John DeCarlo, Huiying Jin, John Radecki, Joshua Yuen
    ----------------------------------------------------
@@ -121,6 +121,7 @@ public class Login extends JDialog {
                 	String userName = getUsername( );
                     String [] fullName = FLOSSDriver.getManager( ).getName( userName ).split( " " );
                     
+                    // Set up who is logging in for future use
                     FLOSSDriver.user = new Student( fullName[0], 
                     		fullName[1], userName, getPassword( ),
                     		FLOSSDriver.getManager( ).getMajor( userName ) );
