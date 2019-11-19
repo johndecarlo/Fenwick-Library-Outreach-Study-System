@@ -125,7 +125,8 @@ public class Login extends JDialog {
                     FLOSSDriver.user = new Student( fullName[0], 
                     		fullName[1], userName, getPassword( ),
                     		FLOSSDriver.getManager( ).getMajor( userName ) );
-                    FLOSSDriver.user.setFriends( (ArrayList<String>) FLOSSDriver.getManager().getFriendList( FLOSSDriver.user.getMasonEmail() ) );
+                    ArrayList<String> friends = (ArrayList<String>) FLOSSDriver.getManager().getFriendList(FLOSSDriver.getUser().getMasonEmail());
+                    if ( friends != null ) FLOSSDriver.getUser().setFriends(friends);
                 	
                     parent.setVisible(true);
                     dispose();
