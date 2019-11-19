@@ -541,7 +541,7 @@ public class FLOSSDriver {
       sidePanel.add(searchTitle);   //Add to the JPanel
       searchTitle.setVisible(false);  //Hide from being displayed
       searchSubjects = new JComboBox(subjectStrings);
-      searchSubjects.setBounds(50, 575, 75, 25);`//Set the bounds for where it's displayed
+      searchSubjects.setBounds(50, 575, 75, 25); //Set the bounds for where it's displayed
       searchSubjects.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
