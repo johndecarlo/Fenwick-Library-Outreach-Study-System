@@ -1,3 +1,9 @@
+package com.floss.manager;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -5,6 +11,7 @@ import java.util.TreeMap;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.auth.profile.ProfilesConfigFile;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
@@ -35,29 +42,41 @@ public class AWSManager implements RemoteDBManager {
 	private static final String USER_NAME = "Name";
 	private static final String USER_PASSWORD = "Password";
 	private static final String USER_MAJOR = "Major";
+	private static final String USER_FRIENDS = "FriendList";
 	
 	//Column Names - TABLES_TABLE
 	private static final String TABLE_ID = "id";
-	private static final String TABLE_FOUNDER = "FounderID";
-	private static final String TABLE_STUDYMATES = "StudyMates";
+	private static final String TABLE_GROUP = "PeopleStudying";
 	private static final String TABLE_MESSAGE = "StudyMessage";
 	private static final String TABLE_CLASS = "ClassStudying";
 	
 	public AWSManager( ) {
-		ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
-        try {
+		
+		try {
+			File configFile = File.createTempFile( "credentials", null );
+			configFile.deleteOnExit( );
+			configFile.setWritable( true );
+		
+			String fileData = "[default]\n" + 
+					"aws_access_key_id=AKIAXWQVTLUZDFVPFHGF\n" + 
+					"aws_secret_access_key=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";
+		
+			BufferedWriter writer = new BufferedWriter( new FileWriter( configFile ) );
+			writer.write( fileData );
+			writer.close( );
+		
+			ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider( new ProfilesConfigFile( configFile ), "default" );
             credentialsProvider.getCredentials();
+            dynamoDB = AmazonDynamoDBClientBuilder.standard()
+                    .withCredentials(credentialsProvider)
+                    .withRegion("us-west-2")
+                    .build();
         } catch (Exception e) {
             throw new AmazonClientException(
                     "Cannot load the credentials from the credential profiles file. " +
                     "Please make sure that your credentials file is at the correct " +
-                    "location (C:\\Users\\J316R\\.aws\\credentials), and is in valid format.",
-                    e);
+                    "location.", e);
         }
-        dynamoDB = AmazonDynamoDBClientBuilder.standard()
-            .withCredentials(credentialsProvider)
-            .withRegion("us-west-2")
-            .build();
 	}
 
 	@Override
@@ -69,6 +88,39 @@ public class AWSManager implements RemoteDBManager {
 		ScanRequest scanRequest = new ScanRequest( USER_TABLE ).withScanFilter( scanFilter );
 		ScanResult result = dynamoDB.scan( scanRequest );
 		return result.getCount( ) != 0;
+	}
+	
+	@Override
+	public String getClassInfo( int tableID ) {
+		if ( !tableIsTaken( tableID ) ) return null;
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
+		scanFilter.put( TABLE_ID, condition );
+		ScanResult result = dynamoDB.scan( new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter ) );
+		return result.getItems( ).get( 0 ).get( TABLE_CLASS ).getS( );
+	}
+	
+	@Override
+	public String getName( String id ) {
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withS( id ) );
+		scanFilter.put( USER_ID, condition );
+		ScanRequest scanRequest = new ScanRequest( USER_TABLE ).withScanFilter( scanFilter );
+		ScanResult result = dynamoDB.scan( scanRequest );
+		return result.getCount( ) != 0?result.getItems( ).get( 0 ).get( USER_NAME ).getS( ):null;
+	}
+	
+	@Override
+	public String getMajor( String id ) {
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withS( id ) );
+		scanFilter.put( USER_ID, condition );
+		ScanRequest scanRequest = new ScanRequest( USER_TABLE ).withScanFilter( scanFilter );
+		ScanResult result = dynamoDB.scan( scanRequest );
+		return result.getCount( ) != 0?result.getItems( ).get( 0 ).get( USER_MAJOR ).getS( ):null;
 	}
 	
 	@Override
@@ -91,9 +143,83 @@ public class AWSManager implements RemoteDBManager {
 		dynamoDB.putItem( request );
 		return true;
 	}
+	
+	@Override
+	public boolean addFriend( String myID, String... friendID ) {
+		if ( !exists( myID ) ) return false;
+		for( String id : friendID )
+			if ( !exists( id ) ) return false;
+		
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withS( myID ) );
+		scanFilter.put( USER_ID, condition );
+		ScanResult result = dynamoDB.scan( new ScanRequest( USER_TABLE ).withScanFilter( scanFilter ) );
+		String[] updatedFriendsList;
+		AttributeValue attVal = result.getItems( ).get( 0 ).get( USER_FRIENDS );
+		if ( attVal == null )
+			updatedFriendsList = friendID;
+		else {
+			List<String> resultList = attVal.getSS( );
+			updatedFriendsList = new String[friendID.length + resultList.size( )];
+			int i = 0;
+			for ( String n : resultList ) {
+				updatedFriendsList[i] = n;
+				i++;
+			}
+			for ( String n : friendID ) {
+				updatedFriendsList[i] = n;
+				i++;
+			}
+		}
+		
+		UpdateItemSpec spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( USER_ID, myID ) )
+				.withUpdateExpression( "set " + USER_FRIENDS + " = :newList" )
+				.withValueMap( new ValueMap( ).withStringSet( ":newList", updatedFriendsList ) );
+					
+		new DynamoDB( dynamoDB ).getTable( USER_TABLE ).updateItem( spec );
+		return true;
+	}
+	
+	@Override
+	public boolean removeFriend( String myID, String friendID ) {
+		if ( !exists( myID ) && !exists( friendID ) ) return false;
+		
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withS( myID ) );
+		scanFilter.put( USER_ID, condition );
+		ScanResult result = dynamoDB.scan( new ScanRequest( USER_TABLE ).withScanFilter( scanFilter ) );
+		if ( result.getItems( ).get( 0 ).get( USER_FRIENDS ) == null ) return false;
+		
+		List<String> resultList = result.getItems( ).get( 0 ).get( USER_FRIENDS ).getSS( );
+		
+		if ( !resultList.remove( friendID ) ) return false; //friendID not in list, stop execution without changing anything
+		if ( resultList.size() == 0 ) resultList.add( "-------PlaceHolder-------" );
+		
+		UpdateItemSpec spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( USER_ID, myID ) )
+				.withUpdateExpression( "set " + USER_FRIENDS + " = :newList" )
+				.withValueMap( new ValueMap( ).withStringSet( ":newList", resultList.toArray( new String[0] ) ) );
+		
+		new DynamoDB( dynamoDB ).getTable( USER_TABLE ).updateItem( spec );
+		return true;
+	}
 
 	@Override
-	public boolean editName( String id, String value ) { //change to update---------------
+	public List<String> getFriendList( String myID ) {
+		if ( !exists( myID ) ) return null;
+		
+		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
+		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
+				.withAttributeValueList( new AttributeValue( ).withS( myID ) );
+		scanFilter.put( USER_ID, condition );
+		ScanResult result = dynamoDB.scan( new ScanRequest( USER_TABLE ).withScanFilter( scanFilter ) );
+		AttributeValue val = result.getItems( ).get( 0 ).get( USER_FRIENDS );
+		return val == null?null:val.getSS( );
+	}
+	
+	@Override
+	public boolean editName( String id, String value ) { 
 		if ( !exists( id ) ) return false;
 		Table userTable = new DynamoDB( dynamoDB ).getTable( USER_TABLE );
 		
@@ -107,7 +233,7 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean editPassword( String id, String newPassword ) { //change to update----------------------
+	public boolean editPassword( String id, String newPassword ) { 
 		if ( !exists( id ) ) return false;
 		Table userTable = new DynamoDB( dynamoDB ).getTable( USER_TABLE );
 		
@@ -121,11 +247,15 @@ public class AWSManager implements RemoteDBManager {
 	}
 
 	@Override
-	public boolean startStudying( String id, int tableID, String message, String classInfo ) { //change to update--------------
-		if ( !exists( id ) ) return false;
-		if ( isStudying( id ) ) return false;
-		if ( tableIsTaken( tableID ) ) return false;
-		if ( message == null ) return false;
+	public boolean startStudying( String id, int tableID, String message, String classInfo ) { 
+		if ( !exists( id ) )
+			return false;
+		if ( isStudying( id ) )
+			return false;
+		if ( tableIsTaken( tableID ) ) 
+			return false;
+		if ( message == null )
+			return false;
 		
 		//update data in User table
 		Table userTable = new DynamoDB( dynamoDB ).getTable( USER_TABLE );
@@ -138,19 +268,19 @@ public class AWSManager implements RemoteDBManager {
 		
 		//update data in Tables table
 		Map<String, AttributeValue> item = new HashMap<String, AttributeValue>( );
-		item.put( TABLE_FOUNDER, new AttributeValue( id ) );
+		item.put( TABLE_GROUP, new AttributeValue( ).withSS( id ) );
 		item.put( TABLE_CLASS, new AttributeValue( classInfo ) );
 		item.put( TABLE_ID, new AttributeValue( ).withN( Integer.toString( tableID ) ) );
 		item.put( TABLE_MESSAGE, new AttributeValue( message ) );
 
-		PutItemRequest request = new PutItemRequest( USER_TABLE, item );
+		PutItemRequest request = new PutItemRequest( TABLES_TABLE, item );
 		dynamoDB.putItem( request );
 		
 		return true;
 	}
 	
 	@Override
-	public boolean joinStudying( String id, int tableID ) { //change to update-----------------------
+	public boolean joinStudying( String id, int tableID ) { 
 		if ( !exists( id ) ) return false;
 		if ( isStudying( id ) ) return false;
 		if ( !tableIsTaken( tableID ) ) return false;
@@ -182,7 +312,7 @@ public class AWSManager implements RemoteDBManager {
 	}
 	
 	@Override
-	public boolean stopStudying( String id ) { //change to update--------------
+	public boolean stopStudying( String id ) { 
 		if ( !exists( id ) ) return false;
 		if ( !isStudying( id ) ) return false;
 		
@@ -198,55 +328,17 @@ public class AWSManager implements RemoteDBManager {
 		UpdateItemOutcome outcome = userTable.updateItem( spec );
 		int tableID = outcome.getItem( ).getNumber( USER_TABLE_AT ).intValue( );
 		
-		//check to see if id is founder
-		HashMap<String, Condition> filter = new HashMap<String, Condition>( );
-		filter.put( TABLE_FOUNDER, new Condition( )
-				.withComparisonOperator( ComparisonOperator.EQ.toString( ) )
-				.withAttributeValueList( new AttributeValue( ).withS( id ) ) );
-		ScanRequest request = new ScanRequest( TABLES_TABLE )
-				.withScanFilter( filter );
-		ScanResult result = dynamoDB.scan( request );
-		
-		if ( result.getCount( ) == 0 ) { //i am studymate, remove myself from studymates list
-			filter.clear( );
-			filter.put( TABLE_ID, new Condition( )
-					.withComparisonOperator( ComparisonOperator.EQ.toString( ) )
-					.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) ) );
-			request = new ScanRequest( TABLES_TABLE )
-					.withScanFilter( filter );
-			result = dynamoDB.scan( request );
-			
-			List<String> studyMates = result.getItems( ).get( 0 ).get( TABLE_STUDYMATES )
-					.getSS( );
-			studyMates.remove( id );
-			
-			spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( TABLE_ID, tableID ) ).
-					withUpdateExpression( "set " + TABLE_STUDYMATES + " = :newSet" ).
-					withValueMap( new ValueMap( ).withStringSet( ":newSet", studyMates
-							.toArray( new String[1] ) ) );
-			userTable.updateItem( spec );
-		}
-		else { //I am founder, kill the study location and remove all references for studymates to this location
-			filter.clear( );
-			Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
-					.withAttributeValueList( new AttributeValue( ).withN( Integer.toString( tableID ) ) );
-			filter.put( TABLE_ID, condition );
-			request = new ScanRequest( TABLES_TABLE ).withScanFilter( filter );
-			result = dynamoDB.scan( request );
-			
-			if ( result.getCount( ) == 0 ) return false;
-			List<String> idsAtTable = result.getItems( ).get( 0 ).get( TABLE_STUDYMATES ).getSS( );
-			
-			for ( String studyMate : idsAtTable ) {
-				spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( USER_ID, studyMate ) ).
-					withUpdateExpression( "set " + USER_TABLE_AT + " = :val, " + USER_IS_STUDYING + " = :study" ).
-					withValueMap( new ValueMap( ).withNumber( ":val", 0 ).withBoolean( ":study", false ) );
-				userTable.updateItem( spec );
-			}
-			
+		List<String> group = fetchStudyMates( tableID );
+		if ( group.size( ) == 1 )
 			tablesTable.deleteItem( new PrimaryKey( TABLE_ID, tableID ) );
-		}
+		else {
+			group.remove( id );
+			spec = new UpdateItemSpec( ).withPrimaryKey( new PrimaryKey( TABLE_ID, tableID ) )
+					.withUpdateExpression( "set " + TABLE_GROUP + " = :newList" )
+					.withValueMap( new ValueMap( ).withStringSet( ":newList", group.toArray( new String[0] ) ) );
 			
+			tablesTable.updateItem( spec );
+		}			
 		return true;
 	}
 
@@ -271,21 +363,21 @@ public class AWSManager implements RemoteDBManager {
 		scanFilter.put( TABLE_ID, condition );
 		ScanRequest scanRequest = new ScanRequest( TABLES_TABLE ).withScanFilter( scanFilter );
 		ScanResult result = dynamoDB.scan( scanRequest );
-		
-		List<String> peopleStudying = result.getItems( ).get( 0 ).get( TABLE_STUDYMATES ).getSS( );
-		peopleStudying.add( result.getItems( ).get( 0 ).get( TABLE_FOUNDER ).getS( ) );
-		return peopleStudying;
+				
+		AttributeValue attVal = result.getItems( ).get( 0 ).get( TABLE_GROUP );
+		return attVal == null?null:attVal.getSS( );
 	}
 
-	private boolean addStudyMate( int tableID, String studyMate ) { //change to update------------
+	private boolean addStudyMate( int tableID, String studyMate ) { 
 		Table tables = new DynamoDB( dynamoDB ).getTable( TABLES_TABLE );
 		List<String> newStudyMate = fetchStudyMates( tableID );
+		if ( newStudyMate == null ) newStudyMate = new ArrayList<String>( );
 		newStudyMate.add( studyMate );
 		
 		UpdateItemSpec spec = new UpdateItemSpec( )
 				.withPrimaryKey( TABLE_ID, tableID )
-				.withUpdateExpression( "set " + TABLE_STUDYMATES + " = :newVal" )
-				.withValueMap( new ValueMap(  ).withStringSet( ":newVal", newStudyMate.toArray( new String[1] ) ) );
+				.withUpdateExpression( "set " + TABLE_GROUP + " = :newVal" )
+				.withValueMap( new ValueMap(  ).withStringSet( ":newVal", newStudyMate.toArray( new String[0] ) ) );
 		
 		tables.updateItem( spec );
 		
@@ -294,13 +386,14 @@ public class AWSManager implements RemoteDBManager {
 
 	@Override
 	public int fetchStudyLocation( String id ) {
+		if ( !isStudying( id ) ) return 0;
 		HashMap<String, Condition> scanFilter = new HashMap<String, Condition>( );
 		Condition condition = new Condition( ).withComparisonOperator( ComparisonOperator.EQ.toString( ) )
 				.withAttributeValueList( new AttributeValue( ).withS( id ) );
 		scanFilter.put( USER_ID, condition );
 		ScanRequest scanRequest = new ScanRequest( USER_TABLE ).withScanFilter( scanFilter );
 		ScanResult result = dynamoDB.scan( scanRequest );
-		return Integer.parseInt( result.getItems( ).get( 0 ).get( id ).getN( ) );
+		return Integer.parseInt( result.getItems( ).get( 0 ).get( USER_TABLE_AT ).getN( ) );
 	}
 	
 	private boolean tableIsTaken( int tableID ) {
@@ -314,14 +407,14 @@ public class AWSManager implements RemoteDBManager {
 	}
 	
 	private static Map<String, AttributeValue> newItem( String userID, String name, String password, String major ) {
-        	Map<String, AttributeValue> item = new HashMap<String, AttributeValue>();
-        	item.put( USER_ID, new AttributeValue( userID ) );
-        	item.put( USER_NAME, new AttributeValue( name ) );
-        	item.put( USER_PASSWORD, new AttributeValue( password ) );
-        	item.put( USER_MAJOR, new AttributeValue( major ) );
-        	item.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( false ) );
-        	item.put( USER_TABLE_AT, new AttributeValue( ).withN( Integer.toString( 0 ) ) );
+        Map<String, AttributeValue> item = new HashMap<String, AttributeValue>();
+        item.put( USER_ID, new AttributeValue( userID ) );
+        item.put( USER_NAME, new AttributeValue( name ) );
+        item.put( USER_PASSWORD, new AttributeValue( password ) );
+        item.put( USER_MAJOR, new AttributeValue( major ) );
+        item.put( USER_IS_STUDYING, new AttributeValue( ).withBOOL( false ) );
+        item.put( USER_TABLE_AT, new AttributeValue( ).withN( Integer.toString( 0 ) ) );
 
-        	return item;
-    	}
+        return item;
+    }
 }
