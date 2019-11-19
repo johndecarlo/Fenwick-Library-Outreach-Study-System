@@ -1,5 +1,5 @@
 /*
-   Loginjava
+   Login.java
    CS 321 - Section 001: Team 7
    John DeCarlo, Huiying Jin, John Radecki, Joshua Yuen
    ----------------------------------------------------
@@ -25,6 +25,8 @@ public class Login extends JDialog {
     private JButton btnRegister; // Register button
     private JButton btnLogin; // Login button
     private JButton btnCancel; // Cancel button
+    
+    private static RemoteDBManager database; // Database
 
     /**
      * Check to see if the username and corresponding password belong to an account
@@ -35,12 +37,11 @@ public class Login extends JDialog {
      *         false if not
      */
     public static boolean authenticate(String username, String password) {
-        RemoteDBManager database = FLOSSDriver.getManager( ); 
+        database = FLOSSDriver.getManager( ); 
         String dbPassword = database.getPassword(username); 
-        if (database.exists(username) && password.equals(dbPassword)) { return true; }
-
-        if (username.equals("test") && password.equals("test")) // for testing purposes
-            return true; // for testing purposes
+        if (database.exists(username) && password.equals(dbPassword)) {
+        	return true;
+        }
 
         return false;
     }
@@ -120,6 +121,7 @@ public class Login extends JDialog {
                 	String userName = getUsername( );
                     String [] fullName = FLOSSDriver.getManager( ).getName( userName ).split( " " );
                     
+                    // Set up who is logging in for future use
                     FLOSSDriver.user = new Student( fullName[0], 
                     		fullName[1], userName, getPassword( ),
                     		FLOSSDriver.getManager( ).getMajor( userName ) );
