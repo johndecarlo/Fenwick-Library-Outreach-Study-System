@@ -97,6 +97,27 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       tableSelected = false;              //Initialize whether or not we have selected a table
       searchFeature = false;              //Initialize whether or not the search feature is active
       refreshTables( );                   //Refresh the tables display
+      
+      /*
+      // ** Test Cases for the FLOSS Program **
+         - Allowed for us to test adding tables, the creation of students, and selecting different sized tables into the StudySystemMap
+      //Cannot join a table that is occupied by the max number of students
+      floor1Tables.get(0).setOccupied();
+      floor1Tables.get(0).addStudent(new Student("John", "Paul", "jpaul1", "pass", "Criminology"));
+      floor1Tables.get(0).addStudent(new Student("Chris", "Smith", "csmith1", "pass", "Nursing"));
+      floor1Tables.get(0).addStudent(new Student("Sam", "Patrick", "spatrick", "pass", "ISOM"));
+      floor1Tables.get(0).addStudent(new Student("Billy", "Williamson", "bwillia", "pass", "Computer Science"));
+      floor1Tables.get(0).setCourse(new Class("Accounting", "CS", 310, "Data Structures"));
+      floor1Tables.get(0).setMessage("Come study with us about the small brown dog jumped over the big thick log of wood and how the man loved his pet fish go sports and go team I love it here");
+      floor1Tables.get(5).setOccupied();
+      floor1Tables.get(5).addStudent(new Student("Mike", "Milan", "mmilan1", "pass", "Computer Sciene"));
+      floor1Tables.get(5).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
+      floor1Tables.get(5).setMessage("Come study with us");
+      floor1Tables.get(7).setOccupied();
+      floor1Tables.get(7).addStudent(new Student("Jack", "Stick", "jstick2", "pass", "Mathematics"));
+      floor1Tables.get(7).setCourse(new Class("Accounting", "ACCT", 203, "Survey of Accounting"));
+      floor1Tables.get(7).setMessage("Come study with us");
+      */
    }
    
    public int getTableIndex( Table table ) {
