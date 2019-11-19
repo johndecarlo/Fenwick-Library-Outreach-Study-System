@@ -31,45 +31,45 @@ public class FLOSSDriver {
    public static Timer refresh;
    
    //JButtons to display the floors and the search feature
-   public static JButton floor1;       
-   public static JButton floor2;          
-   public static JButton floor3;       
-   public static JButton search;
-   public static JButton removeUserTable;       
+   public static JButton floor1;    //JButton when selected will display the first floor     
+   public static JButton floor2;    //JButton when selected will display the second floor        
+   public static JButton floor3;    //JButton when selected will display the third floor  
+   public static JButton search;    //JButton when selected will perform the search option
+   public static JButton removeUserTable; //JButton when selected will remove the table the user is at
    
    //JButtons to display whether to leave a table or not
-   public static JDialog leaveTable;
-   public static JPanel leaveContainer;
-   public static JButton yes;
-   public static JButton no;
-   public static JLabel leaveMessage;
+   public static JDialog leaveTable;      //Box that will display without the ability to exit
+   public static JPanel leaveContainer;   //Panel that holds JButtons and message   
+   public static JButton yes;             //Yes button to switch tables
+   public static JButton no;              //No button to stay at current table
+   public static JLabel leaveMessage;     //Message displayed with the JButton
    
    //Floor Information text labels
-   public static JLabel tableStudentName1;
-   public static JButton addFriend1;
-   public static JLabel tableStudentName2;
-   public static JButton addFriend2;
-   public static JLabel tableStudentName3;
-   public static JButton addFriend3;
-   public static JLabel tableStudentName4;
-   public static JButton addFriend4;
-   public static JLabel tableClass;
-   public static JLabel tableMessage;
-   public static JLabel errorMessage;
-   public static JButton joinTable;
+   public static JLabel tableStudentName1;   //Displays student 1 name
+   public static JButton addFriend1;         //Button to add student 1 as a friend
+   public static JLabel tableStudentName2;   //Displays student 2 name
+   public static JButton addFriend2;         //Button to add student 2 as a friend
+   public static JLabel tableStudentName3;   //Displays student 3 name
+   public static JButton addFriend3;         //Button to add student 3 as a friend
+   public static JLabel tableStudentName4;   //Displays student 4 name
+   public static JButton addFriend4;         //Button to add student 4 as a friend
+   public static JLabel tableClass;          //Message that displays the class the table is studying
+   public static JLabel tableMessage;        //Message that displays the personal message of the table
+   public static JLabel errorMessage;        //Displays when the table is at max occupancy
+   public static JButton joinTable;          //Button that allows one to join a table
    
    //Classes list ComboBox
    public static String[] subjectStrings = {"ACCT", "AFAM", "ANTH", "ARAB", "ARTH", "EDAT", "ASTR", "ATEP", "BENG", "BINF", "BENG", "BIOL", "BUS", "BULE", "CHEM", "CHIN", "CEIE", "CLAS", "CLIM", "COS", "CVPA", "COMM", "CDS", "GAME", "CS", "CONF", "CRIM", "CULT", "CYSE", "DANC", "DSGN", "ECED", "ECON", "EDIT", "EDUC", "EDPO", "EDPS", "ECE", "ELED", "ENGR", "ENGH", "ENVPP", "FAVS", "FNAN", "FRLN", "FRSC", "FREN", "GGS", "GEOL", "GERM", "GLOA", "GCH", "GOVT", "HEAL", "HAP", "HHS", "HEBR", "HIST", "HNRS", "HNRT", "HDFS", "IT", "INTS", "ITAL", "JAPA", "KINE", "KORE", "LATN", "LING", "MGMT", "MIS", "MKTG", "MATH", "ME", "MLAB", "MLSC", "MBUS", "NEUR", "NURS", "NUTR", "OM", "OR", "PRLS", "PERS", "PHIL", "PHED", "PHYS", "PORT", "PROV", "PSYC", "EDRD", "RHBS", "RELI", "RUSS", "SOCW", "SOCI", "SWE", "SPAN", "EDSE", "SPMT", "SRST", "STAT", "SYST", "THR", "TOUR", "TURK", "UNIV", "WMST"};
-   public static JComboBox courseSubjects;
-   public static JComboBox courseNumbers;
-   public static JLabel messageLabel;
-   public static JTextField message;
-   public static JButton addTable;
+   public static JComboBox courseSubjects;   //Option to choose the course subject
+   public static JComboBox courseNumbers;    //Option to choose the course number
+   public static JLabel messageLabel;        //Displays 'message' right above the JTextField
+   public static JTextField message;         //User inputs the message to display to the other students   
+   public static JButton addTable;           //Button to add to a table
    
    //Search feature ComboBoxes
-   public static JLabel searchTitle;
-   public static JComboBox searchSubjects;
-   public static JComboBox searchNumbers;
+   public static JLabel searchTitle;         //Display the search feature title
+   public static JComboBox searchSubjects;   //When searching for courses, display the course subject
+   public static JComboBox searchNumbers;    //When searching for courses, display the course numbers
    
    //Profile JPanel text labels
    public static JLabel profileName;      //Profile display name
@@ -89,25 +89,26 @@ public class FLOSSDriver {
       display.setLocation(250, 0);				   //Location of display window on the screen
       display.setResizable(false);              //Cannot change size of the screen
       display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Exit when close out 
+      //When the user exits out of the program, then they will leave their table
       display.addWindowListener(
-    	         new WindowAdapter() {
-    	            @Override
-    	            public void windowClosing(WindowEvent e) {
-    	               fenwickLibrary.getUserTable().removeStudent(user);
-    	               if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
-    	                  fenwickLibrary.getUserTable().setCourse(new Class());
-    	                  fenwickLibrary.getUserTable().setMessage("");
-    	                  fenwickLibrary.getUserTable().setOccupied();
-    	               }
-    	               fenwickLibrary.setUserTable(new Table());
-    	               manager.stopStudying(user.getMasonEmail());      //*** AWS IMPLEMENTATION ***
-    	               user.setOccupyTable();
-    	               fenwickLibrary.updateMessages();
-    	               fenwickLibrary.setTableSelected(false);
-    	               fenwickLibrary.repaint();
-    	               removeUserTable.setVisible(false);
-    	            }
-    	         });
+               new WindowAdapter() {
+                  @Override
+                  public void windowClosing(WindowEvent e) {   
+                     fenwickLibrary.getUserTable().removeStudent(user); //Remove the user from the table
+                     if(fenwickLibrary.getUserTable().getNumStudents() == 0) {   //If the table has no students
+                        fenwickLibrary.getUserTable().setCourse(new Class()); //Set the class to a basic object
+                        fenwickLibrary.getUserTable().setMessage("");      //Set the message to blank
+                        fenwickLibrary.getUserTable().setOccupied();       //Set occupied to false
+                     }
+                     fenwickLibrary.setUserTable(new Table());          //Set the user table to a blank option
+                     manager.stopStudying(user.getMasonEmail());        //*** AWS IMPLEMENTATION ***
+                     user.setOccupyTable();                             //Set user occupy table to false
+                     fenwickLibrary.updateMessages();  //Update the side panel messages
+                     fenwickLibrary.setTableSelected(false);            //Set selected table to false
+                     fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
+                     removeUserTable.setVisible(false);  //Hide from being displayed                
+                  }
+               });
       
       JPanel container = new JPanel();          //Establish the JPanel that will hold all our JPanel's
       container.setLayout(null);                //Set the layout to null so we can set the bounds
@@ -117,9 +118,9 @@ public class FLOSSDriver {
       displaySidePanel();                          //Add all the buttons and options
       initializeClasses();                         //Initialize the class list
       initializeSidePanel();                       //Initialize the side panel
-      initializeJoinTable();
-      initializeAddTable();
-      initializeRemoveUserTable();
+      initializeJoinTable();                       //Initialize the join table button
+      initializeAddTable();                        //Initialize the add table button
+      initializeRemoveUserTable();                 //Initalize the remove user table button
       initializeSearchFeature();                   //Initialize the search feature for the class
       
       container.add(fenwickLibrary);         //Add JPanel map to the main display screen 
@@ -134,33 +135,37 @@ public class FLOSSDriver {
       initializeLeaveTable();
       
       Login login = new Login(display);
-      login.setVisible(true);
+      login.setVisible(true);  //Display in the side panel
       
       refresh = new Timer( 30000, 
-    		  new ActionListener( ) {
-    	  	public void actionPerformed( ActionEvent e ) {
-    	  		//display refreshing info message
-    	  		fenwickLibrary.resetTables( );
-    	  		fenwickLibrary.refreshTables( );
-    	  		fenwickLibrary.repaint( );
-    	  		//remove refreshing message
-    	  	}
-      });
+           new ActionListener( ) {
+              public void actionPerformed( ActionEvent e ) {
+              //display refreshing info message
+                 fenwickLibrary.resetTables( );
+                 fenwickLibrary.refreshTables( );
+                 fenwickLibrary.repaint( );
+              //remove refreshing message
+              }
+           });
       refresh.start();
    }
    
+   //Get the student user
    public static Student getUser() {
       return user;
    }
    
+   //Get the Amazon manager
    public static RemoteDBManager getManager() {
       return manager;
    }
    
+   //Get the search subject that the user is looking for
    public static String getSearchSubject() {
       return (String)searchSubjects.getSelectedItem();
    }
    
+   //Get the search number of the course the user is looking for
    public static int getSearchNumber() {
       return Integer.parseInt((String)searchNumbers.getSelectedItem());
    }
@@ -182,52 +187,52 @@ public class FLOSSDriver {
       floor1.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               enableButtons();
-               floor1.setEnabled(false);
-               fenwickLibrary.setFloorNumber(1);
-               fenwickLibrary.setTableSelected(false);
-               fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());
-               fenwickLibrary.updateMessages();
-               displayCourseOptions(false);
-               fenwickLibrary.repaint();
+               enableButtons(); //Set all the buttons to working          
+               floor1.setEnabled(false);  //Disable the JButton
+               fenwickLibrary.setFloorNumber(1);   //Display the first floor
+               fenwickLibrary.setTableSelected(false);   //Set the selected table to false when changing floors
+               fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());   //Set the selected table to the user table
+               fenwickLibrary.updateMessages();  //Update the side panel messages    
+               displayCourseOptions(false);  //Do not display the possible course select options
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });
-      floor1.setEnabled(false);   
+      floor1.setEnabled(false);  //Disable the JButton   
       floor2.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               enableButtons();
-               floor2.setEnabled(false);
-               fenwickLibrary.setFloorNumber(2);
-               fenwickLibrary.setTableSelected(false);
+               enableButtons(); //Set all the buttons to working        
+               floor2.setEnabled(false);  //Disable the JButton
+               fenwickLibrary.setFloorNumber(2);   //Display the second floor
+               fenwickLibrary.setTableSelected(false);   //Set the selected table to false when changing floors
                fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());
-               fenwickLibrary.updateMessages();
-               displayCourseOptions(false);
-               fenwickLibrary.repaint();
+               fenwickLibrary.updateMessages();  //Update the side panel messages
+               displayCourseOptions(false);  //Do not display the possible course select options
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });    
       floor3.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               enableButtons();
-               floor3.setEnabled(false);
-               fenwickLibrary.setFloorNumber(3);
-               fenwickLibrary.setTableSelected(false);
+               enableButtons(); //Set all the buttons to working           //Enable all buttons but disable the floor3 button
+               floor3.setEnabled(false);  //Disable the JButton
+               fenwickLibrary.setFloorNumber(3);   //Display the third floor
+               fenwickLibrary.setTableSelected(false);   //Set the selected table to false when changing floors
                fenwickLibrary.setSelectedTable(fenwickLibrary.getUserTable());
-               fenwickLibrary.updateMessages();
-               displayCourseOptions(false);
-               fenwickLibrary.repaint();
+               fenwickLibrary.updateMessages();  //Update the side panel messages
+               displayCourseOptions(false);  //Do not display the possible course select options
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });  
       search.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               enableButtons();
-               enableSearch();
+               enableButtons(); //Set all the buttons to working
+               enableSearch();  //Display the search option
                if(fenwickLibrary.getFloorNumber() == 1) 
-                  floor1.setEnabled(false);
+                  floor1.setEnabled(false);  //Disable the JButton
                else if(fenwickLibrary.getFloorNumber() == 2) 
-                  floor2.setEnabled(false);
+                  floor2.setEnabled(false);  //Disable the JButton
                else if(fenwickLibrary.getFloorNumber() == 3) 
-                  floor3.setEnabled(false);
-               fenwickLibrary.repaint();
+                  floor3.setEnabled(false);  //Disable the JButton 
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });  
       sidePanel.add(floor1);      //Add button to the JFrame
       sidePanel.add(floor2);      //Add button to the JFrame
@@ -235,128 +240,129 @@ public class FLOSSDriver {
       sidePanel.add(search);      //Add button to the JFrame
    }
    
+   //Enable the search feature of the table
    public static void enableSearch() {
       if(enableSearch) {
-         fenwickLibrary.setSearchEnabled(false);
-         searchSubjects.setVisible(false);
-         searchNumbers.setVisible(false);
-         searchTitle.setVisible(false);
-         enableSearch = false;
+         fenwickLibrary.setSearchEnabled(false);  //Disable the search feature
+         searchSubjects.setVisible(false);  //Hide from being displayed  
+         searchNumbers.setVisible(false);  //Hide from being displayed 
+         searchTitle.setVisible(false);  //Hide from being displayed  
+         enableSearch = false;              //Set search enabled to false
       } else {
-         fenwickLibrary.setSearchEnabled(true);
-         searchSubjects.setVisible(true);
-         searchNumbers.setVisible(true);
-         searchTitle.setVisible(true);
-         enableSearch = true;
+         fenwickLibrary.setSearchEnabled(true); //Enable the search feature
+         searchSubjects.setVisible(true);  //Display in the side panel       
+         searchNumbers.setVisible(true);  //Display in the side panel        
+         searchTitle.setVisible(true);  //Display in the side panel       
+         enableSearch = true;                   //Set the search enabled to true
       }
    }
    
    //Enable the buttons for the floors
    public static void enableButtons() {
-      floor1.setEnabled(true);
-      floor2.setEnabled(true);
-      floor3.setEnabled(true);
+      floor1.setEnabled(true);  //Enable the JButton
+      floor2.setEnabled(true);  //Enable the JButton
+      floor3.setEnabled(true);  //Enable the JButton
    }
    
    //Whether or not we want to display certain aspects of our side panel
    public static void displayCourseOptions(boolean display) {
-      courseSubjects.setVisible(display);
-      courseNumbers.setVisible(display);
-      messageLabel.setVisible(display);
-      message.setVisible(display);
-      addTable.setVisible(display);
+      courseSubjects.setVisible(display);    //Display the course subjects
+      courseNumbers.setVisible(display);     //Display the course numbers
+      messageLabel.setVisible(display);      //Display the message labe
+      message.setVisible(display);           //Display the user message
+      addTable.setVisible(display);          //Display the add table button
    }
    
    //Method that initializes the side panel and all the JLabel and JComboBox features
    public static void initializeSidePanel() {
-      tableStudentName1 = new JLabel("Student 1");
-      tableStudentName1.setBounds(25, 60, 200, 25);
+      tableStudentName1 = new JLabel("Student 1"); //Initialize the JLabel
+      tableStudentName1.setBounds(25, 60, 200, 25);   //Set the bounds for where it's displayed
       sidePanel.add(tableStudentName1);
-      addFriend1 = new JButton("Follow");
-      addFriend1.setBounds(200, 60, 85, 15);
+      addFriend1 = new JButton("Follow"); //Intialize the JButton
+      addFriend1.setBounds(200, 60, 85, 15); //Set the bounds for where it's displayed
       addFriend1.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               if(addFriend1.getText().equals("Follow")) {
+               if(addFriend1.getText().equals("Follow")) {  //If addFriend is set to follow
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail());
                   manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail() );
-                  addFriend1.setText("Unfollow");
+                  addFriend1.setText("Unfollow");  //Set the text to unfollow
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail());
                   manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(0).getMasonEmail() );
-                  addFriend1.setText("Follow");
+                  addFriend1.setText("Follow");      //Set the text to follow
                }
             } });
-      addFriend1.setVisible(false);
+      addFriend1.setVisible(false);  //Hide from being displayed
       sidePanel.add(addFriend1);
-      tableStudentName2 = new JLabel("Student 2");
-      tableStudentName2.setBounds(25, 85, 200, 25);
+      tableStudentName2 = new JLabel("Student 2"); //Initialize the JLabel
+      tableStudentName2.setBounds(25, 85, 200, 25);   //Set the bounds for where it's displayed
       sidePanel.add(tableStudentName2);
-      addFriend2 = new JButton("Follow");
-      addFriend2.setBounds(200, 85, 85, 15);
+      addFriend2 = new JButton("Follow"); //Intialize the JButton
+      addFriend2.setBounds(200, 85, 85, 15); //Set the bounds for where it's displayed
       addFriend2.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               if(addFriend2.getText().equals("Follow")) {
+               if(addFriend2.getText().equals("Follow")) {  //If addFriend is set to follow
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail());
                   manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail() );
-                  addFriend2.setText("Unfollow");
+                  addFriend2.setText("Unfollow");  //Set the text to unfollow
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail());
                   manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(1).getMasonEmail() );
-                  addFriend2.setText("Follow");
+                  addFriend2.setText("Follow");      //Set the text to follow
                }
             } });
-      addFriend2.setVisible(false);
+      addFriend2.setVisible(false);  //Hide from being displayed
       sidePanel.add(addFriend2);
-      tableStudentName3 = new JLabel("Student 3");
-      tableStudentName3.setBounds(25, 110, 200, 25);
+      tableStudentName3 = new JLabel("Student 3"); //Initialize the JLabel
+      tableStudentName3.setBounds(25, 110, 200, 25);  //Set the bounds for where it's displayed
       sidePanel.add(tableStudentName3);
-      addFriend3 = new JButton("Follow");
-      addFriend3.setBounds(200, 110, 85, 15);
+      addFriend3 = new JButton("Follow"); //Intialize the JButton
+      addFriend3.setBounds(200, 110, 85, 15);   //Set the bounds for where it's displayed
       addFriend3.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               if(addFriend3.getText().equals("Follow")) {
+               if(addFriend3.getText().equals("Follow")) {  //If addFriend is set to follow
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail());
                   manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail() );
-                  addFriend3.setText("Unfollow");
+                  addFriend3.setText("Unfollow");  //Set the text to unfollow
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail());
                   manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(2).getMasonEmail() );
-                  addFriend3.setText("Follow");
+                  addFriend3.setText("Follow");      //Set the text to follow
                }
             } });
-      addFriend3.setVisible(false);
+      addFriend3.setVisible(false);  //Hide from being displayed
       sidePanel.add(addFriend3);
       tableStudentName4 = new JLabel("Student 4");
-      tableStudentName4.setBounds(25, 135, 200, 25);
+      tableStudentName4.setBounds(25, 135, 200, 25);  //Set the bounds for where it's displayed
       sidePanel.add(tableStudentName4);
-      addFriend4 = new JButton("Follow");
-      addFriend4.setBounds(200, 135, 85, 15);
+      addFriend4 = new JButton("Follow"); //Intialize the JButton
+      addFriend4.setBounds(200, 135, 85, 15);   //Set the bounds for where it's displayed
       addFriend4.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               if(addFriend4.getText().equals("Follow")) {
+               if(addFriend4.getText().equals("Follow")) {  //If addFriend is set to follow
                   user.addFriend(fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail());
                   manager.addFriend( user.getMasonEmail( ), fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail() );
-                  addFriend4.setText("Unfollow");
+                  addFriend4.setText("Unfollow");  //Set the text to unfollow
                } else {
                   user.removeFriend(fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail());
                   manager.removeFriend( user.getMasonEmail(), fenwickLibrary.getSelectedTable().getStudent(3).getMasonEmail() );
-                  addFriend4.setText("Follow");
+                  addFriend4.setText("Follow");      //Set the text to follow
                }
             } });
-      addFriend4.setVisible(false);
-      sidePanel.add(addFriend4);
-      tableClass = new JLabel("");
-      tableClass.setBounds(25, 165, 200, 25);
+      addFriend4.setVisible(false);  //Hide from being displayed
+      sidePanel.add(addFriend4); //Set the bounds for where it's displayed
+      tableClass = new JLabel("");     //Initialize the JLabel
+      tableClass.setBounds(25, 165, 200, 25);   //Set the bounds for where it's displayed
       sidePanel.add(tableClass);
-      tableMessage = new JLabel("");
-      tableMessage.setBounds(25, 195, 200, 80);
+      tableMessage = new JLabel("");   //Initialize the JLabel
+      tableMessage.setBounds(25, 195, 200, 80); //Set the bounds for where it's displayed 
       sidePanel.add(tableMessage);
-      errorMessage = new JLabel("<html>TABLE MAX OCCUPANCY REACHED</html>");
-      errorMessage.setBounds(25, 285, 225, 25);
+      errorMessage = new JLabel("<html>TABLE MAX OCCUPANCY REACHED</html>");  //Initialize the JLabel
+      errorMessage.setBounds(25, 285, 225, 25); //Set the bounds for where it's displayed
       sidePanel.add(errorMessage);
       courseSubjects = new JComboBox(subjectStrings);
       courseSubjects.addActionListener(
@@ -368,57 +374,57 @@ public class FLOSSDriver {
                for(int i = 0; i < list.length; i++)
                   courseNumbers.addItem(list[i]);
             } });
-      courseSubjects.setBounds(50, 320, 75, 25);
+      courseSubjects.setBounds(50, 320, 75, 25);   //Set the bounds for where it's displayed
       sidePanel.add(courseSubjects);
       courseNumbers = new JComboBox(initializeSubjectNumbers(classList.get(0).getSubjectCode()));
-      courseNumbers.setBounds(175, 320, 75, 25);
+      courseNumbers.setBounds(175, 320, 75, 25);   //Set the bounds for where it's displayed
       sidePanel.add(courseNumbers);
-      messageLabel = new JLabel("User Description:");
-      messageLabel.setBounds(50, 445, 200, 25);
+      messageLabel = new JLabel("User Description:"); //Initialize the JLabel
+      messageLabel.setBounds(50, 445, 200, 25); //Set the bounds for where it's displayed
       sidePanel.add(messageLabel);
       message = new JTextField(20);
-      message.setBounds(50, 470, 200, 25);
-      message.setDocument(new JTextFieldLimit(140));
+      message.setBounds(50, 470, 200, 25);   //Set the bounds for where it's displayed
+      message.setDocument(new JTextFieldLimit(140));  //Set the character limit to 140 characters
       sidePanel.add(message);
    }
    
    public static void initializeJoinTable() {
       joinTable = new JButton("Join Table");
-      joinTable.setBounds(25, 285, 225, 25);
+      joinTable.setBounds(25, 285, 225, 25); //Set the bounds for where it's displayed
       joinTable.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                if(user.getOccupyTable()) {
-                  leaveTable.setVisible(true);
-                  display.setEnabled(false);
+                  leaveTable.setVisible(true);  //Display in the side panel
+                  display.setEnabled(false);  //Disable the JButton
                } else {
-            	  System.out.println("1");
+                  System.out.println("1");
                   fenwickLibrary.getSelectedTable().addStudent(user);
                   manager.joinStudying(user.getMasonEmail(), Integer.parseInt(fenwickLibrary.getSelectedTable( ).getFloor() + "" + 
-                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())));                  
+                       fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())));                  
                   user.setOccupyTable();
-                  displayCourseOptions(false);
+                  displayCourseOptions(false);  //Do not display the possible course select options
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                   fenwickLibrary.setTableSelected(false);
-                  removeUserTable.setVisible(true);
-                  fenwickLibrary.updateMessages();
-                  joinTable.setVisible(false);
-                  fenwickLibrary.repaint();
+                  removeUserTable.setVisible(true);  //Display in the side panel
+                  fenwickLibrary.updateMessages();  //Update the side panel messages
+                  joinTable.setVisible(false);  //Hide from being displayed
+                  fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
                }
             } });  
-      joinTable.setVisible(false);
+      joinTable.setVisible(false);  //Hide from being displayed
       sidePanel.add(joinTable);
    }
    
    public static void initializeAddTable() {
       addTable = new JButton("Finish");
-      addTable.setBounds(50, 500, 200, 25);
+      addTable.setBounds(50, 500, 200, 25);  //Set the bounds for where it's displayed
       addTable.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                if(user.getOccupyTable()) {
-                  leaveTable.setVisible(true);
-                  display.setEnabled(false);
+                  leaveTable.setVisible(true);  //Display in the side panel
+                  display.setEnabled(false);  //Disable the JButton
                } else {
                   fenwickLibrary.getSelectedTable().setOccupied();
                   System.out.println("2");
@@ -431,43 +437,43 @@ public class FLOSSDriver {
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
                   String classInfo = course + number;
                   manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + 
-                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())), 
-                		  fenwickLibrary.getSelectedTable().getMessage(), classInfo);
-                  message.setText("");
-                  displayCourseOptions(false);
+                       fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())), 
+                       fenwickLibrary.getSelectedTable().getMessage(), classInfo);
+                  message.setText("");   //Set the text to blank
+                  displayCourseOptions(false);  //Do not display the possible course select options
                   fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                   fenwickLibrary.setTableSelected(false);
-                  fenwickLibrary.updateMessages();
-                  removeUserTable.setVisible(true);
-                  fenwickLibrary.repaint();
+                  fenwickLibrary.updateMessages();  //Update the side panel messages
+                  removeUserTable.setVisible(true);  //Display in the side panel
+                  fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
                }
             } });  
       sidePanel.add(addTable);
-      displayCourseOptions(false);
+      displayCourseOptions(false);  //Do not display the possible course select options
    }
    
    public static void initializeRemoveUserTable() {
-      removeUserTable = new JButton("Leave Table");
-      removeUserTable.setBounds(50, 750, 200, 25);
+      removeUserTable = new JButton("Leave Table");   //Intialize the JButton
+      removeUserTable.setBounds(50, 750, 200, 25);    //Set the bounds for where it's displayed
       removeUserTable.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               fenwickLibrary.getUserTable().removeStudent(user);
-               if(fenwickLibrary.getUserTable().getNumStudents() == 0) {
-                  fenwickLibrary.getUserTable().setCourse(new Class());
-                  fenwickLibrary.getUserTable().setMessage("");
-                  fenwickLibrary.getUserTable().setOccupied();
+               fenwickLibrary.getUserTable().removeStudent(user); //Remove the user from the table
+               if(fenwickLibrary.getUserTable().getNumStudents() == 0) {   //If the table has no students
+                  fenwickLibrary.getUserTable().setCourse(new Class()); //Set the class to a basic object
+                  fenwickLibrary.getUserTable().setMessage("");      //Set the message to blank
+                  fenwickLibrary.getUserTable().setOccupied();       //Set occupied to false
                }
-               fenwickLibrary.setUserTable(new Table());
-               manager.stopStudying(user.getMasonEmail());      //*** AWS IMPLEMENTATION ***
-               user.setOccupyTable();
-               fenwickLibrary.updateMessages();
-               fenwickLibrary.setTableSelected(false);
-               fenwickLibrary.repaint();
-               removeUserTable.setVisible(false);
+               fenwickLibrary.setUserTable(new Table());          //Set the user table to a blank option
+               manager.stopStudying(user.getMasonEmail());        //*** AWS IMPLEMENTATION ***
+               user.setOccupyTable();                             //Set user occupy table to false
+               fenwickLibrary.updateMessages();  //Update the side panel messages
+               fenwickLibrary.setTableSelected(false);            //Set selected table to false
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
+               removeUserTable.setVisible(false);  //Hide from being displayed                 //Hide the removeUserTable button
             } });  
       sidePanel.add(removeUserTable);
-      removeUserTable.setVisible(false);
+      removeUserTable.setVisible(false);  //Hide from being displayed
    }
 
       //Initialize the option to leave the table you are sitting at and choose another
@@ -475,7 +481,7 @@ public class FLOSSDriver {
       leaveContainer = new JPanel();
       leaveContainer.setLayout(null);
       yes = new JButton("YES");
-      yes.setBounds(50, 75, 75, 25); 
+      yes.setBounds(50, 75, 75, 25);   //Set the bounds for where it's displayed
       yes.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -495,47 +501,47 @@ public class FLOSSDriver {
                   fenwickLibrary.getSelectedTable().setCourse(findClass(course, number));
                   courseSubjects.setSelectedIndex(0);
                   fenwickLibrary.getSelectedTable().setMessage(message.getText().toString());
-                  message.setText("");
+                  message.setText("");   //Set the text to blank
                   fenwickLibrary.getSelectedTable().setOccupied();
-                  displayCourseOptions(false);
+                  displayCourseOptions(false);  //Do not display the possible course select options
                   manager.startStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + 
-                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //*** AWS IMPLEMENTATION ***
+                       fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())), fenwickLibrary.getSelectedTable().getMessage(), classInfo); //*** AWS IMPLEMENTATION ***
                } else {
                   manager.joinStudying(user.getMasonEmail(), Integer.parseInt( fenwickLibrary.getSelectedTable( ).getFloor( ) + "" + 
-                		  fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())));  ////*** AWS IMPLEMENTATION ***
+                       fenwickLibrary.getTableIndex(fenwickLibrary.getSelectedTable())));  ////*** AWS IMPLEMENTATION ***
                }
                fenwickLibrary.setUserTable(fenwickLibrary.getSelectedTable());
                fenwickLibrary.setTableSelected(false);
-               fenwickLibrary.updateMessages();
-               removeUserTable.setVisible(true);
-               leaveTable.setVisible(false);
-               display.setEnabled(true);
-               fenwickLibrary.repaint();
+               fenwickLibrary.updateMessages();  //Update the side panel messages
+               removeUserTable.setVisible(true);  //Display in the side panel
+               leaveTable.setVisible(false);  //Hide from being displayed
+               display.setEnabled(true);  //Enable the JButton
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });        
       no = new JButton("NO");
-      no.setBounds(175, 75, 75, 25);  
+      no.setBounds(175, 75, 75, 25);  //Set the bounds for where it's displayed
       no.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               leaveTable.setVisible(false);
-               display.setEnabled(true);
+               leaveTable.setVisible(false);  //Hide from being displayed
+               display.setEnabled(true);  //Enable the JButton
             } });            
       leaveMessage = new JLabel("<html>Would you like to leave the table you are currenlty sitting at and move to another?</html>");
-      leaveMessage.setBounds(25, 25, 250, 35);   
-      leaveContainer.add(yes);
-      leaveContainer.add(no);
-      leaveContainer.add(leaveMessage);
+      leaveMessage.setBounds(25, 25, 250, 35);  //Set the bounds for where it's displayed   
+      leaveContainer.add(yes);   //Add to the JPanel
+      leaveContainer.add(no);    //Add to the JPanel
+      leaveContainer.add(leaveMessage);   //Add to the JPanel
       leaveTable.setContentPane(leaveContainer);
    }
    
    //Initialize the search features for the side panel
    public static void initializeSearchFeature() {
       searchTitle = new JLabel("Course Search");
-      searchTitle.setBounds(100, 550, 100, 25);
-      sidePanel.add(searchTitle);
-      searchTitle.setVisible(false);
+      searchTitle.setBounds(100, 550, 100, 25);  //Set the bounds for where it's displayed
+      sidePanel.add(searchTitle);   //Add to the JPanel
+      searchTitle.setVisible(false);  //Hide from being displayed
       searchSubjects = new JComboBox(subjectStrings);
-      searchSubjects.setBounds(50, 575, 75, 25);
+      searchSubjects.setBounds(50, 575, 75, 25);`//Set the bounds for where it's displayed
       searchSubjects.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -544,19 +550,19 @@ public class FLOSSDriver {
                searchNumbers.removeAllItems();
                for(int i = 0; i < list.length; i++)
                   searchNumbers.addItem(list[i]);
-               fenwickLibrary.repaint();
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });
-      sidePanel.add(searchSubjects);
-      searchSubjects.setVisible(false);
+      sidePanel.add(searchSubjects);   //Add to the JPanel
+      searchSubjects.setVisible(false);  //Hide from being displayed  //Hide the search subjects feature
       searchNumbers = new JComboBox(initializeSubjectNumbers(classList.get(0).getSubjectCode()));
-      searchNumbers.setBounds(175, 575, 75, 25);
+      searchNumbers.setBounds(175, 575, 75, 25);   //Set the bounds for where it's displayed
       searchNumbers.addActionListener(
          new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               fenwickLibrary.repaint();
+               fenwickLibrary.repaint();  //Repaint the map displaying the tables on the floor
             } });         
       sidePanel.add(searchNumbers);
-      searchNumbers.setVisible(false);
+      searchNumbers.setVisible(false);  //Hide from being displayed
    }
    
    //Determine if the provided course and number are that of a real class
@@ -573,29 +579,29 @@ public class FLOSSDriver {
    public static void displayStudentName(ArrayList<Student> names) {
       if(names.size() == 1) {
          tableStudentName1.setText(names.get(0).getFirstName() + " " + names.get(0).getLastName() + " (" + names.get(0).getMasonEmail() + ")");
-         tableStudentName2.setText("");
-         tableStudentName3.setText("");
-         tableStudentName4.setText("");
+         tableStudentName2.setText("");   //Set the text to blank
+         tableStudentName3.setText("");   //Set the text to blank
+         tableStudentName4.setText("");   //Set the text to blank
       } else if(names.size() == 2) {
          tableStudentName1.setText(names.get(0).getFirstName() + " " + names.get(0).getLastName() + " (" + names.get(0).getMasonEmail() + ")");
          tableStudentName2.setText(names.get(1).getFirstName() + " " + names.get(1).getLastName() + " (" + names.get(1).getMasonEmail() + ")");
-         tableStudentName3.setText("");
-         tableStudentName4.setText("");
+         tableStudentName3.setText("");   //Set the text to blank
+         tableStudentName4.setText("");   //Set the text to blank
       } else if(names.size() == 3) {
          tableStudentName1.setText(names.get(0).getFirstName() + " " + names.get(0).getLastName() + " (" + names.get(0).getMasonEmail() + ")");
          tableStudentName2.setText(names.get(1).getFirstName() + " " + names.get(1).getLastName() + " (" + names.get(1).getMasonEmail() + ")");
          tableStudentName3.setText(names.get(2).getFirstName() + " " + names.get(2).getLastName() + " (" + names.get(2).getMasonEmail() + ")");
-         tableStudentName4.setText("");
+         tableStudentName4.setText("");   //Set the text to blank
       } else if(names.size() == 4) {
          tableStudentName1.setText(names.get(0).getFirstName() + " " + names.get(0).getLastName() + " (" + names.get(0).getMasonEmail() + ")");
          tableStudentName2.setText(names.get(1).getFirstName() + " " + names.get(1).getLastName() + " (" + names.get(1).getMasonEmail() + ")");
          tableStudentName3.setText(names.get(2).getFirstName() + " " + names.get(2).getLastName() + " (" + names.get(2).getMasonEmail() + ")");
          tableStudentName4.setText(names.get(3).getFirstName() + " " + names.get(3).getLastName() + " (" + names.get(3).getMasonEmail() + ")");
       } else {
-         tableStudentName1.setText("");
-         tableStudentName2.setText("");
-         tableStudentName3.setText("");
-         tableStudentName4.setText("");
+         tableStudentName1.setText("");   //Set the text to blank
+         tableStudentName2.setText("");   //Set the text to blank
+         tableStudentName3.setText("");   //Set the text to blank
+         tableStudentName4.setText("");   //Set the text to blank
       }
    }
    
@@ -614,119 +620,121 @@ public class FLOSSDriver {
    
    //Reset the JLabel for the table display
    public static void resetTableCourse() {
-      tableClass.setText("");
+      tableClass.setText("");   //Set the text to blank
    }
    
+   //Display the error message that the table is at max occupancy
    public static void showErrorMessage(boolean show) {
       errorMessage.setVisible(show);
    }
    
+   //Show the add friend buttons
    public static void showAddFriend(Table table, int size) {
       if(size == 1) {
-         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
-            if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
-               addFriend1.setText("Unfollow");
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
+            if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail()))    //If friend list contains the students mason email
+               addFriend1.setText("Unfollow");  //Set the text to unfollow 
             else
-               addFriend1.setText("Follow");
-            addFriend1.setVisible(true);
+               addFriend1.setText("Follow");      //Set the text to follow
+            addFriend1.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend1.setVisible(false);
-         addFriend2.setVisible(false);
-         addFriend3.setVisible(false);
-         addFriend4.setVisible(false);
+            addFriend1.setVisible(false);  //Hide from being displayed
+         addFriend2.setVisible(false);  //Hide from being displayed
+         addFriend3.setVisible(false);  //Hide from being displayed
+         addFriend4.setVisible(false);  //Hide from being displayed
       } else if(size == 2) {
-         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
-               addFriend1.setText("Unfollow");
+               addFriend1.setText("Unfollow");  //Set the text to unfollow
             else
-               addFriend1.setText("Follow");
-            addFriend1.setVisible(true);
+               addFriend1.setText("Follow");      //Set the text to follow
+            addFriend1.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend1.setVisible(false);
-         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {
+            addFriend1.setVisible(false);  //Hide from being displayed
+         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(1).getMasonEmail())) 
-               addFriend2.setText("Unfollow");
+               addFriend2.setText("Unfollow");  //Set the text to unfollow 
             else
-               addFriend2.setText("Follow");
-            addFriend2.setVisible(true);
+               addFriend2.setText("Follow");      //Set the text to follow
+            addFriend2.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend2.setVisible(false);
-         addFriend3.setVisible(false);
-         addFriend4.setVisible(false);
+            addFriend2.setVisible(false);  //Hide from being displayed
+         addFriend3.setVisible(false);  //Hide from being displayed
+         addFriend4.setVisible(false);  //Hide from being displayed
       } else if(size == 3) {
-         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
-               addFriend1.setText("Unfollow");
+               addFriend1.setText("Unfollow");  //Set the text to unfollow
             else
-               addFriend1.setText("Follow");
-            addFriend1.setVisible(true);
+               addFriend1.setText("Follow");      //Set the text to follow
+            addFriend1.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend1.setVisible(false);
-         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {
+            addFriend1.setVisible(false);  //Hide from being displayed
+         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(1).getMasonEmail())) 
-               addFriend2.setText("Unfollow");
+               addFriend2.setText("Unfollow");  //Set the text to unfollow 
             else
-               addFriend2.setText("Follow");
-            addFriend2.setVisible(true);
+               addFriend2.setText("Follow");      //Set the text to follow
+            addFriend2.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend2.setVisible(false);
-         if(!table.getStudents().get(2).getMasonEmail().equals(user.getMasonEmail())) {
+            addFriend2.setVisible(false);  //Hide from being displayed
+         if(!table.getStudents().get(2).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(2).getMasonEmail())) 
-               addFriend3.setText("Unfollow");
+               addFriend3.setText("Unfollow");  //Set the text to unfollow  //Set the text to unfollow
             else
-               addFriend3.setText("Follow");
-            addFriend3.setVisible(true);
+               addFriend3.setText("Follow");      //Set the text to follow
+            addFriend3.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend3.setVisible(false);
-         addFriend4.setVisible(false);
+            addFriend3.setVisible(false);  //Hide from being displayed
+         addFriend4.setVisible(false);  //Hide from being displayed
       } else if(size == 4) {
-         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {
+         if(!table.getStudents().get(0).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(0).getMasonEmail())) 
-               addFriend1.setText("Unfollow");
+               addFriend1.setText("Unfollow");  //Set the text to unfollow
             else
-               addFriend1.setText("Follow");
-            addFriend1.setVisible(true);
+               addFriend1.setText("Follow");      //Set the text to follow
+            addFriend1.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend1.setVisible(false);            
-         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {
+            addFriend1.setVisible(false);  //Hide from being displayed //Hide the addFriend1 button           
+         if(!table.getStudents().get(1).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(1).getMasonEmail())) 
-               addFriend2.setText("Unfollow");
+               addFriend2.setText("Unfollow");  //Set the text to unfollow
             else
-               addFriend2.setText("Follow");
-            addFriend2.setVisible(true);
+               addFriend2.setText("Follow");      //Set the text to follow
+            addFriend2.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend2.setVisible(false);            
-         if(!table.getStudents().get(2).getMasonEmail().equals(user.getMasonEmail())) {
+            addFriend2.setVisible(false);  //Hide from being displayed //Hide the addFriend2 button           
+         if(!table.getStudents().get(2).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(2).getMasonEmail())) 
-               addFriend3.setText("Unfollow");
+               addFriend3.setText("Unfollow");  //Set the text to unfollow
             else
-               addFriend3.setText("Follow");
-            addFriend3.setVisible(true);
+               addFriend3.setText("Follow");      //Set the text to follow
+            addFriend3.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend3.setVisible(false);
-         if(!table.getStudents().get(3).getMasonEmail().equals(user.getMasonEmail())) {
+            addFriend3.setVisible(false);  //Hide from being displayed
+         if(!table.getStudents().get(3).getMasonEmail().equals(user.getMasonEmail())) {   //If student Mason email is not equal to the user mason email
             if(user.getFriends().contains(table.getStudents().get(3).getMasonEmail())) 
-               addFriend4.setText("Unfollow");
+               addFriend4.setText("Unfollow");  //Set the text to unfollow
             else
-               addFriend4.setText("Follow");
-            addFriend4.setVisible(true);
+               addFriend4.setText("Follow");      //Set the text to follow
+            addFriend4.setVisible(true);  //Display in the side panel
          }
          else 
-            addFriend4.setVisible(false);
+            addFriend4.setVisible(false);  //Hide from being displayed
       } else  {
-         addFriend1.setVisible(false);
-         addFriend2.setVisible(false);
-         addFriend3.setVisible(false);
-         addFriend4.setVisible(false);
+         addFriend1.setVisible(false);  //Hide from being displayed //Hide the addFriend1 button
+         addFriend2.setVisible(false);  //Hide from being displayed
+         addFriend3.setVisible(false);  //Hide from being displayed
+         addFriend4.setVisible(false);  //Hide from being displayed
       }
    }
    

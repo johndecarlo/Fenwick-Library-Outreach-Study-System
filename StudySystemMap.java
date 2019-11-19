@@ -33,47 +33,47 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    private ImageIcon floor3 = new ImageIcon("Fenwick_Library_Maps/Floor3.png");  //Image for the map of floor 3
    
    //Images for displaying tables that have been selected
-   private ImageIcon blockTable_unoccupied = new ImageIcon("table_images/block_unoccupied.png");                   //Block table display
-   private ImageIcon circleTable_unoccupied = new ImageIcon("table_images/circle_unoccupied.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_unoccupied = new ImageIcon("table_images/circle_halfLeft_unoccupied.png");
-   private ImageIcon circleTable_halfRight_unoccupied = new ImageIcon("table_images/circle_halfRight_unoccupied.png");
-   private ImageIcon smallCircleTable_h_unoccupied = new ImageIcon("table_images/smallcircle_h_unoccupied.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_unoccupied = new ImageIcon("table_images/smallcircle_v_unoccupied.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_unoccupied = new ImageIcon("table_images/block_unoccupied.png");                        //Block table display
+   private ImageIcon circleTable_unoccupied = new ImageIcon("table_images/circle_unoccupied.png");                      //Circle table display
+   private ImageIcon circleTable_halfLeft_unoccupied = new ImageIcon("table_images/circle_halfLeft_unoccupied.png");    //Half circle table (left)
+   private ImageIcon circleTable_halfRight_unoccupied = new ImageIcon("table_images/circle_halfRight_unoccupied.png");  //Half circle table (right)
+   private ImageIcon smallCircleTable_h_unoccupied = new ImageIcon("table_images/smallcircle_h_unoccupied.png");        //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_unoccupied = new ImageIcon("table_images/smallcircle_v_unoccupied.png");        //Small cirlce talbe (vertical)
    //Images for displaying tables that have been selected
-   private ImageIcon blockTable_occupied = new ImageIcon("table_images/block_occupied.png");                   //Block table display
-   private ImageIcon circleTable_occupied = new ImageIcon("table_images/circle_occupied.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_occupied = new ImageIcon("table_images/circle_halfLeft_occupied.png");
-   private ImageIcon circleTable_halfRight_occupied = new ImageIcon("table_images/circle_halfRight_occupied.png");
-   private ImageIcon smallCircleTable_h_occupied = new ImageIcon("table_images/smallcircle_h_occupied.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/smallcircle_v_occupied.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_occupied = new ImageIcon("table_images/block_occupied.png");                         //Block table display
+   private ImageIcon circleTable_occupied = new ImageIcon("table_images/circle_occupied.png");                       //Circle table display
+   private ImageIcon circleTable_halfLeft_occupied = new ImageIcon("table_images/circle_halfLeft_occupied.png");     //Half circle table (left)
+   private ImageIcon circleTable_halfRight_occupied = new ImageIcon("table_images/circle_halfRight_occupied.png");   //Half circle table (right)
+   private ImageIcon smallCircleTable_h_occupied = new ImageIcon("table_images/smallcircle_h_occupied.png");         //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_occupied = new ImageIcon("table_images/smallcircle_v_occupied.png");         //Small cirlce talbe (vertical)
    //Images for displaying table that the user has selected
-   private ImageIcon blockTable_selected = new ImageIcon("table_images/block_selected.png");                   //Block table display
-   private ImageIcon circleTable_selected = new ImageIcon("table_images/circle_selected.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_selected = new ImageIcon("table_images/circle_halfLeft_selected.png");
-   private ImageIcon circleTable_halfRight_selected = new ImageIcon("table_images/circle_halfRight_selected.png");
-   private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/smallcircle_h_selected.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/smallcircle_v_selected.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_selected = new ImageIcon("table_images/block_selected.png");                         //Block table display
+   private ImageIcon circleTable_selected = new ImageIcon("table_images/circle_selected.png");                       //Circle table display
+   private ImageIcon circleTable_halfLeft_selected = new ImageIcon("table_images/circle_halfLeft_selected.png");     //Half circle table (left)
+   private ImageIcon circleTable_halfRight_selected = new ImageIcon("table_images/circle_halfRight_selected.png");   //Half circle table (right)
+   private ImageIcon smallCircleTable_h_selected = new ImageIcon("table_images/smallcircle_h_selected.png");         //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_selected = new ImageIcon("table_images/smallcircle_v_selected.png");         //Small cirlce talbe (vertical)
    //Images for displaying table that the user is occupying
-   private ImageIcon blockTable_user = new ImageIcon("table_images/block_user.png");                    //Block table display
-   private ImageIcon circleTable_user = new ImageIcon("table_images/circle_user.png");                  //Circle table display
-   private ImageIcon circleTable_halfLeft_user = new ImageIcon("table_images/halfLeft_user.png");
-   private ImageIcon circleTable_halfRight_user = new ImageIcon("table_images/circle_halfRight_user.png");
-   private ImageIcon smallCircleTable_h_user= new ImageIcon("table_images/smallcircle_h_user.png");      //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_user = new ImageIcon("table_images/smallcircle_v_user.png");    //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_user = new ImageIcon("table_images/block_user.png");                        //Block table display
+   private ImageIcon circleTable_user = new ImageIcon("table_images/circle_user.png");                      //Circle table display
+   private ImageIcon circleTable_halfLeft_user = new ImageIcon("table_images/halfLeft_user.png");           //Half circle table (left)
+   private ImageIcon circleTable_halfRight_user = new ImageIcon("table_images/circle_halfRight_user.png");  //Half circle table (right)
+   private ImageIcon smallCircleTable_h_user= new ImageIcon("table_images/smallcircle_h_user.png");         //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_user = new ImageIcon("table_images/smallcircle_v_user.png");        //Small cirlce talbe (vertical)
    //Images for displaying tables that match with what the user is searching for
-   private ImageIcon blockTable_match = new ImageIcon("table_images/block_match.png");                   //Block table display
-   private ImageIcon circleTable_match = new ImageIcon("table_images/circle_match.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_match = new ImageIcon("table_images/circle_halfLeft_match.png");
-   private ImageIcon circleTable_halfRight_match = new ImageIcon("table_images/circle_halfRight_match.png");
-   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/smallcircle_h_match.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/smallcircle_v_match.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_match = new ImageIcon("table_images/block_match.png");                         //Block table display
+   private ImageIcon circleTable_match = new ImageIcon("table_images/circle_match.png");                       //Circle table display
+   private ImageIcon circleTable_halfLeft_match = new ImageIcon("table_images/circle_halfLeft_match.png");     //Half circle table (left)
+   private ImageIcon circleTable_halfRight_match = new ImageIcon("table_images/circle_halfRight_match.png");   //Half circle table (right)
+   private ImageIcon smallCircleTable_h_match = new ImageIcon("table_images/smallcircle_h_match.png");         //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_match = new ImageIcon("table_images/smallcircle_v_match.png");         //Small cirlce talbe (vertical)
    //Images for displaying tables that a users friend is sitting at
-   private ImageIcon blockTable_friend = new ImageIcon("table_images/block_friend.png");                   //Block table display
-   private ImageIcon circleTable_friend = new ImageIcon("table_images/circle_friend.png");                 //Circle table display
-   private ImageIcon circleTable_halfLeft_friend = new ImageIcon("table_images/circle_halfLeft_friend.png");
-   private ImageIcon circleTable_halfRight_friend = new ImageIcon("table_images/circle_halfRight_friend.png");
-   private ImageIcon smallCircleTable_h_friend = new ImageIcon("table_images/smallcircle_h_friend.png");    //Small circle table (horizontal)
-   private ImageIcon smallCircleTable_v_friend = new ImageIcon("table_images/smallcircle_v_friend.png");   //Small cirlce talbe (vertical)
+   private ImageIcon blockTable_friend = new ImageIcon("table_images/block_friend.png");                       //Block table display
+   private ImageIcon circleTable_friend = new ImageIcon("table_images/circle_friend.png");                     //Circle table display
+   private ImageIcon circleTable_halfLeft_friend = new ImageIcon("table_images/circle_halfLeft_friend.png");   //Half circle table (left)
+   private ImageIcon circleTable_halfRight_friend = new ImageIcon("table_images/circle_halfRight_friend.png"); //Half circle table (right)
+   private ImageIcon smallCircleTable_h_friend = new ImageIcon("table_images/smallcircle_h_friend.png");       //Small circle table (horizontal)
+   private ImageIcon smallCircleTable_v_friend = new ImageIcon("table_images/smallcircle_v_friend.png");       //Small cirlce talbe (vertical)
    
    private static int floorNumber;     //Floor number that the user is currently viewing 
    protected static int mouseX;			//location for the mouse pointer X
@@ -93,11 +93,10 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       mouseX = 0;                         //Set X location of the mouse
       mouseY = 0;                         //Set Y location of the mouse
       selectedTable = new Table();        //Initialize the table we are selected
-      userTable = new Table();                   //Initialze the user table
+      userTable = new Table();            //Initialze the user table
       tableSelected = false;              //Initialize whether or not we have selected a table
       searchFeature = false;              //Initialize whether or not the search feature is active
-      
-      refreshTables( );
+      refreshTables( );                   //Refresh the tables display
    }
    
    public int getTableIndex( Table table ) {
@@ -172,29 +171,30 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       int button = e.getButton();  
       Table table = null;
       if(button == MouseEvent.BUTTON1) {
-         if(floorNumber == 1) {
+         if(floorNumber == 1) {  //We are on floor 1
             for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
                table = floor1Tables.get(ind1);  //Create a temporary table
-               if(clickedTable(table))
+               if(clickedTable(table))          //Check to see if we clicked on an existing table location
                   break;
             }
-         } else if(floorNumber == 2) {
+         } else if(floorNumber == 2) {    //We are on floor 2
             for(int ind2 = 0; ind2 < floor2Tables.size(); ind2++) {
                table = floor2Tables.get(ind2);  //Create a temporary table
-               if(clickedTable(table))
+               if(clickedTable(table))          //Check to see if we clicked on an existing table location
                   break;
             }
-         } else if(floorNumber == 3) {
+         } else if(floorNumber == 3) {    //We are on floor 3
             for(int ind3 = 0; ind3 < floor3Tables.size(); ind3++) {
                table = floor3Tables.get(ind3);  //Create a temporary table
-               if(clickedTable(table))
+               if(clickedTable(table))          //Check to see if we clicked on an existing table location
                   break;
             }
          }
-         repaint();
+         repaint();  //Repaint our map of tables
       }  
    }
    
+   //Check for what we should do when we click on a table
    public static boolean clickedTable(Table table) {
       int startRow, startCol, endRow, endCol;
       startRow = table.getRow();       //Get the starting row
@@ -202,72 +202,73 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       endRow = startRow + table.getRowSize();   //Get the end row
       endCol = startCol + table.getColSize();   //Get the end col
       if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getID() != userTable.getID()) {    //If it is between the start and end row and the start and end column
-         if(table.getOccupied() == false) {
-            updateMessages();
-            selectedTable = table;
-            tableSelected = true;
-            FLOSSDriver.displayCourseOptions(true);
-            FLOSSDriver.showJoinTable(false);
+         if(table.getOccupied() == false) {  //If the table isn't occupied
+            repaint();  //Update the side panel messages
+            selectedTable = table;     //Set our selectedTable 
+            tableSelected = true;      //Set our tableSelected boolean to true
+            FLOSSDriver.displayCourseOptions(true);   //Display the course options to add to the unoccupied table
+            FLOSSDriver.showJoinTable(false);         //Do not show the join table option
             return true;
-         } else if(table.getNumStudents() <= table.getCapacity()) {
-            FLOSSDriver.displayCourseOptions(false);
-            FLOSSDriver.showErrorMessage(false);
-            selectedTable = table;
-            tableSelected = true;
-            FLOSSDriver.displayStudentName(selectedTable.getStudents());
-            FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
-            FLOSSDriver.displayMessage(selectedTable.getMessage());
-            if(table.getCourse().getNumber() != 0)
-               FLOSSDriver.displayTableCourse(table.getCourse());
+         } else if(table.getNumStudents() <= table.getCapacity()) {  //If the table is occupied but under max capacity
+            FLOSSDriver.displayCourseOptions(false);  //Do not display options to set the table course 
+            FLOSSDriver.showErrorMessage(false);      //Do not show max occupied error message
+            selectedTable = table;                    //Set our selectedTable
+            tableSelected = true;                     //Set our tableSelected boolean to true            
+            FLOSSDriver.displayStudentName(selectedTable.getStudents());   //Display the students occupying that table
+            FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());  //Show the add friend options for the people at that table
+            FLOSSDriver.displayMessage(selectedTable.getMessage());  //Display the message that the occupant has for the table
+            if(table.getCourse().getNumber() != 0)    //If the table course is initialized
+               FLOSSDriver.displayTableCourse(table.getCourse());    //Display the table course
             else
-               FLOSSDriver.resetTableCourse();  
-            if(table.getNumStudents() == table.getCapacity()) {
-               FLOSSDriver.showErrorMessage(true);
-               FLOSSDriver.showJoinTable(false);
+               FLOSSDriver.resetTableCourse();        //Don't display an instance of a table course
+            if(table.getNumStudents() == table.getCapacity()) {   //If the capacity of the table is at it's max
+               FLOSSDriver.showErrorMessage(true);    //Show the max occupancy error message
+               FLOSSDriver.showJoinTable(false);      //Do not display join table option
             }
-            else if(table.getID() != userTable.getID())
-               FLOSSDriver.showJoinTable(true);
+            else if(table.getID() != userTable.getID())  //If the table is not the user's current occupied table
+               FLOSSDriver.showJoinTable(true);       //Display the option to join the table
             return true;
          } 
       } else {
-         FLOSSDriver.displayCourseOptions(false);
-         tableSelected = false;
-         selectedTable = userTable;
-         updateMessages();
+         FLOSSDriver.displayCourseOptions(false);  //Display no options to choose a course for a table
+         tableSelected = false;        //Set table selected to false
+         selectedTable = userTable;    //Set the selected table to the user table
+         repaint();                    //Update the side panel messages
          return false;
       }
       return false;
    }
    
-    //When we move the mouse, we can see information of tables that our cursor is hovering over
+   //When we move the mouse, we can see information of tables that our cursor is hovering over
    public void mouseMoved( MouseEvent e) {
       Table table = null;
       mouseX = e.getX();	//Get mouseX value
       mouseY = e.getY();	//Get mouseY value
-      if(floorNumber == 1) {
+      if(floorNumber == 1) {     //We are currently viewing the first floor
          for(int ind1 = 0; ind1 < floor1Tables.size(); ind1++) {
             table = floor1Tables.get(ind1);  //Create a temporary table
-            if(movedMouse(table))
+            if(movedMouse(table))   //Check to see if the mouse is moved over a table
                break;
          }
       }
-      else if(floorNumber == 2) {
+      else if(floorNumber == 2) {   //We are currently viewing the second floor
          for(int ind2 = 0; ind2 < floor2Tables.size(); ind2++) {
             table = floor2Tables.get(ind2);  //Create a temporary table
-            if(movedMouse(table))
+            if(movedMouse(table))   //Check to see if the mouse is moved over a table
                break;
          }
       }
-      else if(floorNumber == 3) {
+      else if(floorNumber == 3) {   //We are currently viewing the third floor
          for(int ind3 = 0; ind3 < floor3Tables.size(); ind3++) {
             table = floor3Tables.get(ind3);  //Create a temporary table
-            if(movedMouse(table))
+            if(movedMouse(table))   //Check to see if the mouse is moved over a table
                break;
          }
       }
-      repaint();			//Refresh the screen
+      repaint();  //Repaint our map of tablee
    }
    
+   //Method to check what should happen when we move the mouse over a table
    public static boolean movedMouse(Table table) {
       int startRow, startCol, endRow, endCol;
       startRow = table.getRow();       //Get the starting row
@@ -275,45 +276,45 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       endRow = startRow + table.getRowSize();   //Get the end row
       endCol = startCol + table.getColSize();   //Get the end col
       if(mouseX >= startRow && mouseX <= endRow && mouseY >= startCol && mouseY <= endCol && table.getOccupied() && table.getID() != selectedTable.getID()) {    //If it is between the start and end row and the start and end column
-         FLOSSDriver.displayStudentName(table.getStudents());
-         FLOSSDriver.displayMessage(table.getMessage());
+         FLOSSDriver.displayStudentName(table.getStudents());  //Display the students that are sitting at an occupied table
+         FLOSSDriver.displayMessage(table.getMessage());       //Display the message of the table
          if(table.getCourse().getNumber() != 0)
-            FLOSSDriver.displayTableCourse(table.getCourse());
+            FLOSSDriver.displayTableCourse(table.getCourse());    //Display the course if it is initialized
          else
-            FLOSSDriver.resetTableCourse();  
+            FLOSSDriver.resetTableCourse();                       //Don't display the course if it's not initialized
          if(table.getNumStudents() == table.getCapacity())
-            FLOSSDriver.showErrorMessage(true);
+            FLOSSDriver.showErrorMessage(true);             //Show the error message if the table is at max occupancy 
          else
-            FLOSSDriver.showErrorMessage(false);
-         FLOSSDriver.showJoinTable(false);
-         FLOSSDriver.showAddFriend(new Table(), 0);
+            FLOSSDriver.showErrorMessage(false);            //Do not show the error message if the table is not at max occupancy 
+         FLOSSDriver.showJoinTable(false);            //Do not show the join table option
+         FLOSSDriver.showAddFriend(new Table(), 0);   //Do not show the add friend button options
          return true;
-      } else if(tableSelected == true) {
-         if(selectedTable.getOccupied()) {
-            FLOSSDriver.displayStudentName(selectedTable.getStudents());
-            FLOSSDriver.displayMessage(selectedTable.getMessage());
-            if(selectedTable.getCourse().getNumber() != 0)
-               FLOSSDriver.displayTableCourse(selectedTable.getCourse());
+      } else if(tableSelected == true) {              //If we are not over a table but we have a table selected
+         if(selectedTable.getOccupied()) {            //If the table we have selected is occupied
+            FLOSSDriver.displayStudentName(selectedTable.getStudents());   //Display the students at the table
+            FLOSSDriver.displayMessage(selectedTable.getMessage());        //Displat the table message
+            if(selectedTable.getCourse().getNumber() != 0)                 
+               FLOSSDriver.displayTableCourse(selectedTable.getCourse());  //Display the course if initialized
             else
-               FLOSSDriver.resetTableCourse();  
+               FLOSSDriver.resetTableCourse();                             //Do not display the course if not initalized
             if(selectedTable.getNumStudents() == selectedTable.getCapacity())
-               FLOSSDriver.showErrorMessage(true);
-            if(selectedTable.getID() != userTable.getID() && selectedTable.getNumStudents() < selectedTable.getCapacity()) {
-               FLOSSDriver.showJoinTable(true);
-               FLOSSDriver.showErrorMessage(false); 
+               FLOSSDriver.showErrorMessage(true);                         //Show the error message if the table is at max capacity
+            if(selectedTable.getID() != userTable.getID() && selectedTable.getNumStudents() < selectedTable.getCapacity()) {  //Table selected is not user table and under max occupancy
+               FLOSSDriver.showJoinTable(true);                            //Display the join table option
+               FLOSSDriver.showErrorMessage(false);                        //Do not display the max occupancy message
             } else {
-               FLOSSDriver.showJoinTable(false);
-               FLOSSDriver.showErrorMessage(true); 
+               FLOSSDriver.showJoinTable(false);                           //Do not display the join table option
+               FLOSSDriver.showErrorMessage(true);                         //Display the max occupancy message
             }
-            FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
+            FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());  //Show the add friend options
             return false;
-         } else {
-            FLOSSDriver.showJoinTable(false);
-            updateMessages();
+         } else {             //We are not over a current table and do not have a table selected
+            FLOSSDriver.showJoinTable(false);   //Do not show the join table button
+            repaint();  //Update the side panel messages
             return false;
          }
       } else {
-         updateMessages();
+         repaint();  //Update the side panel messages
          return false;
       }
    }
@@ -322,12 +323,12 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    public void mouseDragged( MouseEvent e) {
       mouseX = e.getX();	//Get mouseX value
       mouseY = e.getY();	//Get mouseY value
-      repaint();			//Refresh the screen
+      repaint();  //Repaint our map of tables			//Refresh the screen
    }
     
    private class Listener implements ActionListener {
       public void actionPerformed(ActionEvent e)	{
-         repaint();
+         repaint();  //Repaint our map of tables
       }
    }
 
@@ -348,11 +349,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    public void paintComponent(Graphics g) {
       g.setColor(Color.red);     //Set the background color to no pieces as red
       super.paintComponent(g); 	//Call super method
-      paintMap(g, floorNumber);
-      paintMatchingTable(g);
-      paintFriendTable(g);
-      paintUserTable(g);
-      paintSelectedTable(g);
+      paintMap(g, floorNumber);  //Paint the map image and the occupied or unoccupied tables
+      paintMatchingTable(g);     //Paint the matching tables
+      paintFriendTable(g);       //Paint the tables that friends are sitting at
+      paintUserTable(g);         //Paint the table that the user currently occupies
+      paintSelectedTable(g);     //Paint the table that the user has selected
    }
    
    //Paint out the image of the floors for Fenwick
@@ -388,6 +389,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
          g.drawImage(floor1.getImage(), 0, 0, 800, 800, null);
    }
    
+   //Paint a basic instance of a table that isn't occupied
    public void paintUnoccupiedTable(Graphics g, Table t) {
       if(t.getShape().equals("BLOCK")) 
          g.drawImage(blockTable_unoccupied.getImage(), t.getRow(), t.getCol(), t.getRowSize(), t.getColSize(), null); 
@@ -422,7 +424,8 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    //Paint the table if the user has selected it
    public void paintSelectedTable(Graphics g) {
       if(tableSelected == true) {
-         if(selectedTable.getShape().equals("BLOCK")) 
+         //If table selected is equal to true and the shape matches the selected table
+         if(selectedTable.getShape().equals("BLOCK"))
             g.drawImage(blockTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
          else if(selectedTable.getShape().equals("CIRCLE")) 
             g.drawImage(circleTable_selected.getImage(), selectedTable.getRow(), selectedTable.getCol(), selectedTable.getRowSize(), selectedTable.getColSize(), null); 
@@ -440,6 +443,7 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    //Paint the table that the user is currently occupying
    public void paintUserTable(Graphics g) {
       if(userTable != null) {
+         //Check if the userTable is not equal to null and find the table shape and the floor number matches the one we are currently on
          if(userTable.getShape().equals("BLOCK") && userTable.getFloor() == floorNumber) 
             g.drawImage(blockTable_user.getImage(), userTable.getRow(), userTable.getCol(), userTable.getRowSize(), userTable.getColSize(), null); 
          else if(userTable.getShape().equals("CIRCLE") && userTable.getFloor() == floorNumber) 
@@ -460,28 +464,29 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       if(searchFeature == true) {
          ArrayList<Table> tables;
          if(floorNumber == 1)
-            tables = floor1Tables;
+            tables = floor1Tables;  //Print the matching tables from floor 1
          else if (floorNumber == 2)
-            tables = floor2Tables;
+            tables = floor2Tables;  //Print the matching tables from floor 2
          else if (floorNumber == 3)
-            tables = floor3Tables;
+            tables = floor3Tables;  //Print the matching tables from floor 3
          else
             tables = floor1Tables;
          String subjectCode = FLOSSDriver.getSearchSubject();
          int courseNumber = FLOSSDriver.getSearchNumber();
          for(int index = 0; index < tables.size(); index++) {
             Table table = tables.get(index);
+            //Check if the table is the type, matches the subject code, matches the subject number, and is not the user table
             if(table.getShape().equals("BLOCK") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
                g.drawImage(blockTable_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
-            else if(table.getShape().equals("CIRCLE") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+            else if(table.getShape().equals("CIRCLE") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
                g.drawImage(circleTable_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
-            else if(table.getShape().equals("CIRCLE_HL") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+            else if(table.getShape().equals("CIRCLE_HL") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
                g.drawImage(circleTable_halfLeft_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
-            else if(table.getShape().equals("CIRCLE_HR") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+            else if(table.getShape().equals("CIRCLE_HR") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
                g.drawImage(circleTable_halfRight_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);
-            else if(table.getShape().equals("SMALLCIRCLE_H") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+            else if(table.getShape().equals("SMALLCIRCLE_H") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
                g.drawImage(smallCircleTable_h_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null);  
-            else if(table.getShape().equals("SMALLCIRCLE_V") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber) 
+            else if(table.getShape().equals("SMALLCIRCLE_V") && table.getCourse().getSubjectCode().equals(subjectCode) && table.getCourse().getNumber() == courseNumber && table.getID() != userTable.getID()) 
                g.drawImage(smallCircleTable_v_match.getImage(), table.getRow(), table.getCol(), table.getRowSize(), table.getColSize(), null); 
          }
       } 
@@ -492,11 +497,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       if(searchFeature == true) {
          ArrayList<Table> tables;
          if(floorNumber == 1)
-            tables = floor1Tables;
+            tables = floor1Tables;  //Print the matching tables from floor 1
          else if (floorNumber == 2)
-            tables = floor2Tables;
+            tables = floor2Tables;  //Print the matching tables from floor 2
          else if (floorNumber == 3)
-            tables = floor3Tables;
+            tables = floor3Tables;  //Print the matching tables from floor 3
          else
             tables = floor1Tables;
          String subjectCode = FLOSSDriver.getSearchSubject();
@@ -558,13 +563,13 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
       BufferedReader reader = new BufferedReader(new FileReader(file));
       String line = "";
       int id_count = 0;
-      while ((line = reader.readLine()) != null) {
+      while ((line = reader.readLine()) != null) {    //Read through the entire tables.txt file
          String[] table = line.split(",");
-         if(table[0].equals("1"))
+         if(table[0].equals("1"))               //Table belongs on floor 1
             floor1Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count, Integer.parseInt(table[6])));
-         else if(table[0].equals("2"))
+         else if(table[0].equals("2"))          //Table belongs on floor 2
             floor2Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count, Integer.parseInt(table[6])));
-         else if(table[0].equals("3"))
+         else if(table[0].equals("3"))          //Table belongs on floor 3
             floor3Tables.add(new Table(Integer.parseInt(table[0]), Integer.parseInt(table[1]), Integer.parseInt(table[2]), Integer.parseInt(table[3]), Integer.parseInt(table[4]), table[5], id_count, Integer.parseInt(table[6])));
          id_count++;
       }
@@ -573,11 +578,11 @@ public class StudySystemMap extends JPanel implements MouseListener, MouseMotion
    
    //Reset the JLabels so we don't display information about a table we are not over
    public static void updateMessages() {
-      FLOSSDriver.displayStudentName(userTable.getStudents());
-      FLOSSDriver.displayTableCourse(userTable.getCourse());  
-      FLOSSDriver.displayMessage(userTable.getMessage()); 
-      FLOSSDriver.showErrorMessage(false);
-      FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());
-      FLOSSDriver.showJoinTable(false);
+      FLOSSDriver.displayStudentName(userTable.getStudents());    //Get the student at the user table
+      FLOSSDriver.displayTableCourse(userTable.getCourse());      //Get the course at the user table
+      FLOSSDriver.displayMessage(userTable.getMessage());         //Get the message at the user table
+      FLOSSDriver.showErrorMessage(false);                        //Do not show message of table being max occupied
+      FLOSSDriver.showAddFriend(selectedTable, selectedTable.getNumStudents());  //Show the added friends for the selected table
+      FLOSSDriver.showJoinTable(false);                           //Do not show the 'Join Table' button
    }
 }
