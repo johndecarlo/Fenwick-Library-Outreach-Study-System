@@ -12,6 +12,10 @@ public interface RemoteDBManager {
 	 * @return True if exists, false if not
 	 */
     boolean exists( String id );
+    
+    String getName( String id );
+    String getMajor( String id );
+    String getClassInfo( int tableID );
 
     /**
      * Adds a new user to the total table of users
@@ -40,6 +44,13 @@ public interface RemoteDBManager {
      * @return True if successful, false if any data is invalid
      */
     boolean removeFriend( String myID, String friendID );
+    
+    /**
+     * Fetch a list of the user ids of all of your friends
+     * @param myID The id of the user to fetch friends for
+     * @return The list of user ids
+     */
+    List<String> getFriendList( String myID );
     
     /**
      * Alter the stored name value of a given user
